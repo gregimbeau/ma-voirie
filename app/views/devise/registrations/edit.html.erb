@@ -8,26 +8,7 @@
       <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-500 md:text-2xl dark:text-white text-center">
         Mettre à jour ses données
       </h1>
-
-<div class="flex flex-col items-center justify-center">
-    <% if @user.avatar.attached? %>
-        <%= image_tag url_for(@user.avatar), alt: 'avatar', class: "rounded-full w-48 h-48" %>
-        <%= button_to "Supprimer l'avatar", user_avatar_path(@user, @user.avatar.key), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer votre avatar ?" }, class: "btn btn-danger mt-3" %>
-    <% else %>
-        <%= image_tag "https://source.unsplash.com/random/?city,night", alt: 'avatar', class: "rounded-full w-48 h-48" %>
-    <% end %>
-
-    <h3 class="mt-3">Changer d'avatar ?</h3>
-    <%= form_tag user_avatars_path(@user), multipart: true do %>
-        <%= file_field_tag :avatar %>
-    <% end %>
-</div>
-
-
-
         <br>
-
-
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, class: "space-y-4 md:space-y-6") do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
 
