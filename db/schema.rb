@@ -45,7 +45,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_12_144122) do
   create_table "reports", force: :cascade do |t|
     t.string "title"
     t.text "content"
-    t.boolean "validate"
+    t.boolean "is_validate"
     t.string "address"
     t.bigint "user_id"
     t.bigint "status_id"
