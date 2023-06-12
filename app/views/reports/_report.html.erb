@@ -1,0 +1,32 @@
+<div id="<%= dom_id report %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Title:</strong>
+    <%= report.title %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Content:</strong>
+    <%= report.content %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Validate:</strong>
+    <%= report.validate %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Address:</strong>
+    <%= report.address %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">User:</strong>
+    <%= report.user_id %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this report", report, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this report', edit_report_path(report), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>
