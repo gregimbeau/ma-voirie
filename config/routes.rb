@@ -3,7 +3,12 @@ Rails.application.routes.draw do
     resources :reports, only: [:new, :create]
   end
   resources :reports
-  resources :users, only:[:show]
+  resources :users, only: [:show, :edit, :update] do
+    resources :avatars, only: [:create, :destroy]
+    member do
+      post :reset_password
+    end
+  end
 
   root to: "reports#index"
 end
