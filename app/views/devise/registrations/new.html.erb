@@ -8,7 +8,9 @@
       <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-500 md:text-2xl dark:text-white text-center">
         S'enregistrer
       </h1>
+      <div class="flex flex-col items-center justify-center">
 
+      </div>
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "space-y-4 md:space-y-6" }) do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -16,11 +18,11 @@
             <%= f.label :email, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
             <%= f.email_field :email, class: "nav-color border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", autofocus: true, autocomplete: "email" %>
           </div>
-
+            <hr style="border-color: black;">
           <div>
             <%= f.label :Mot_de_passe, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
             <% if @minimum_password_length %>
-            <em><%= content_tag :span, "(#{@minimum_password_length} caractères minimum)", class: "text-white" %></em>
+            <em><%= content_tag :span, "(#{@minimum_password_length} caractères minimum)", class: "text-black" %></em>
             <% end %>
             <%= f.password_field :password, class: "nav-color border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", autocomplete: "new-password" %>
           </div>
@@ -28,6 +30,27 @@
           <div>
             <%= f.label :Confirmation_du_mot_de_passe, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
             <%= f.password_field :password_confirmation, class: "nav-color border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", autocomplete: "new-password" %>
+          </div>
+            <hr style="border-color: black;">
+          <div>
+            <%= f.label :Choisissez_un_pseudo, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+            <%= f.password_field :nickname, class: "nav-color border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", autocomplete: "nickname" %>
+          </div>
+          <div>
+            <%= f.label :Votre_prénom, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+            <%= f.password_field :first_name, class: "nav-color border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", autocomplete: "first_name" %>
+          </div>
+          <div>
+            <%= f.label :Votre_nom, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+            <%= f.password_field :last_name, class: "nav-color border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", autocomplete: "last_name" %>
+          </div>
+          <div>
+            <%= f.label :Votre_numéro_de_téléphone, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+            <%= f.password_field :phone_number, class: "nav-color border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", autocomplete: "last_name" %>
+          </div>
+          <div>
+            <%= f.label :Votre_age, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+            <%= f.password_field :age, class: "nav-color border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", autocomplete: "last_name" %>
           </div>
 
           <%= f.submit "S'enregistrer", class: "w-full bg-blue-500 text-white bg-orange-400 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" %>
