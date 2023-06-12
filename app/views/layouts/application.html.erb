@@ -23,8 +23,13 @@
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <%= render 'layouts/navbar' %>
+    <main class="container mx-auto mt-8 px-1 pb-10 flex justify-center items-center">
       <%= yield %>
     </main>
+   
+
+      <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
   </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
 </html>
