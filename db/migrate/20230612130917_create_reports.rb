@@ -5,7 +5,8 @@ class CreateReports < ActiveRecord::Migration[7.0]
       t.text :content
       t.boolean :validate
       t.string :address
-      t.belongs_to :user, null: false, foreign_key: true
+      t.belongs_to :user, index:true
+      t.belongs_to :status, index:true
 
       t.timestamps
     end
