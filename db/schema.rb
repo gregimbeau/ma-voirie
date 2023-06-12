@@ -47,9 +47,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_12_144122) do
     t.text "content"
     t.boolean "validate"
     t.string "address"
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
+    t.bigint "status_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["status_id"], name: "index_reports_on_status_id"
     t.index ["user_id"], name: "index_reports_on_user_id"
   end
 
@@ -79,5 +81,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_12_144122) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "reports", "users"
 end
