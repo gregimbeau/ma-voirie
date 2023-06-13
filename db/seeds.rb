@@ -36,7 +36,7 @@ end
 
 5.times do
   report = Report.create!(
-    title: Faker::Book.sentence,
+    title: Faker::Lorem.sentence,
     content: Faker::Lorem.characters(number: 35),
     is_validate: nil,
     address: Faker::Address.street_address,
