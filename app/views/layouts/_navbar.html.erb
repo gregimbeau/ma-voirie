@@ -24,27 +24,36 @@
         <div class="w-full md:block md:w-auto" id="navbar-dropdown">
           <ul class="font-medium p-4 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0">
             <li>
-              <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center text-2xl font-semibold whitespace-nowrap sm-[1%] md-[2%] ml-[3%]">
-                <span class="self-center text-2xl font-semibold whitespace-nowrap mr-2">Se connecter</span>
-                <%= image_tag("user.png", class: "w-10 banner", draggable: "false", unselectable: "on") %>
-              </button>
+              <% if current_user %>
+                <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center text-2xl font-semibold whitespace-nowrap sm-[1%] md-[2%] ml-[3%]">
+                  <span class="self-center text-2xl font-semibold whitespace-nowrap mr-2"><%= current_user.nickname %></span>
+                  <%= image_tag("user.png", class: "w-10 banner", draggable: "false", unselectable: "on") %>
+                </button>
+              <% else %>
+                <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center text-2xl font-semibold whitespace-nowrap sm-[1%] md-[2%] ml-[3%]">
+                  <span class="self-center text-2xl font-semibold whitespace-nowrap mr-2">Se connecter</span>
+                  <%= image_tag("user.png", class: "w-10 banner", draggable: "false", unselectable: "on") %>
+                </button>
+              <% end %>
               <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
                 <% if current_user %>
-                  <% if current_user.is_admin %>
+                  <ul>
+                    <% if current_user.is_admin %>
+                      <%# <li> %>
+                        <%#= link_to "Dashboard admin", admin_index_path, class:"block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" %>
+                      <%# </li> %>
+                    <% end %>
                     <li>
-                      <%= link_to "Dashboard admin", admin_root_path, class:"block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" %>
+                      <%= link_to "Mon profil", user_path(current_user), class:"block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" %>
                     </li>
-                  <% end %>
-                  <li>
-                    <%= link_to "Mon profil", user_path(current_user), class:"block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" %>
-                  </li>
-                  <li>
-                    <%= link_to "Informations personnelles", edit_user_registration_path(current_user), class:"block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" %>
-                  </li>
-                  <li>
-                    <%= button_to "Me déconnecter", destroy_user_session_path, class:"block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white",form: { data: { turbo_confirm: "Veux-tu te déconnecter ?" } }, method: :delete %>
-                  </li>
-                <% else %>
+                    <li>
+                      <%= link_to "Informations personnelles", edit_user_registration_path(current_user), class:"block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" %>
+                    </li>
+                    <li>
+                      <%= button_to "Me déconnecter", destroy_user_session_path, class:"block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white",form: { data: { turbo_confirm: "Veux-tu te déconnecter ?" } }, method: :delete %>
+                    </li>
+                  </ul>
+                  <% else %>
                   <div class="py-1">
                     <a href="<%= new_user_session_path %>" class="text-center block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Connexion</a>
                   </div>
