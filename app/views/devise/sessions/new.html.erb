@@ -1,17 +1,15 @@
-<body class="font-mono bg-gray-400 shadow-lg">
-
       <div class="w-full lg:w-7/12 bg-yellow-100 p-5 rounded-lg lg:rounded-l-none">
         <h3 class="pt-4 text-2xl text-center ">Se connecter</h3>
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "md:space-y-6 space-y-4" }) do |f| %>
         <div class="space-y-4">
           <%= f.label :email, class: "block text-sm font-medium text-gray-900 dark:text-white mb-2" %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "block w-full p-2.5 rounded-lg border border-gray-300 text-gray-900 sm:text-sm focus:ring-primary-600 focus:border-primary-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "block w-full p-2.5 rounded-lg border border-gray-300 text-gray-900 sm:text-sm focus:ring-primary-600 focus:border-primary-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500" %>
         </div>
 
         <div class="space-y-4">
           <%= f.label :mot_de_passe, class: "block text-sm font-medium text-gray-900 dark:text-white mb-2" %>
-          <%= f.password_field :password, autocomplete: "current-password", class: "block w-full p-2.5 rounded-lg border border-gray-300 text-gray-900 sm:text-sm focus:ring-primary-600 focus:border-primary-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+          <%= f.password_field :password, autocomplete: "current-password", class: "block w-full p-2.5 rounded-lg border border-gray-300 text-gray-900 sm:text-sm focus:ring-primary-600 focus:border-primary-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500" %>
         </div>
 
         <% if devise_mapping.rememberable? -%>
@@ -22,16 +20,16 @@
         <% end %>
 
 
-      <div class="mt-8 px-1 container mx-auto flex justify-center items-center">
-<%= button_tag(type: 'submit', class: "relative inline-flex items-center justify-center p-2 px-6 py-1 overflow-hidden font-medium text-white transition-all duration-300 ease-out border-2 border-white rounded-full shadow-md group bg-orange-600 hover:bg-orange-800") do %>
-  <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-neutral-500 group-hover:translate-x-0 ease">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg%22%3E<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-  </span>
-  <span class="absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease"></span>
-  <span class="relative">Se connecter</span>
-<% end %>
-<% end %>
-</div>
+          <div class="mt-8 px-1 container mx-auto flex justify-center items-center">
+          <%= button_tag(type: 'submit', class: "relative inline-flex items-center justify-center p-2 px-6 py-1 overflow-hidden font-medium text-white transition-all duration-300 ease-out border-2 border-white rounded-full shadow-md group bg-orange-600 hover:bg-orange-800") do %>
+            <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-blue-400 group-hover:translate-x-0 ease">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg%22%3E<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </span>
+          <span class="absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease"></span>
+          <span class="relative">Se connecter</span>
+            <% end %>
+      <% end %>
+    </div>
 
 <div class="mt-8 px-1 container mx-auto flex justify-center items-center">
   <%= render "devise/shared/links", class: "my-4" %>
