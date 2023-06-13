@@ -3,6 +3,19 @@ class Report < ApplicationRecord
   belongs_to :status
 
   validates :address, presence: true
-  validates :content, presence: true, length: {minimum: 20}
-  validates :title, presence: true, length: {minimum: 15, maximum:60}
+  validates :content, presence: true, length: { minimum: 20 }
+  validates :title, presence: true, length: { minimum: 15, maximum: 60 }
+
+  has_many_attached :images
+
+
+  validate :validate_images
+
+  private
+
+  def validate_images
+    if images.count > 3
+      errors.add(:images, 'Vous ne pouvez ajouter que 3 images maximum.')
+    end
+  end
 end
