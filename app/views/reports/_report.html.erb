@@ -1,6 +1,9 @@
 <div class="max-w-5xl w-full lg:flex rounded-t">
-<div class="h-48 lg:h-auto lg:w-96 flex-none bg-cover lg:rounded-l text-center overflow-hidden" style="background-image: url('https://tailwindcss.com/img/card-left.jpg')" title="Woman holding a mug">
-</div>
+<% if report.images.any? %>
+  <div class="h-48 lg:h-auto lg:w-96 flex-none bg-cover lg:rounded-l text-center overflow-hidden" style="background-image: url('<%= url_for(report.images.first) %>')" title="Image description">
+  </div>
+<% end %>
+
 <div class="border-r border-b border-l border-orange-400 lg:border-l-0 lg:border-t lg:border-orange-400 bg-orange-400 rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal flex-grow">
   <div class="mb-8">
     <p class="text-sm text-grey-dark flex justify-end items-center">
@@ -23,7 +26,7 @@
       <i class="fa-regular fa-comment-dots" style="color: white" > 25</i>
     </div>-->
     <%= button_to report_path(report), class: "relative inline-flex items-center justify-center p-8 px-10 py-4 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-white rounded-full shadow-md group", method: :get do %>
-      <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-neutral-600 group-hover:translate-x-0 ease">
+      <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full cstm-bg-valid group-hover:translate-x-0 ease">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
         </svg>
