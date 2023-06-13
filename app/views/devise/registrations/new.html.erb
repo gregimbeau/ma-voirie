@@ -1,54 +1,66 @@
-<section class="bg-nav-color dark:bg-gray-900 rounded p-6 flex flex-col items-center justify-center">
-  <%= link_to root_path, class: "flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white" do %>
-    <%= image_tag("logo.png", alt: "logo", class: "w-20 h-20 mr-2") %>
-  <% end %>
+<body class="font-mono bg-gray-400 shadow-lg">
 
-  <div class="grid grid-cols-1 items-center justify-center">
-    <div class="w-[50vw] bg-white dark:bg-gray-800 dark:border-gray-700 rounded-lg shadow md:mt-0 xl:p-0 px-16 sm:px-24 lg:px-32">
-
-      <div class="p-6 md:space-y-6 space-y-4">
-        <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-500 dark:text-white md:text-2xl text-center">
-          S'enregistrer
-        </h1>
-
-        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "md:space-y-6 space-y-4" }) do |f| %>
-          <%= render "devise/shared/error_messages", resource: resource %>
-          
-          <% field_classes = "block w-full p-2.5 rounded-lg border border-gray-300 text-gray-900 sm:text-sm focus:ring-primary-600 focus:border-primary-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
-
-          <%# Email Field %>
-          <div class="space-y-4">
-            <%= f.label :email, class: "block text-sm font-medium text-gray-900 dark:text-white mb-2" %>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: field_classes %>
-          </div>
-
-          <%# Password Field %>
-          <hr class="border-black">
-          <div class="space-y-4">
-            <%= f.label :Mot_de_passe, class: "block text-sm font-medium text-gray-900 dark:text-white mb-2" %>
-            <% if @minimum_password_length %>
-              <em class="text-black">
-                <%= "(#{@minimum_password_length} caractères minimum)" %>
-              </em>
-            <% end %>
-            <%= f.password_field :password, autocomplete: "new-password", class: field_classes %>
-          </div>
-
-          <%# Other fields (nickname, first_name, last_name, phone_number, age) %>
-          <hr class="border-black">
-          <% [:nickname, :first_name, :last_name, :phone_number, :age].each do |field| %>
-            <div class="space-y-4">
-              <%= f.label field, class: "block text-sm font-medium text-gray-900 dark:text-white mb-2" %>
-              <%= f.text_field field, autocomplete: field.to_s, class: field_classes %>
+      <div class="w-full lg:w-7/12 bg-yellow-100 p-5 rounded-lg lg:rounded-l-none">
+        <h3 class="pt-4 text-2xl text-center ">Créer votre compte!</h3>
+        <form class="px-8 pt-6 pb-1 mb-4 bg-white rounded  bg-yellow-100 ">
+            <div class="mb-4 md:flex md:justify-between">
+              <div class="flex-grow md:mr-2 md:mb-0">
+                <label class="block mb-2 text-sm font-bold text-gray-700" for="floating_first_name"></label>
+                <input class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border-orange-300  rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="floating_first_name" type="text" placeholder="Prénom" required/>
+              </div>
+              <div class="flex-grow md:ml-2">
+                <label class="block mb-2 text-sm font-bold text-gray-700" for="floating_last_name"></label>
+                <input class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border-orange-300  rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="floating_last_name" type="text" placeholder="Nom" required/>
+              </div>
             </div>
-          <% end %>
-
-          <%= f.submit "S'enregistrer", class: "w-full py-2.5 px-5 text-sm font-medium rounded-lg text-center text-white bg-blue-500 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" %>
-        <% end %>
-
-        <div class="mt-8 px-1 container mx-auto flex justify-center items-center">
-          <%= render "devise/shared/links" %>
-        </div>
+          <!-- Phone Number -->
+          <div class="mb-4">
+            <label class="block mb-2 text-sm font-bold text-gray-700" for="floating_phone"></label>
+            <input class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border-orange-300 rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="floating_phone" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Numéro de téléphone" required/>
+          </div>
+          <!-- Nickname -->
+          <div class="mb-4">
+            <label class="block mb-2 text-sm font-bold text-gray-700" for="floating_nickname"></label>
+            <input class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border-orange-300 rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="floating_nickname" type="text" placeholder="Pseudonyme" required/>
+          </div>
+          <!-- Age -->
+          <div class="mb-4">
+            <label class="block mb-2 text-sm font-bold text-gray-700" for="floating_age"></label>
+            <input class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border-orange-300 rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="floating_age" type="text" placeholder="Age" required/>
+          </div>
+          <div class="mb-4">
+            <label class="block mb-2 text-sm font-bold text-gray-700" for="floating_email"></label>
+            <input class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border-orange-300 rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="floating_email" type="email" placeholder="Adresse e-mail" required/>
+          </div>
+          <div class="mb-4">
+            <label class="block mb-2 text-sm font-bold text-gray-700" for="floating_password"></label>
+            <input class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border border-orange-300 rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="floating_password" type="password" placeholder="Mot de passe" required/>
+          </div>
+          <div class="mb-4">
+            <label class="block mb-2 text-sm font-bold text-gray-700" for="floating_repeat_password"></label>
+            <input class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border-orange-300 rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="floating_repeat_password" type="password" placeholder="Confirmer le mot de passe" required/>
+          </div>
+          <fieldset>
+            <div class="flex items-center mb-4">
+              <input checked id="checkbox-1" type="checkbox" value="" class="w-4 h-4 text-orange-600 bg-gray-100 border-gray-300 rounded focus:ring-orange-500 dark:focus:ring-orange-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+              <label for="checkbox-1" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">J'accepte les <a href="#" class="text-orange-600 hover:underline dark:text-orange-500">conditions d'utilisation</a>.</label>
+            </div>
+          </fieldset>
+          <div class="mb-6 text-center">
+            <a href="#_" class="relative inline-flex items-center justify-center p-2 px-6 py-1 overflow-hidden font-medium text-white transition-all duration-300 ease-out border-2 border-white rounded-full shadow-md group bg-orange-600 hover:bg-orange-800">
+              <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-neutral-500 group-hover:translate-x-0 ease">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg%22%3E<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+              </span>
+              <span class="absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease"></span>
+              <span class="relative">Créer mon compte</span>
+            </a>
+          </div>
+          <hr class="mb-6 border-t" />
+          <div class="text-center">
+            <%= render "devise/shared/links" %>
+          </div>
+        </form>
       </div>
     </div>
-</section>
+  </div>
+</body>
