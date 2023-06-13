@@ -1,4 +1,6 @@
 class Report < ApplicationRecord
+  after_create :send_confirmation_email
+
   belongs_to :user
   belongs_to :status
 
@@ -10,6 +12,11 @@ class Report < ApplicationRecord
 
 
   validate :validate_images
+
+  def send_confirmation_email
+    ReportMailer.report_confirmation(self.user).deliver_now
+    ReportMailer.admin_report_notification(self.user).deliver_now
+  end
 
   private
 
