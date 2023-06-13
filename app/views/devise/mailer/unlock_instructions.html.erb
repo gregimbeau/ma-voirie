@@ -1,7 +1,7 @@
 <p>Bonjour <%= @resource.email %>!</p>
 
-<p>Votre compte à été bloqué suite à un trop grand nombre de tentatives.</p>
+<p>Votre compte à été bloqué suite a un trop grand nombre de tentatives.</p>
 
-<p>Cliquez sur le lien ci-dessou pour debloquer votre compte:</p>
+<p>Cliquez sur le lien ci-dessous pour débloquer votre compte:</p>
 
 <p><%= link_to 'Débloquer mon compte', unlock_url(@resource, unlock_token: @token) %></p>
