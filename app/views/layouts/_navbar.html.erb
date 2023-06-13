@@ -1,73 +1,67 @@
 <nav class="cstm-dark w-full">
-  <div class="flex flex-wrap items-center xl:ml-[13%] lg:ml-[5%] md:ml-[3%] sm:ml-[1%] mt-2">
-    <a href="<%= root_path %>" class="sm-[1%] md-[2%]">
-        <span class="self-center text-2xl font-semibold whitespace-nowrap">Accueil</span>
-    </a>
-    <a href="<%= root_path %>" class="sm-[1%] md-[2%] ml-[3%]">
-        <span class="self-center text-2xl font-semibold whitespace-nowrap">Bouxwiller</span>
-    </a>
-    <% if current_user %>
-      <a href="<%= root_path %>" class="sm-[1%] md-[2%] ml-[3%]">
-          <span class="self-center text-2xl font-semibold whitespace-nowrap">Faire un signalement</span>
+  <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+    <span class="sr-only">Open main menu</span>
+    <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+  </button>
+  <div class="hidden w-full md:block md:w-auto flex-grow" id="navbar-default">
+    <ul class="w-full font-medium flex flex-col p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:mt-0 md:border-0">
+      <a href="<%= root_path %>" class="md:px-1 md:py-2 md:ml-[11%] lg:ml-[13%]">
+        <span class="text-2xl font-semibold whitespace-nowrap drop-shadow">Accueil</span>
       </a>
-    <% else %>
-      <a href="<%= new_user_session_path %>" class="sm-[1%] md-[2%] ml-[3%]">
-          <span class="self-center text-2xl font-semibold whitespace-nowrap">Faire un signalement</span>
+      <a href="<%= root_path %>" class="md:px-1 md:py-2 md:ml-[2%] lg:ml-[1%]">
+          <span class="text-2xl font-semibold whitespace-nowrap drop-shadow">Bouxwiller</span>
       </a>
-    <% end %>
-    <div id="to_end" class="flex items-center ml-auto xl:mr-[13%] lg:mr-[5%] md:mr-[3%] sm:mr-[1%]">
-      <div class="flex items-center">
-        <button data-collapse-toggle="navbar-dropdown" type="button" class="items-center p-2 sm-[1%] md-[2%] ml-[3%] md:hidden" aria-controls="navbar-dropdown" aria-expanded="false">
-          <span class="sr-only">Open main menu</span>
-          <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
-        </button>
-        <div class="w-full md:block md:w-auto" id="navbar-dropdown">
-          <ul class="font-medium p-4 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0">
-            <li>
-              <% if current_user %>
-                <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center text-2xl font-semibold whitespace-nowrap sm-[1%] md-[2%] ml-[3%]">
-                  <span class="self-center text-2xl font-semibold whitespace-nowrap mr-2"><%= current_user.nickname %></span>
-                  <%= image_tag("user.png", class: "w-10 banner", draggable: "false", unselectable: "on") %>
-                </button>
-              <% else %>
-                <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center text-2xl font-semibold whitespace-nowrap sm-[1%] md-[2%] ml-[3%]">
-                  <span class="self-center text-2xl font-semibold whitespace-nowrap mr-2">Se connecter</span>
-                  <%= image_tag("user.png", class: "w-10 banner", draggable: "false", unselectable: "on") %>
-                </button>
+      <% if current_user %>
+        <a href="<%= new_report_path %>" class="md:px-1 md:py-2 md:ml-[2%] lg:ml-[1%]">
+            <span class="text-2xl font-semibold whitespace-nowrap drop-shadow">Faire un signalement</span>
+        </a>
+      <% else %>
+        <a href="<%= new_user_session_path %>" class="md:px-1 md:py-2 md:ml-[2%] lg:ml-[1%]">
+            <span class="text-2xl font-semibold whitespace-nowrap drop-shadow">Faire un signalement</span>
+        </a>
+      <% end %>
+      <div class="flex items-center md:ml-auto md:mr-[11%] lg:mr-[15%]" id="to_right">
+        <% if current_user %>
+          <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center text-2xl font-semibold whitespace-nowrap md:mt-0 sm:mt-3">
+            <span class="text-2xl font-semibold whitespace-nowrap drop-shadow"><%= current_user.nickname %></span>
+            <%= image_tag("user.png", class: "w-10 banner md:mt-1", draggable: "false", unselectable: "on") %>
+          </button>
+        <% else %>
+          <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center text-2xl font-semibold whitespace-nowrap md:mt-0 sm:mt-3">
+            <span class="text-2xl font-semibold whitespace-nowrap drop-shadow">Se connecter</span>
+            <%= image_tag("user.png", class: "w-10 banner md:mt-1", draggable: "false", unselectable: "on") %>
+          </button>
+        <% end %>
+        <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+          <% if current_user %>
+            <ul>
+              <% if current_user.is_admin %>
+                <li>
+                  <%= link_to "Dashboard admin", admin_index_path, class:"block px-4 py-2 hover:bg-gray-100" %>
+                </li>
               <% end %>
-              <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-                <% if current_user %>
-                  <ul>
-                    <% if current_user.is_admin %>
-                      <li>
-                        <%= link_to "Dashboard admin", admin_index_path, class:"block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" %>
-                      </li>
-                    <% end %>
-                    <li>
-                      <%= link_to "Mon profil", user_path(current_user), class:"block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" %>
-                    </li>
-                    <li>
-                      <%= link_to "Informations personnelles", edit_user_registration_path(current_user), class:"block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" %>
-                    </li>
-                    <li>
-                      <%= button_to "Me déconnecter", destroy_user_session_path, class:"block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white",form: { data: { turbo_confirm: "Veux-tu te déconnecter ?" } }, method: :delete %>
-                    </li>
-                  </ul>
-                  <% else %>
-                  <div class="py-1">
-                    <a href="<%= new_user_session_path %>" class="text-center block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Connexion</a>
-                  </div>
-                  <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
-                    <li>
-                      <p class="text-center">Vous n'avez pas encore compte ? <%= link_to "Cliquez ici pour vous enregistrer.", new_user_registration_path, class:"block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white cstm-primary" %></p>
-                    </li>
-                  </ul>
-                <% end %>
-              </div>
+              <li>
+                <%= link_to "Mon profil", user_path(current_user), class:"block px-4 py-2 hover:bg-gray-100" %>
+              </li>
+              <li>
+                <%= link_to "Informations personnelles", edit_user_registration_path(current_user), class:"block px-4 py-2 hover:bg-gray-100" %>
+              </li>
+              <li>
+                <%= button_to "Me déconnecter", destroy_user_session_path, class:"block px-4 py-2 hover:bg-gray-100",form: { data: { turbo_confirm: "Veux-tu te déconnecter ?" } }, method: :delete %>
+              </li>
+            </ul>
+          <% else %>
+          <div class="py-1">
+            <a href="<%= new_user_session_path %>" class="text-center block px-4 py-2 hover:bg-gray-100">Connexion</a>
+          </div>
+          <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
+            <li>
+              <p class="text-center">Vous n'avez pas encore compte ? <%= link_to "Cliquez ici pour vous enregistrer.", new_user_registration_path, class:"block px-4 py-2 hover:bg-gray-100 cstm-primary" %></p>
             </li>
           </ul>
+          <% end %>
         </div>
       </div>
-    </div>
+    </ul>
   </div>
 </nav>
