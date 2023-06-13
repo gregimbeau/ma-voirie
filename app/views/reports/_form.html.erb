@@ -28,14 +28,15 @@
     <%= form.check_box :validate, class: "block mt-2 h-5 w-5" %>
   </div>
 
-  <div class="my-5">
-    <label for="addressInput">Adresse :</label>
-      <input type="text" id="addressInput" name="address" placeholder="Saisissez votre adresse" class="block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full">
+  <div class="my-5 relative">
+  <label for="addressInput" class="block">Adresse :</label>
+  <input type="text" id="addressInput" name="address" placeholder="Saisissez votre adresse" class="block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full">
 
-    <div id="resultContainer" style="display: none;">
-      <ul id="addressResults" class = "cursor-pointer"></ul>
-    </div>
+  <div id="resultContainer" class="absolute left-0 w-full bg-white rounded-b shadow-md border border-gray-200 z-10" style="display: none;">
+    <ul id="addressResults" class="cursor-pointer">
+    </ul>
   </div>
+</div>
 
   <div class="my-5">
     <%= form.label :user_id %>
@@ -46,51 +47,3 @@
     <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
   </div>
 <% end %>
-
-<script>
-  $(document).ready(function() {
-    // Fonction pour gérer la saisie dans la zone de saisie
-    function handleInput() {
-      var inputValue = $('#addressInput').val();
-      var apiUrl = 'https://api-adresse.data.gouv.fr/search/?q=' + encodeURIComponent(inputValue);
-
-      $.ajax({
-        url: apiUrl,
-        method: 'GET',
-        dataType: 'json',
-        success: function(response) {
-          displayAddressResults(response);
-        },
-        error: function(xhr, status, error) {
-          console.log('Erreur lors de la recherche d\'adresse : ' + error);
-        }
-      });
-    }
-
-    function displayAddressResults(response) {
-      var results = response.features;
-      var resultsList = $('#addressResults');
-      resultsList.empty();
-
-      var maxSuggestions = Math.min(results.length, 3);
-
-      for (var i = 0; i < maxSuggestions; i++) {
-        var address = results[i].properties.label;
-        var listItem = $('<li>').text(address);
-        resultsList.append(listItem);
-      }
-
-      $('#addressResults li').click(function() {
-        var selectedAddress = $(this).text();
-        $('#addressInput').val(selectedAddress);
-        $('#resultContainer').hide();
-      });
-
-      $('#resultContainer').show();
-    }
-
-    $('#addressInput').on('input', function() {
-      handleInput();
-    });
-  });
-</script>
