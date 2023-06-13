@@ -5,10 +5,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :reports
 
-  validates :nickname, presence: true
-  validates :first_name, presence: true
-  validates :last_name, presence: true
-  validates :phone_number, presence: true
-  validates :age, presence: true
+  validates :nickname, presence: true, on: :user_update
+  validates :first_name, presence: true, on: :user_update
+  validates :last_name, presence: true, on: :user_update
+  validates :phone_number, presence: true, on: :user_update
+  validates :age, presence: true, on: :user_update
+  
 
 end
