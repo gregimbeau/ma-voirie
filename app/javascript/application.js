@@ -6,7 +6,7 @@ $(document).ready(function() {
   // Fonction pour gérer la saisie dans la zone de saisie
   function handleInput() {
     var inputValue = $('#addressInput').val();
-    var apiUrl = 'https://api-adresse.data.gouv.fr/search/?q=postcode=67330' + encodeURIComponent(inputValue);
+    var apiUrl = `https://api-adresse.data.gouv.fr/search/?q=${inputValue}&type=street&postcode=67330&type=housenumber`;
 
     $.ajax({
       url: apiUrl,

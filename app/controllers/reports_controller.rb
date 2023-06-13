@@ -1,5 +1,6 @@
 class ReportsController < ApplicationController
   before_action :set_report, only: %i[ show edit update destroy ]
+  before_action :authenticate_user, only: [:new, :create]
 
   # GET /reports or /reports.json
   def index
@@ -26,7 +27,7 @@ class ReportsController < ApplicationController
 
     respond_to do |format|
       if @report.save
-        format.html { redirect_to report_url(@report), notice: "Report was successfully created." }
+        format.html { redirect_to report_url(@report), notice: "Le signalement a correctement été créé." }
         format.json { render :show, status: :created, location: @report }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +40,7 @@ class ReportsController < ApplicationController
   def update
     respond_to do |format|
       if @report.update(report_params)
-        format.html { redirect_to report_url(@report), notice: "Report was successfully updated." }
+        format.html { redirect_to report_url(@report), notice: "Le signalement a correctement été mise à jour" }
         format.json { render :show, status: :ok, location: @report }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,7 +54,7 @@ class ReportsController < ApplicationController
     @report.destroy
 
     respond_to do |format|
-      format.html { redirect_to reports_url, notice: "Report was successfully destroyed." }
+      format.html { redirect_to reports_url, notice: "Le signalement a correctement été supprimé." }
       format.json { head :no_content }
     end
   end
@@ -66,6 +67,13 @@ class ReportsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def report_params
-      params.require(:report).permit(:title, :content, :is_validate, :address, :user_id)
+      params.require(:report).permit(:title, :content, :is_validate, :address, :user_id, :status_id)
     end
+end
+
+def authenticate_user
+  unless current_user
+    flash[:alert] = "Merci de vous connecter pour créer un signalement."
+    redirect_to new_user_session_path
+  end
 end
