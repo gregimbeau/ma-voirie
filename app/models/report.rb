@@ -8,7 +8,14 @@ class Report < ApplicationRecord
 
   has_many_attached :images
 
-  def pictures_limit_reached?
-    pictures.count >= 3
+
+  validate :validate_images
+
+  private
+
+  def validate_images
+    if images.count > 3
+      errors.add(:images, 'Vous ne pouvez ajouter que 3 images maximum.')
+    end
   end
 end

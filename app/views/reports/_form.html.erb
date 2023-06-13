@@ -1,7 +1,7 @@
 <%= form_with(model: report, class: "contents") do |form| %>
   <% if report.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(report.errors.count, "error") %> prohibited this report from being saved:</h2>
+      <h2><%= pluralize(report.errors.count, "erreur(s)") %> a empeché la création de ce signalement:</h2>
 
       <ul>
         <% report.errors.each do |error| %>
@@ -50,7 +50,7 @@
   <h3>Uploaded Images</h3>
   <% report.images.each do |image| %>
     <%= image_tag(url_for(image), width: 100) %>
-<%= link_to 'Delete Image', delete_image_attachment_report_path(image.id),
+<%= link_to 'Delete Image', delete_image_attachment_report_path(:id, :image_id),
             method: :delete,
             data: { confirm: 'Are you sure?', turbolinks: false } %>
 

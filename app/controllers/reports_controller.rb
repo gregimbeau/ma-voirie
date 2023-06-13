@@ -24,17 +24,19 @@ class ReportsController < ApplicationController
   def create
     puts params
     @report = Report.new(report_params)
-
+  
     respond_to do |format|
       if @report.save
         format.html { redirect_to report_url(@report), notice: "Le signalement a correctement été créé." }
         format.json { render :show, status: :created, location: @report }
       else
+        flash[:alert] = @report.errors.full_messages.join(', ')
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @report.errors, status: :unprocessable_entity }
       end
     end
   end
+  
 
   # PATCH/PUT /reports/1 or /reports/1.json
   def update
@@ -60,10 +62,11 @@ class ReportsController < ApplicationController
   end
 
   def delete_image_attachment
-    @img = ActiveStorage::Attachment.find(params[:id])
-    @img.purge
+    @image = ActiveStorage::Blob.find_signed(params[:id])
+    @image.purge_later
     redirect_back(fallback_location: request.referer)
   end
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.
