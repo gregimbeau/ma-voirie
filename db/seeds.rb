@@ -5,6 +5,7 @@ User.delete_all
 
 
 array_status = [
+  "En cours de validation",
   "Validé",
   "Accepté",
   "En cours",
@@ -12,7 +13,7 @@ array_status = [
 ]
 
 if Status.count == 0
-  4.times do
+  5.times do
     status = Status.create!(
     title: array_status.first 
     )
