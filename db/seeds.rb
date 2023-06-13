@@ -27,7 +27,7 @@ end
     last_name: Faker::Name.last_name, 
     email: Faker::Internet.email,
     password: Faker::Internet.password,
-    phone_number: Faker::PhoneNumber.phone_number,
+    phone_number: "+33 #{rand(1..9)} #{rand(10..99)} #{rand(10..99)} #{rand(10..99)} #{rand(10..99)}",
     age: Faker::Number.within(range: 20..80),
     is_admin: false
   )
@@ -36,7 +36,7 @@ end
 5.times do
   report = Report.create!(
     title: Faker::Book.title,
-    content: Faker::Movie.quote,
+    content: Faker::Lorem.characters(number: 35),
     is_validate: nil,
     address: Faker::Address.street_address,
     user_id: User.all.sample.id,
