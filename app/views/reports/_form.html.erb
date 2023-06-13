@@ -67,13 +67,12 @@
       });
     }
 
-    // Fonction pour afficher les résultats d'adresse
     function displayAddressResults(response) {
       var results = response.features;
       var resultsList = $('#addressResults');
       resultsList.empty();
 
-      var maxSuggestions = Math.min(results.length, 3); // Limiter à 3 suggestions au maximum
+      var maxSuggestions = Math.min(results.length, 3);
 
       for (var i = 0; i < maxSuggestions; i++) {
         var address = results[i].properties.label;
@@ -81,7 +80,6 @@
         resultsList.append(listItem);
       }
 
-      // Ajout d'un gestionnaire d'événements pour les suggestions d'adresse
       $('#addressResults li').click(function() {
         var selectedAddress = $(this).text();
         $('#addressInput').val(selectedAddress);
@@ -91,7 +89,6 @@
       $('#resultContainer').show();
     }
 
-    // Écouteur d'événement pour gérer la saisie dans la zone de saisie
     $('#addressInput').on('input', function() {
       handleInput();
     });
