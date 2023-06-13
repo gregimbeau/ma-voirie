@@ -1,5 +1,5 @@
 <nav class="cstm-dark w-full">
-  <div class="flex flex-wrap items-center nav-ml  mt-2">
+  <div class="flex flex-wrap items-center lg:ml-[7%] md:ml-[0%] mt-2">
     <a href="<%= root_path %>" class="sm-[1%] md-[2%] ml-[3%]">
         <span class="self-center text-2xl font-semibold whitespace-nowrap">Accueil</span>
     </a>
@@ -15,7 +15,7 @@
           <span class="self-center text-2xl font-semibold whitespace-nowrap">Faire un signalement</span>
       </a>
     <% end %>
-    <div id="to_end" class="flex items-center ml-auto mr-[3%]">
+    <div id="to_end" class="flex items-center ml-auto mr-[7%] md:mr-[3%]">
       <div class="flex items-center">
         <button data-collapse-toggle="navbar-dropdown" type="button" class="items-center p-2 sm-[1%] md-[2%] ml-[3%] md:hidden" aria-controls="navbar-dropdown" aria-expanded="false">
           <span class="sr-only">Open main menu</span>
@@ -23,22 +23,31 @@
         </button>
         <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown">
           <ul class="font-medium p-4 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0">
-            <li>
-              <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center text-2xl font-semibold whitespace-nowrap sm-[1%] md-[2%] ml-[3%]">
-                <span class="self-center text-2xl font-semibold whitespace-nowrap mr-3">Se connecter</span>
-                <%= image_tag("user.png", class: "w-10 banner", draggable: "false", unselectable: "on") %>
-              </button>
-              <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-                  <div class="py-1">
-                    <a href="<%= new_user_session_path %>" class="text-center block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Connexion</a>
-                  </div>
-                  <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
-                    <li>
-                      <p class="text-center">Vous n'avez pas encore compte ? <%= link_to "Cliquez ici pour vous enregistrer.", new_user_registration_path, class:"block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white cstm-primary" %></p>
-                    </li>
-                  </ul>
-              </div>
-            </li>
+            <% if current_user %>
+              <li>
+                <%= link_to "Editer son profil", edit_user_registration_path(current_user), class:"block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" %>
+              </li>
+              <li>
+                <%= button_to "Se déconnecter", destroy_user_session_path, class:"block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white",form: { data: { turbo_confirm: "Veux-tu te déconnecter ?" } }, method: :delete %>
+              </li>
+            <% else %>
+              <li>
+                <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center text-2xl font-semibold whitespace-nowrap sm-[1%] md-[2%] ml-[3%]">
+                  <span class="self-center text-2xl font-semibold whitespace-nowrap mr-2">Se connecter</span>
+                  <%= image_tag("user.png", class: "w-10 banner", draggable: "false", unselectable: "on") %>
+                </button>
+                <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                    <div class="py-1">
+                      <a href="<%= new_user_session_path %>" class="text-center block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Connexion</a>
+                    </div>
+                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
+                      <li>
+                        <p class="text-center">Vous n'avez pas encore compte ? <%= link_to "Cliquez ici pour vous enregistrer.", new_user_registration_path, class:"block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white cstm-primary" %></p>
+                      </li>
+                    </ul>
+                </div>
+              </li>
+            <% end %>
           </ul>
         </div>
       </div>
