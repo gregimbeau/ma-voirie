@@ -1,9 +1,17 @@
 Rails.application.routes.draw do
+
   get 'admin/index'
+
   devise_for :users do
     resources :reports, only: [:new, :create]
   end
-  resources :reports
+
+  resources :reports do
+    member do
+      delete :delete_image_attachment
+    end
+  end
+
   resources :users, only: [:show, :edit, :update] do
     resources :avatars, only: [:create, :destroy]
     member do
@@ -18,3 +26,4 @@ Rails.application.routes.draw do
     resources :users, :reports
   end
 end
+
