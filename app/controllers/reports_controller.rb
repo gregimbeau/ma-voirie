@@ -21,6 +21,7 @@ class ReportsController < ApplicationController
 
   # POST /reports or /reports.json
   def create
+    puts params
     @report = Report.new(report_params)
 
     respond_to do |format|
@@ -65,6 +66,6 @@ class ReportsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def report_params
-      params.require(:report).permit(:title, :content, :validate, :address, :user_id)
+      params.require(:report).permit(:title, :content, :is_validate, :address, :user_id)
     end
 end
