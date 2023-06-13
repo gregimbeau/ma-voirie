@@ -14,6 +14,5 @@ class User < ApplicationRecord
   validates :last_name, presence: true, on: :user_update
   validates :phone_number, presence: true, on: :user_update
   validates :age, presence: true, on: :user_update
-  
 
 end
