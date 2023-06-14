@@ -24,18 +24,20 @@
     
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
   </head>
 
-  <body>
+  <body id="top">
+
     <%= render 'layouts/banner' %>
     <%= render 'layouts/navbar' %>
     <%= render 'layouts/alerts' %>
     <main class="container mx-auto mt-8 px-1 pb-10 flex justify-center items-center">
       <%= yield %>
     </main>
-   
+    <%= render 'layouts/footer'%>
 
-      <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
+    <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
   </body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
   <script src='https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js'></script>
