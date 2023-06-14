@@ -1,57 +1,39 @@
 <div class="max-w-5xl w-full lg:flex rounded-t">
-<% if report.images.any? %>
-  <div class="h-48 lg:h-auto lg:w-96 flex-none bg-cover lg:rounded-l text-center overflow-hidden" style="background-image: url('<%= url_for(report.images.first) %>')" title="Image description">
-  </div>
-<% end %>
-
-  <div class="border-r border-b border-l border-orange-400 lg:border-l-0 lg:border-t lg:border-orange-400 bg-orange-400 rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal flex-grow">
+  <% if report.images.any? %>
+    <div class="h-48 lg:h-auto lg:w-96 flex-none bg-cover lg:rounded-l text-center overflow-hidden" style="background-image: url('<%= url_for(report.images.first) %>')" title="Image description">
+    </div>
+  <% end %>
+  <div class="shadow-lg border-r border-b border-l border-orange-400 lg:border-l-0 lg:border-t lg:border-orange-400 bg-orange-400 rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal flex-grow">
     <div class="mb-8">
       <p class="text-sm text-grey-dark flex justify-end items-center">
-      <span class="flex justify-end  ml-auto bg-green-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"><%= report.status.title %></span>
+        <span class="flex justify-end  ml-auto bg-green-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
+          <%= report.status.title %>
+        </span>
       </p>
-      <div class="text-white font-bold text-4xl mb-4 mt-3"><%= report.title %></div>
+      <div class="text-white font-bold text-4xl mb-4 mt-3">
+        <%= report.title %>
+      </div>
       <hr>
-      <div class="text-white font-bold text-lg flex flex-start mr-auto mt-2">- <%= report.address %></div>
+      <div class="text-white font-bold text-lg flex flex-start mr-auto mt-2">
+        - <%= report.address %>
+      </div>
       <br>
       <p class="text-white text-base text-left mb-4"><%= report.content %></p>
       <hr>
     </div>
     <div class="flex justify-between items-center">
-      <p class="text-white leading-none text-sm"><%= report.user.nickname %>, le <%= report.created_at.strftime("%d %b %Y") %></p>
+      <p class="text-white leading-none text-sm">
+        par
+        <% if report.user == nil %>
+          utilisateur supprimé
+        <% else %>
+          <%= report.user.nickname %>
+        <% end %>
+        , le <%= report.created_at.strftime("%d %b %Y") %>
+      </p>
     </div>
     <br>
     <div class="flex justify-end items-center">
-      <!--<div class="w-24 flex justify-between items-center">
-        <i class="fa-regular fa-thumbs-up" style="color: white"> 15</i>
-        <i class="fa-regular fa-comment-dots" style="color: white" > 25</i>
-      </div>-->
-      <%= button_to report_path(report), class: "relative inline-flex items-center justify-center p-8 px-10 py-4 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-white rounded-full shadow-md group", method: :get do %>
-        <span class="absolute inset-0 flex items-center justify-center w-full h-full text-orange-400 duration-300 -translate-x-full bg-white group-hover:translate-x-0 ease">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-          </svg>
-        </span>
-        <span class="absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease">Détails</span>
-      <% end %>
-    </div>    
-  </div>
-  <div class="flex justify-between items-center">
-    <p class="text-white leading-none text-sm">
-      par
-      <% if report.user == nil %>
-        utilisateur supprimé
-      <% else %>
-        <%= report.user.nickname %>
-      <% end %>
-      , le <%= report.created_at.strftime("%d %b %Y") %>
-    </p>
-  </div>
-  <br>
-  <div class="flex justify-end items-center">
-    <!--<div class="w-24 flex justify-between items-center">
-      <i class="fa-regular fa-thumbs-up" style="color: white"> 15</i>
-      <i class="fa-regular fa-comment-dots" style="color: white" > 25</i>
-    </div>-->
     <%= button_to report_path(report), class: "relative inline-flex items-center justify-center p-8 px-10 py-4 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-white rounded-full shadow-md group", method: :get do %>
       <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full cstm-bg-valid group-hover:translate-x-0 ease">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -60,6 +42,6 @@
       </span>
       <span class="absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease">Détails</span>
     <% end %>
-  </div>    
-</div>
+    </div>    
+  </div>
 </div>
