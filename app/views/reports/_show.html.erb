@@ -1,68 +1,76 @@
 <div>
-<div class="max-w-full max-h-full lg:flex rounded bg-orange-400">
-  <div class="max-w-full max-h-full mx-auto px-4 sm:px-6 lg:px-8 mt-6">
-    <div class="flex flex-col md:flex-row -mx-4">
-      <div class="md:flex-1 px-4 ml-4 mt-4 mr-4">
-        <div x-data="{ image: 1 }" x-cloak>
-          <div class="h-64 md:h-80 rounded mb-4" id="myModal">
-            <div x-show="image === 1" class="h-full w-full md:h-80 rounded mb-4">
-              <a href="<%= url_for(@report.images[0]) %>" data-lightbox="report-images">
-                <%= image_tag(url_for(@report.images[0]), class: "rounded h-full w-full") %>
-              </a>
+  <div class="max-w-full max-h-full lg:flex rounded bg-orange-400">
+    <div class="max-w-full max-h-full mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+      <div class="flex flex-col md:flex-row -mx-4">
+        <div class="md:flex-1 px-4 ml-4 mt-4 mr-4">
+          <div x-data="{ image: 1 }" x-cloak>
+            <div class="h-64 md:h-80 rounded mb-4" id="myModal">
+              <div x-show="image === 1" class="h-full w-full md:h-80 rounded mb-4">
+                <a href="<%= url_for(@report.images[0]) %>" data-lightbox="report-images">
+                  <%= image_tag(url_for(@report.images[0]), class: "rounded h-full w-full") %>
+                </a>
+              </div>
+              <div x-show="image === 2" class="h-full w-full md:h-80 rounded mb-4">
+                <a href="<%= url_for(@report.images[1]) %>" data-lightbox="report-images">
+                  <%= image_tag(url_for(@report.images[1]), class: "rounded h-full w-full") %>
+                </a>
+              </div>
+              <div x-show="image === 3" class="h-full w-full md:h-80 rounded mb-4">
+                <a href="<%= url_for(@report.images[2]) %>" data-lightbox="report-images">
+                  <%= image_tag(url_for(@report.images[2]), class: "rounded h-full w-full") %>
+                </a>
+              </div>
             </div>
-            <div x-show="image === 2" class="h-full w-full md:h-80 rounded mb-4">
-              <a href="<%= url_for(@report.images[1]) %>" data-lightbox="report-images">
-                <%= image_tag(url_for(@report.images[1]), class: "rounded h-full w-full") %>
-              </a>
-            </div>
-            <div x-show="image === 3" class="h-full w-full md:h-80 rounded mb-4">
-              <a href="<%= url_for(@report.images[2]) %>" data-lightbox="report-images">
-                <%= image_tag(url_for(@report.images[2]), class: "rounded h-full w-full") %>
-              </a>
+            <div class="flex -mx-2 mb-4">
+              <% @report.images.each_with_index do |image, index| %>
+                <div class="flex-1 px-2">
+                  <button x-on:click="image = <%= index + 1 %>" :class="{ 'ring-2 ring-indigo-300 ring-inset': image === <%= index + 1 %> }" class="focus:outline-none w-full rounded h-24 md:h-32">
+                    <%= image_tag(image, class: 'h-full w-full rounded', alt: 'Miniature de l"image') %>
+                  </button>
+                </div>
+              <% end %>
             </div>
           </div>
-          <div class="flex -mx-2 mb-4">
-            <% @report.images.each_with_index do |image, index| %>
-              <div class="flex-1 px-2">
-                <button x-on:click="image = <%= index + 1 %>" :class="{ 'ring-2 ring-indigo-300 ring-inset': image === <%= index + 1 %> }" class="focus:outline-none w-full rounded h-24 md:h-32">
-                  <%= image_tag(image, class: 'h-full w-full rounded', alt: 'Miniature de l"image') %>
-                </button>
-              </div>
+        </div>
+        <div class="md:flex-1 px-4">
+          <p class="text-sm text-grey-dark flex justify-end items-center">
+            <span class="flex justify-end  ml-auto bg-green-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"><%= @report.status.title %></span>
+          </p>
+          <h2 class="mb-2 mt-4 leading-tight tracking-tight font-bold text-white text-2xl md:text-3xl"><%= @report.title %></h2>
+          <p class="text-white text-sm mb-2 flex justify-start">
+            par
+            <% if @report.user == nil %>
+              utilisateur supprimé          
+            <% else %>
+              <%= @report.user.nickname %>
+            <% end %>
+            , le <%= @report.created_at.strftime("%d %b %Y") %>
+          </p>
+            <hr><hr>
+          <p class="text-white mt-4"><%= @report.content %></p>
+          <div class="flex py-4 space-x-4">
+            <%= button_to root_path, class: "relative inline-flex items-center justify-center p-8 px-10 py-4 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-white rounded-full shadow-md group", method: :get do %>
+              <span class="absolute inset-0 flex items-center justify-center w-full h-full text-orange-400 duration-300 -translate-x-full bg-white group-hover:translate-x-0 ease">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+              </span>
+              <span class="absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease">Accueil</span>
             <% end %>
           </div>
         </div>
       </div>
-      <div class="md:flex-1 px-4">
-        <p class="text-sm text-grey-dark flex justify-end items-center">
-          <span class="flex justify-end  ml-auto bg-green-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"><%= @report.status.title %></span>
-        </p>
-        <h2 class="mb-2 mt-4 leading-tight tracking-tight font-bold text-white text-2xl md:text-3xl"><%= @report.title %></h2>
-        <p class="text-white text-sm mb-2 flex justify-start"><%= @report.user.nickname %>, le <%= @report.created_at.strftime("%d %b %Y") %></p>
-        <hr><hr>
-        <p class="text-white mt-4"><%= @report.content %></p>
-        <div class="flex py-4 space-x-4">
-          <%= button_to root_path, class: "relative inline-flex items-center justify-center p-8 px-10 py-4 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-white rounded-full shadow-md group", method: :get do %>
-            <span class="absolute inset-0 flex items-center justify-center w-full h-full text-orange-400 duration-300 -translate-x-full bg-white group-hover:translate-x-0 ease">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-              </svg>
-            </span>
-            <span class="absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease">Accueil</span>
-          <% end %>
-        </div>
-      </div>
     </div>
   </div>
-</div>
-<div>
-  <% if current_user && current_user.is_admin && @report.is_validate == nil %>
-    <%= button_to "Valider le signalement", admin_report_path(@report), method: :patch, params: { "report" =>  "true" } %>
-    <%= button_to "Refuser le signalement", admin_report_path(@report), method: :patch, params: { "report" => "false" } %>
-  <% end %>
-  <% if current_user && current_user.is_admin && @report.is_validate == true %>
-  <%= button_to "Travaux programmés", admin_report_path(@report), method: :patch, params: { "report" =>  "accepted" } %>
-  <%= button_to "Travaux en cours", admin_report_path(@report), method: :patch, params: { "report" =>  "in progress" } %>
-  <%= button_to "Travaux terminés", admin_report_path(@report), method: :patch, params: { "report" =>  "resolved" } %>
-  <% end %>
-</div>
+  <div>
+    <% if current_user && current_user.is_admin && @report.is_validate == nil %>
+      <%= button_to "Valider le signalement", admin_report_path(@report), method: :patch, params: { "report" =>  "true" } %>
+      <%= button_to "Refuser le signalement", admin_report_path(@report), method: :patch, params: { "report" => "false" } %>
+    <% end %>
+    <% if current_user && current_user.is_admin && @report.is_validate == true %>
+    <%= button_to "Travaux programmés", admin_report_path(@report), method: :patch, params: { "report" =>  "accepted" } %>
+    <%= button_to "Travaux en cours", admin_report_path(@report), method: :patch, params: { "report" =>  "in progress" } %>
+    <%= button_to "Travaux terminés", admin_report_path(@report), method: :patch, params: { "report" =>  "resolved" } %>
+    <% end %>
+  </div>
 </div>

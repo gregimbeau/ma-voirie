@@ -43,7 +43,7 @@
         <th><% if user.is_admin %> Admin <% else %> Membre <% end %></th>
         <th>
           <% if !user.is_admin %>
-            <%= button_to "Supprimer", admin_users_path(user), class:' bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded', form: { data: { turbo_confirm: "Es-tu sur de vouloir supprimer cet utilisateur ?" } }, method: :delete %>
+            <%= button_to "Supprimer", admin_user_path(user), class:' bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded', form: { data: { turbo_confirm: "Es-tu sur de vouloir supprimer cet utilisateur ?" } }, method: :delete %>
           <% else %>
             <%= button_to "Supprimer", "", class:'cursor-not-allowed cstm-bg-dark cstm-light font-bold py-2 px-4 rounded' %>
           <% end %>

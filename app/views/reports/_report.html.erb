@@ -17,7 +17,15 @@
     <hr>
   </div>
   <div class="flex justify-between items-center">
-    <p class="text-white leading-none text-sm"><%= report.user.nickname %>, le <%= report.created_at.strftime("%d %b %Y") %></p>
+    <p class="text-white leading-none text-sm">
+      par
+      <% if report.user == nil %>
+        utilisateur supprimé
+      <% else %>
+        <%= report.user.nickname %>
+      <% end %>
+      , le <%= report.created_at.strftime("%d %b %Y") %>
+    </p>
   </div>
   <br>
   <div class="flex justify-end items-center">
