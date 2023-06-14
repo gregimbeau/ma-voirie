@@ -62,7 +62,7 @@
 }
 
 .cstm-bg-dark{
-  background-color: #646464;
+  background-color: #646464!important;
 }
 
 .cstm-dark{
@@ -87,4 +87,9 @@
 
 .border-dark {
   border: 2px solid #646464;
+}
+footer {
+  margin-top: auto !important;
+  bottom: 0 !important;
+  width: 100% !important;
 }

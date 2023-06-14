@@ -1,47 +1,49 @@
 <div class="w-full">
   <div class="text-center pb-4">
-  <%= button_to admin_index_path, class: "relative inline-flex items-center justify-center p-28 px-28 py-8 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-white rounded-full shadow-md group", method: :get do %>
-    <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full cstm-bg-valid group-hover:translate-x-0 ease">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-      </svg>
-    </span>
-    <span class="cstm-bg-primary absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease">Revenir sur le dashboard admin</span>
-  <% end %>
+    <%= button_to admin_root_path, class: "relative inline-flex items-center justify-center p-28 px-28 py-8 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-white rounded-full shadow-md group", method: :get do %>
+      <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full cstm-bg-valid group-hover:translate-x-0 ease">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+        </svg>
+      </span>
+      <span class="cstm-bg-primary absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease">Revenir sur le dashboard admin</span>
+    <% end %>
   </div>
-
   <div>
     <h5 class="text-center pb-3">Evènement en attente de validation </h5>
-      <table>
-        <colgroup>
-          <col span="1" style="width: 15%;">
-          <col span="2" style="width: 25%;">
-          <col span="3" style="width: 15%;">
-          <col span="4" style="width: 20%;">
-          <col span="5" style="width: 25%;">
-        </colgroup>
-        <thead>
-          <tr>
-            <th>Titre</th>
-            <th>Description</th>
-            <th>Créateur</th>
-            <th>Images</th>
-            <th>Signalement</th>
-          </tr>
-        </thead>
+    <table>
+      <colgroup>
+        <col span="1" style="width: 15%;">
+        <col span="2" style="width: 15%;">
+        <col span="3" style="width: 20%;">
+        <col span="4" style="width: 15%;">
+        <col span="5" style="width: 15%;">
+        <col span="6" style="width: 20%;">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>Status</th>
+          <th>Titre</th>
+          <th>Description</th>
+          <th>Créateur</th>
+          <th>Images</th>
+          <th>Signalement</th>
+        </tr>
+      </thead>
       <% @reports.each do |report| %>
         <tbody>
-        <th><%= report.title %></th>
-        <th><%= report.content %></th>
-        <th><%= report.user.first_name %> <%= report.user.last_name %></th>
-        <th>
-          <% if report.images.any? %>
-            <%= image_tag(url_for(report.images.first))%>
-          <% end %>
-        </th>
-        <th><%= button_to "Voir le signalement", report, class:"bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded", method: :get %></th>
+          <th><%= report.status.title %></th>
+          <th><%= report.title %></th>
+          <th><%= report.content %></th>
+          <th><%= report.user.email %></th>
+          <th>
+            <% if report.images.any? %>
+              <%= image_tag(url_for(report.images.first))%>
+            <% end %>
+          </th>
+          <th><%= button_to "Voir le signalement", report, class:"mt-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded", method: :get %></th>
         </tbody>
       <% end %>
-      </table>
-    </div>
+    </table>
+  </div>
 </div>

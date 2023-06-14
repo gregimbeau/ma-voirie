@@ -41,6 +41,6 @@ end
     is_validate: nil,
     address: Faker::Address.street_address,
     user_id: User.all.sample.id,
-    status_id: Status.all.sample.id
+    status_id: Status.first.id
   )
 end

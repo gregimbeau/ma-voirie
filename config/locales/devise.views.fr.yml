@@ -110,11 +110,11 @@ fr:
       updated: Votre compte a bien été modifié.
       updated_but_not_signed_in: Votre compte a été mis à jour avec succès. Vous devez vous reconnecter car votre mot de passe a été modifié.
     sessions:
-      already_signed_out: Déconnecté(e).
+      already_signed_out: Vous n'est pas connecté(e).
       new:
         sign_in: Connexion
-      signed_in: Connecté(e).
-      signed_out: Déconnecté(e).
+      signed_in: Vous êtes désormais connecté(e).
+      signed_out: Vous avez été déconnecté(e).
     shared:
       links:
         back: Retour
