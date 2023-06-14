@@ -68,9 +68,9 @@
       <%= button_to "Refuser le signalement", admin_report_path(@report), method: :patch, params: { "report" => "false" } %>
     <% end %>
     <% if current_user && current_user.is_admin && @report.is_validate == true %>
-    <%= button_to "Travaux programmés", admin_report_path(@report), method: :patch, params: { "report" =>  "accepted" } %>
-    <%= button_to "Travaux en cours", admin_report_path(@report), method: :patch, params: { "report" =>  "in progress" } %>
-    <%= button_to "Travaux terminés", admin_report_path(@report), method: :patch, params: { "report" =>  "resolved" } %>
+      <%= button_to "Travaux programmés", admin_report_path(@report), method: :patch, params: { "report" =>  "accepted" } %>
+      <%= button_to "Travaux en cours", admin_report_path(@report), method: :patch, params: { "report" =>  "in progress" } %>
+      <%= button_to "Travaux terminés", admin_report_path(@report), method: :patch, params: { "report" =>  "resolved" } %>
     <% end %>
   </div>
 </div>
