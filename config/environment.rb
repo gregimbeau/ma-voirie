@@ -6,10 +6,10 @@ Rails.application.initialize!
 
 
 ActionMailer::Base.smtp_settings = {
-:user_name => 'apikey',
-:password => ENV['SENDGRID_PWD'],
+:user_name => 'gregimbeau@gmail.com',
+:password => ENV['BREVO_PWD'],
 :domain => 'monsite.fr',
-:address => 'smtp.sendgrid.net',
+:address => 'smtp-relay.sendinblue.com',
 :port => 587,
 :authentication => :plain,
 :enable_starttls_auto => true
