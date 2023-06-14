@@ -7,7 +7,7 @@ class ReportMailer < ApplicationMailer
     mail(to: @user.email, subject: "Merci pour votre signalement !")
   end
 
-  def admin_order_notification(user)
+  def admin_report_notification(user)
     @user = user
     @url = "http://monsite.fr/admin"
     mail(to: "adminpcthp@yopmail.com", subject: "Nouveau signalement !")
