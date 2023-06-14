@@ -26,14 +26,15 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body id="top">
+
     <%= render 'layouts/banner' %>
     <%= render 'layouts/navbar' %>
     <%= render 'layouts/alerts' %>
     <main class="container mx-auto mt-8 px-1 pb-10 flex justify-center items-center">
       <%= yield %>
     </main>
-   
+    <%= render 'layouts/footer'%>
 
       <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
   </body>
