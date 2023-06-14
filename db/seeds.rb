@@ -12,6 +12,8 @@ array_status = [
   "Résolu"
 ]
 
+photo_files = Dir.glob(Rails.root.join('app', 'assets', 'images', 'seed_report_images', '*.jpg'))
+
 if Status.count == 0
   5.times do
     status = Status.create!(
@@ -43,4 +45,10 @@ end
     user_id: User.all.sample.id,
     status_id: Status.first.id
   )
+
+    selected_images = photo_files.sample(rand(1..3))
+
+    selected_images.each do |image_file|
+      report.images.attach(io: File.open(image_file), filename: File.basename(image_file))
+    end
 end
