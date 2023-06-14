@@ -2,6 +2,11 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 
+var notice;
+var div_alert;
+var seconds = 0;
+var timer = 0;
+
 $(document).ready(function() {
   // Fonction pour gérer la saisie dans la zone de saisie
   function handleInput() {
@@ -47,4 +52,27 @@ $(document).ready(function() {
   $('#addressInput').on('input', function() {
     handleInput();
   });
+
 });
+
+document.addEventListener("turbo:load", ()=>{
+  div_alert = document.getElementById("show_alert");
+  notice = div_alert.getAttribute("data-notice");
+  if (notice == "true")
+  {
+    seconds = 0;
+    div_alert.classList.remove("hidden");
+  } else {
+    div_alert.classList.add("hidden");
+    seconds = 0;
+  }
+});
+
+timer = setInterval(() => {
+  console.log(seconds);
+  seconds++;
+  if (notice == "true" && seconds>=7)
+  {
+    div_alert.classList.add("hidden");
+  }
+}, 1000);
