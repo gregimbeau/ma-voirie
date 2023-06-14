@@ -84,3 +84,5 @@ gem "table_print"
 gem 'dotenv-rails'
 
 gem "aws-sdk-s3"
+
+gem 'devise-i18n'
