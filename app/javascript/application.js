@@ -48,23 +48,3 @@ $(document).ready(function() {
     handleInput();
   });
 });
-
-document.addEventListener("DOMContentLoaded", function() {
-  var banner = document.getElementById('cookie-banner');
-  var acceptButton = document.getElementById('accept-cookies');
-  var declineButton = document.getElementById('decline-cookies');
-
-  if (!localStorage.getItem('cookieConsent')) {
-    banner.style.display = "block";
-  }
-
-  acceptButton.onclick = function() {
-    localStorage.setItem('cookieConsent', 'accepted');
-    banner.style.display = "none";
-  }
-
-  declineButton.onclick = function() {
-    localStorage.setItem('cookieConsent', 'declined');
-    banner.style.display = "none";
-  }
-});
