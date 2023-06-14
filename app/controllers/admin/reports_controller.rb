@@ -27,15 +27,15 @@ class Admin::ReportsController < ApplicationController
       @report.update!(is_validate:false)
       flash[:notice] = "Le signalement a été refusé !"
       redirect_to admin_reports_path
-    elsif
+    elsif params['report'] == "accepted"
       @report.update!(status_id:3)
       flash[:notice] = "Le signalement a été accepté !"
       redirect_to admin_reports_path
-    elsif
+    elsif params['report'] == "in progress"
       @report.update!(status_id:4)
       flash[:notice] = "Les travaux sont en cours !"
       redirect_to admin_reports_path
-    else
+    else params['report'] == "resolved"
       @report.update!(status_id:5)
       flash[:notice] = "Les travaux sont terminés !"
       redirect_to admin_reports_path

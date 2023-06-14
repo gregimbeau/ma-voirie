@@ -9,10 +9,7 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params['id'])
     @user.delete
     flash[:alert] = "Le compte a bien été supprimé !"
-    redirect_to root_path
+    redirect_to admin_users_path
   end
-
-  
-
 
 end
