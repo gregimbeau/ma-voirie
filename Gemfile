@@ -86,3 +86,5 @@ gem 'dotenv-rails'
 gem "aws-sdk-s3"
 
 gem 'devise-i18n'
+
+gem "dockerfile-rails", ">= 1.4", :group => :development

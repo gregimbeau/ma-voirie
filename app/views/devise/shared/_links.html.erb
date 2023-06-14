@@ -1,34 +1,19 @@
 <%- if controller_name != 'sessions' %>
-  <%= link_to new_session_path(resource_name), class: "relative inline-flex items-center justify-center p-2 px-6 py-1 overflow-hidden font-medium text-white transition-all duration-300 ease-out border-2 border-white rounded-full shadow-md group bg-gray-600 hover:bg-orange-800" do %>
-    <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-neutral-500 group-hover:translate-x-0 ease">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg%22%3E<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-    </span>
-    <span class="absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease"></span>
-    <span class="relative">Retour à la page de connection</span>
-  <% end %><br />
+<p class="text-gray-900">Pas encore de compte ?
+  <%= link_to "Je m'inscris.", new_session_path(resource_name), class: "font-medium text-orange-400 hover:underline" %>
+  </p>
 <% end %>
-
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to new_registration_path(resource_name), class: "relative inline-flex items-center justify-center p-2 px-6 py-1 overflow-hidden font-medium text-white transition-all duration-300 ease-out border-2 border-white rounded-full shadow-md group bg-gray-600 hover:bg-orange-800" do %>
-    <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-neutral-500 group-hover:translate-x-0 ease">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg%22%3E<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-    </span>
-    <span class="absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease"></span>
-    <span class="relative">S'enregistrer</span>
-  <% end %><br />
+  <p class="text-gray-900">Pas encore de compte ?
+  <%= link_to "Je m'inscris.", new_registration_path(resource_name), class: "font-medium text-orange-400 hover:underline" %>
+  </p>
 <% end %>
 
-
-
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <%= link_to new_password_path(resource_name),  class: "relative inline-flex items-center justify-center p-2 px-6 py-1 overflow-hidden font-medium text-white transition-all duration-300 ease-out border-2 border-white rounded-full shadow-md group bg-gray-600 hover:bg-orange-800" do %>
-    <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-neutral-500 group-hover:translate-x-0 ease">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg%22%3E<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-    </span>
-    <span class="absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease"></span>
-    <span class="relative">Mot de passe oublié</span>
-  <% end %><br />
+  <p class="text-gray-900">
+  <%= link_to "Mot de passe oublié ?", new_password_path(resource_name), class: "font-medium text-orange-400 hover:underline flex" %>
+  </p>
 <% end %>
 
 
