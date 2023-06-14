@@ -69,7 +69,6 @@ document.addEventListener("turbo:load", ()=>{
 });
 
 timer = setInterval(() => {
-  console.log(seconds);
   seconds++;
   if (notice == "true" && seconds>=7)
   {
