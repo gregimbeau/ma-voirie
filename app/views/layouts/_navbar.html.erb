@@ -12,9 +12,9 @@
           <span class="text-2xl font-semibold whitespace-nowrap drop-shadow">Bouxwiller</span>
       </a>
       <% if current_user %>
-        <a href="<%= new_report_path %>" class="md:px-1 md:py-2 md:ml-[2%] lg:ml-[1%]">
-            <span class="text-2xl font-semibold whitespace-nowrap drop-shadow">Faire un signalement</span>
-        </a>
+        <div class="md:px-1 md:py-2 md:ml-[2%] lg:ml-[1%]">
+            <%= link_to "Faire un signalement", new_report_path, class:"text-2xl font-semibold whitespace-nowrap drop-shadow", data: { turbo: "false" } %>
+        </div>
       <% else %>
         <a href="<%= new_user_session_path %>" class="md:px-1 md:py-2 md:ml-[2%] lg:ml-[1%]">
             <span class="text-2xl font-semibold whitespace-nowrap drop-shadow">Faire un signalement</span>
