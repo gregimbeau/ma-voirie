@@ -1,3 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .email-content {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      .banner {
+        width: 100%;
+      }
+      .logo {
+        width: 100px;
+      }
+      .button {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="email-content">
+      <img class="banner" src="https://i.ibb.co/Fb2rWNQ/Ma-Voirie-Banner.png"><br>
+
 <p>Bonjour <%= @resource.email %>!</p>
 
 <p>Votre compte à été bloqué suite a un trop grand nombre de tentatives.</p>
@@ -5,3 +37,12 @@
 <p>Cliquez sur le lien ci-dessous pour débloquer votre compte:</p>
 
 <p><%= link_to 'Débloquer mon compte', unlock_url(@resource, unlock_token: @token) %></p>
+
+
+<br><br>
+      <a href="https://yourwebsite.com/login" class="button">Aller sur le site MaVoirie Bouxwiller</a>
+<br><br><br><br>
+      <img class="logo" src="https://bouxwiller.eu/wp-content/uploads/2018/10/bouxwiller-2.jpg">
+    </div>
+  </body>
+</html>
