@@ -44,9 +44,6 @@
                 <%= link_to "Mon profil", user_path(current_user), class:"block px-4 py-2 hover:bg-gray-100" %>
               </li>
               <li>
-                <%= link_to "Informations personnelles", edit_user_registration_path(current_user), class:"block px-4 py-2 hover:bg-gray-100" %>
-              </li>
-              <li>
                 <%= button_to "Me déconnecter", destroy_user_session_path, class:"block px-4 py-2 hover:bg-gray-100",form: { data: { turbo_confirm: "Veux-tu te déconnecter ?" } }, method: :delete %>
               </li>
             </ul>
