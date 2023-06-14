@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     resources :reports, only: [:new, :create]
   end
 
+  resources :contact_mailer, only: [:new, :create], path: 'contact', as: 'contact'
+
   resources :reports do
     member do
       delete :delete_image_attachment
