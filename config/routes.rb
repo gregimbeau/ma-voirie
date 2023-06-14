@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'admin/index'
-
   devise_for :users do
     resources :reports, only: [:new, :create]
   end

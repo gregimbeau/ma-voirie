@@ -1,4 +1,4 @@
-class AdminController < ApplicationController
+class Admin::AdminController < ApplicationController
   include ApplicationHelper
   before_action :check_if_admin
 
