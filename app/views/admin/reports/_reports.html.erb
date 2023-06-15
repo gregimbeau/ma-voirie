@@ -1,27 +1,27 @@
-<h5 class="text-center text-3xl py-4 cstm-dark">Signalements en attente de validation</h5>
+<h5 class="text-center md:text-3xl py-4 cstm-dark">Signalements en attente de validation</h5>
 <table class="w-full text-sm text-left cstm-dark mb-28">
-  <thead class="text-xs uppercase cstm-bg-dark text-center">
+  <thead class="md:text-xs uppercase cstm-bg-dark text-center">
     <tr>
-      <th scope="col" class="px-6 py-3 cstm-yellow">Status</th>
-      <th scope="col" class="px-6 py-3 cstm-yellow">Titre</th>
-      <th scope="col" class="px-6 py-3 cstm-yellow">Créateur</th>
-      <th scope="col" class="px-6 py-3 cstm-yellow">Signalement</th>
-      <th scope="col" class="px-6 pl-2 cstm-yellow">Actions</th>
+      <th scope="col" class="md:px-6 md:py-3 cstm-yellow hidden md:block">Status</th>
+      <th scope="col" class="md:px-6 md:py-3 cstm-yellow">Titre</th>
+      <th scope="col" class="md:px-6 md:py-3 cstm-yellow hidden md:block">Créateur</th>
+      <th scope="col" class="md:px-6 md:py-3 cstm-yellow">Signalement</th>
+      <th scope="col" class="md:px-6 md:pl-2 cstm-yellow">Actions</th>
     </tr>
   </thead>
   <% @reports.each do |report| %>
     <tbody class="cstm-bg-sand text-center">
-      <th scope="col" class="px-6 py-3">En attente</th>
+      <th scope="col" class="md:px-6 md:py-3 hidden md:block">En attente</th>
       <% if report.title.length > 29 %>
-        <th scope="col" class="px-6 py-3"><%= report.title.first(26) %>...</th>
+        <th scope="col" class="md:px-6 md:py-3"><%= report.title.first(26) %>...</th>
       <% else %>
-        <th scope="col" class="px-6 py-3"><%= report.title %></th>
+        <th scope="col" class="md:px-6 md:py-3"><%= report.title %></th>
       <% end %>
-      <th scope="col" class="px-6 py-3">
+      <th scope="col" class="md:px-6 md:py-3 hidden md:block">
         <% if report.user == nil %>
           Utilisateur supprimé
         <% else %>
-         <%= report.user.email %>
+          <%= report.user.email %>
         <% end %>
       </th>
       <th><%= button_to "Voir le signalement", report, class:"cstm-bg-valid-dark cstm-light font-bold py-2 px-4 rounded", method: :get %></th>
