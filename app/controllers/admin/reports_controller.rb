@@ -42,4 +42,11 @@ class Admin::ReportsController < ApplicationController
     end
   end
 
+  def destroy
+    @report = Report.find(params['id'])
+    @report.delete
+    flash[:notice] = "Le signalement a bien été supprimé !"
+    redirect_to admin_reports_path
+  end
+
 end
