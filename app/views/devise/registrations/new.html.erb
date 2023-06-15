@@ -1,47 +1,47 @@
   <div class="w-full lg:w-7/12 p-5 cstm-bg-sand shadow-2xl">
-    <h3 class="pt-4 text-2xl text-center font-medium text-gray-700">Créer votre compte</h3>
+    <h3 class="pt-4 text-2xl text-center font-medium cstm-dark">Créer votre compte</h3>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "px-8 pt-6 pb-1 mb-4 rounded cstm-bg-sand" }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
       <div class="mb-4 md:flex md:justify-between">
         <div class="flex-grow md:mr-2 md:mb-0">
-          <%= f.label :first_name, "Prénom", class: "block mb-2 text-sm font-bold text-gray-700" %>
-          <%= f.text_field :first_name, class: "w-full px-3 py-2 text-sm leading-tight text-gray-700 border-orange-300 rounded shadow appearance-none focus:border-orange-500 focus:ring-0 focus:shadow-outline", placeholder: "Prénom", required: true %>
+          <%= f.label :first_name, "Prénom", class: "block mb-2 text-sm font-bold cstm-dark" %>
+          <%= f.text_field :first_name, class: "w-full px-3 py-2 text-sm leading-tight cstm-dark border-orange-300 rounded shadow appearance-none focus:border-orange-500 focus:ring-0 focus:shadow-outline", placeholder: "Prénom", required: true %>
         </div>
         <div class="flex-grow md:ml-2">
-          <%= f.label :last_name, "Nom", class: "block mb-2 text-sm font-bold text-gray-700" %>
-          <%= f.text_field :last_name, class: "w-full px-3 py-2 text-sm leading-tight text-gray-700 border-orange-300 rounded shadow appearance-none focus:border-orange-500 focus:ring-0 focus:shadow-outline", placeholder: "Nom", required: true %>
+          <%= f.label :last_name, "Nom", class: "block mb-2 text-sm font-bold cstm-dark" %>
+          <%= f.text_field :last_name, class: "w-full px-3 py-2 text-sm leading-tight cstm-dark border-orange-300 rounded shadow appearance-none focus:border-orange-500 focus:ring-0 focus:shadow-outline", placeholder: "Nom", required: true %>
         </div>
       </div>
 
       <div class="mb-4">
-        <%= f.label :phone, "Numéro de téléphone", class: "block mb-2 text-sm font-bold text-gray-700" %>
-        <%= f.telephone_field :phone_number, class: "w-full px-3 py-2 text-sm leading-tight text-gray-700 border-orange-300 rounded shadow appearance-none focus:border-orange-500 focus:ring-0 focus:shadow-outline", placeholder: "Numéro de téléphone", required: true %>
+        <%= f.label :phone, "Numéro de téléphone", class: "block mb-2 text-sm font-bold cstm-dark" %>
+        <%= f.telephone_field :phone_number, class: "w-full px-3 py-2 text-sm leading-tight cstm-dark border-orange-300 rounded shadow appearance-none focus:border-orange-500 focus:ring-0 focus:shadow-outline", placeholder: "Numéro de téléphone", required: true %>
       </div>
 
       <div class="mb-4">
-        <%= f.label :nickname, "Pseudonyme", class: "block mb-2 text-sm font-bold text-gray-700" %>
-        <%= f.text_field :nickname, class: "w-full px-3 py-2 text-sm leading-tight text-gray-700 border-orange-300 rounded shadow appearance-none focus:border-orange-500 focus:ring-0 focus:shadow-outline", placeholder: "Pseudonyme", required: true %>
+        <%= f.label :nickname, "Pseudonyme", class: "block mb-2 text-sm font-bold cstm-dark" %>
+        <%= f.text_field :nickname, class: "w-full px-3 py-2 text-sm leading-tight cstm-dark border-orange-300 rounded shadow appearance-none focus:border-orange-500 focus:ring-0 focus:shadow-outline", placeholder: "Pseudonyme", required: true %>
       </div>
 
       <div class="mb-4">
-        <%= f.label :age, "Age", class: "block mb-2 text-sm font-bold text-gray-700" %>
-        <%= f.number_field :age, class: "w-full px-3 py-2 text-sm leading-tight text-gray-700 border-orange-300 rounded shadow appearance-none focus:border-orange-500 focus:ring-0 focus:shadow-outline", placeholder: "Age", required: true %>
+        <%= f.label :age, "Age", class: "block mb-2 text-sm font-bold cstm-dark" %>
+        <%= f.number_field :age, class: "w-full px-3 py-2 text-sm leading-tight cstm-dark border-orange-300 rounded shadow appearance-none focus:border-orange-500 focus:ring-0 focus:shadow-outline", placeholder: "Age", required: true %>
       </div>
 
       <div class="mb-4">
-        <%= f.label :email, "Adresse e-mail", class: "block mb-2 text-sm font-bold text-gray-700" %>
-        <%= f.email_field :email, class: "w-full px-3 py-2 text-sm leading-tight text-gray-700 border-orange-300 rounded shadow appearance-none focus:border-orange-500 focus:ring-0 focus:shadow-outline", placeholder: "Adresse e-mail", required: true %>
+        <%= f.label :email, "Adresse e-mail", class: "block mb-2 text-sm font-bold cstm-dark" %>
+        <%= f.email_field :email, class: "w-full px-3 py-2 text-sm leading-tight cstm-dark border-orange-300 rounded shadow appearance-none focus:border-orange-500 focus:ring-0 focus:shadow-outline", placeholder: "Adresse e-mail", required: true %>
       </div>
 
       <div class="mb-4">
-        <%= f.label :password, "Mot de passe", class: "block mb-2 text-sm font-bold text-gray-700" %>
-        <%= f.password_field :password, class: "w-full px-3 py-2 text-sm leading-tight text-gray-700 border-orange-300 rounded shadow appearance-none focus:border-orange-500 focus:ring-0 focus:shadow-outline", placeholder: "Mot de passe", required: true %>
+        <%= f.label :password, "Mot de passe", class: "block mb-2 text-sm font-bold cstm-dark" %>
+        <%= f.password_field :password, class: "w-full px-3 py-2 text-sm leading-tight cstm-dark border-orange-300 rounded shadow appearance-none focus:border-orange-500 focus:ring-0 focus:shadow-outline", placeholder: "Mot de passe", required: true %>
       </div>
 
       <div class="mb-4">
-        <%= f.label :password_confirmation, "Confirmer le mot de passe", class: "block mb-2 text-sm font-bold text-gray-700" %>
-        <%= f.password_field :password_confirmation, class: "w-full px-3 py-2 text-sm leading-tight text-gray-700 border-orange-300 rounded shadow appearance-none focus:border-orange-500 focus:ring-0 focus:shadow-outline", placeholder: "Confirmer le mot de passe", required: true %>
+        <%= f.label :password_confirmation, "Confirmer le mot de passe", class: "block mb-2 text-sm font-bold cstm-dark" %>
+        <%= f.password_field :password_confirmation, class: "w-full px-3 py-2 text-sm leading-tight cstm-dark border-orange-300 rounded shadow appearance-none focus:border-orange-500 focus:ring-0 focus:shadow-outline", placeholder: "Confirmer le mot de passe", required: true %>
       </div>
 
       <div class="text-center">
@@ -51,13 +51,13 @@
           </fieldset>
 
     <div class="py-4">
-        <%= button_tag(type: 'submit', class: "relative inline-flex items-center justify-center w-2/5 2xl:w-2/6 xl:w-2/6 md:w-1/4 lg:w-1/4 sm:w-2/5 h-8 overflow-hidden font-medium text-gray-700 transition duration-300 ease-out border-2 border-gray-700 shadow-md group") do %>
+        <%= button_tag(type: 'submit', class: "relative inline-flex items-center justify-center w-2/5 2xl:w-2/6 xl:w-2/6 md:w-1/4 lg:w-1/4 sm:w-2/5 h-8 overflow-hidden font-medium cstm-dark transition duration-300 ease-out border-2 border-gray-700 shadow-md group") do %>
           <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-orange-400 group-hover:translate-x-0 ease">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
             </svg>
           </span>
-          <span class="absolute flex items-center justify-center w-full h-full text-gray-700 transition-all duration-300 transform group-hover:translate-x-full ease">S'enregistrer</span>
+          <span class="absolute flex items-center justify-center w-full h-full cstm-dark transition-all duration-300 transform group-hover:translate-x-full ease">S'enregistrer</span>
         <% end %>
     </div>
 
