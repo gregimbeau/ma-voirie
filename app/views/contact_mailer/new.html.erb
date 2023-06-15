@@ -3,7 +3,6 @@
     <h3 class="pt-4 text-2xl text-center ">Contactez-nous</h3>
     <%= form_with(model: @contact_message, url: contact_index_path, local: true, html: {class: "px-8 pt-6 pb-1 mb-4 rounded cstm-bg-sand", id: "contact_form"}) do |form| %>
     
-    
       <div class="mb-4">
         <%= form.label :name, "Votre Nom", class: "block mb-2 text-sm font-bold" %>
         <%= form.text_field :name, class: "w-full px-3 py-2 mb-3 text-sm leading-tight rounded shadow appearance-none focus:border-sky-200", placeholder: "Nom", required: true, autofocus: true, autocomplete: "name" %>
@@ -25,12 +24,9 @@
 
       <hr class="mb-4 border-t" style="border-color: orange;">
       <div class="mb-4 flex justify-center">
-        <% if @contact_message.errors[:captcha].any? %>
-          <div class="error-message">
-            <%= @contact_message.errors.full_messages_for(:captcha).join(", ") %>
-          </div>
-        <% end %>
-      <%= recaptcha_tags id: 'recaptcha' %>
+
+
+<%= recaptcha_tags id: 'recaptcha', callback: 'recaptchaCallback', expired_callback: 'recaptchaExpiredCallback' %>
 
 
       </div>
@@ -49,23 +45,15 @@
     <% end %>
   </div>
   <script>
-    var onloadCallback = function() {
-      window.recaptchaWidgetId = grecaptcha.render('recaptcha', {
-        'sitekey': '<%= ENV['RECAPTCHA_SITE_KEY'] %>'
-      });
-    };
+document.addEventListener("DOMContentLoaded", function() {
+  var contactForm = document.getElementById('contact_form');
+  contactForm.addEventListener('submit', function(event) {
+    if (grecaptcha.getResponse() == '') {
+      event.preventDefault();
+      alert('Please complete the reCAPTCHA to submit the form');
+    }
+  });
+});
 
-    document.addEventListener("DOMContentLoaded", function() {
-      var contactForm = document.getElementById('contact_form');
-      contactForm.onsubmit = function() {
-        if (!grecaptcha.getResponse(window.recaptchaWidgetId)) {
-          alert('Please verify CAPTCHA');
-          grecaptcha.reset(window.recaptchaWidgetId);  // Reset the reCAPTCHA
-          return false;  // Prevent form submission
-        }
-      }
-    });
   </script>
-
-  <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
 </body>
