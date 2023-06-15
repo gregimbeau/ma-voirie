@@ -5,7 +5,7 @@ class ContactMailerController < ApplicationController
 
   def create
     @contact_message = ContactMessage.new(contact_message_params)
-    @contact_message.captcha = verify_recaptcha # Assign the verification value to captcha
+    @contact_message.captcha = verify_recaptcha
     puts "Captcha Result: #{@contact_message.captcha}" 
   
     if @contact_message.save
