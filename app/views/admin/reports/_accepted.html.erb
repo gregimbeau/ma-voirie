@@ -1,18 +1,17 @@
 <h5 class="text-center text-3xl py-4 cstm-dark">Signalements acceptés</h5>
-<table class="w-full text-sm text-left cstm-dark mb-32">
+<table class="w-full text-sm text-left cstm-dark mb-28">
   <thead class="text-xs uppercase cstm-bg-dark text-center">
     <tr>
       <th scope="col" class="px-6 py-3 cstm-yellow">Status</th>
       <th scope="col" class="px-6 py-3 cstm-yellow">Titre</th>
       <th scope="col" class="px-6 py-3 cstm-yellow">Créateur</th>
-      <th scope="col" class="px-6 py-3 cstm-yellow">Images</th>
       <th scope="col" class="px-6 py-3 cstm-yellow">Signalement</th>
       <th scope="col" class="px-6 pl-2 cstm-yellow">Actions</th>
     </tr>
   </thead>
   <% @accepted.each do |report| %>
     <tbody class="cstm-bg-sand text-center">
-      <th scope="col" class="px-6 py-3"><%= report.status.title %></th>
+      <th scope="col" class="px-6 py-3">En attente</th>
       <% if report.title.length > 29 %>
         <th scope="col" class="px-6 py-3"><%= report.title.first(26) %>...</th>
       <% else %>
@@ -25,29 +24,24 @@
          <%= report.user.email %>
         <% end %>
       </th>
-      <th scope="col" class="px-6 py-3">
-        <% if report.images.any? %>
-          <%= image_tag(url_for(report.images.first))%>
-        <% end %>
-      </th>
-      <th><%= button_to "Voir le signalement", report, class:"cstm-bg-valid-dark cstm-gray font-bold py-2 px-4 rounded", method: :get %></th>
-      <th class=" items-end">
-        <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="cstm-bg-valid-dark cstm-gray font-bold py-2 px-5 rounded inline-flex" type="button">
+      <th><%= button_to "Voir le signalement", report, class:"cstm-bg-valid-dark cstm-light font-bold py-2 px-4 rounded", method: :get %></th>
+      <th class="items-end">
+        <button id="dropdownAccepted" data-dropdown-toggle="dropdown3" class="cstm-bg-action cstm-light font-bold py-2 px-5 rounded inline-flex" type="button">
           Actions<svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
         </button>
-        <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
-          <ul class="text-sm" aria-labelledby="dropdownDefaultButton">
+        <div id="dropdown3" class="z-10 hidden bg-white rounded-lg shadow divide-y">
+          <ul class="text-sm" aria-labelledby="dropdownAccepted">
             <li>
-              <a href="#" class="block px-4 py-2">Dashboard</a>
+              <%= button_to "Travaux en cours", admin_report_path(report), class:"w-full block px-4 py-2 admin_drop cstm-dark", method: :patch, params: { "report" =>  "in progress" } %>
             </li>
             <li>
-              <a href="#" class="block px-4 py-2">Settings</a>
-            </li>
-            <li>
-              <a href="#" class="block px-4 py-2">Settings</a>
+              <%= button_to "Travaux effectués", admin_report_path(report), class:"w-full block px-4 py-2 admin_drop cstm-dark", method: :patch, params: { "report" =>  "resolved" } %>
             </li>
           </ul>
+          <div>
+            <%= button_to "Supprimer", admin_report_path(report), class:"w-full block px-4 py-2 admin_drop cstm-danger", method: :delete %>
+          </div>
         </div>
       </th>
     </tbody>

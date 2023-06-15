@@ -46,7 +46,15 @@
 }
 
 .cstm-bg-primary{
-  background-color: #ff9642;
+  background-color: #ff9642 !important;
+}
+
+.cstm-bg-action{
+  background-color: #ff9642 !important;
+}
+
+.cstm-bg-action:hover{
+  background-color: #e67e29 !important;
 }
 
 .cstm-primary{
@@ -98,15 +106,23 @@
 }
 
 .cstm-bg-valid-dark{
-  background-color: #76CBC8 !important;
+  background-color: #88c9c7 !important;
 }
 
 .cstm-bg-valid-dark:hover{
-  background-color: #a8dfdd !important;
+  background-color: #6db4b2 !important;
 }
 
 .cstm-valid-dark{
   color: #76CBC8;
+}
+
+.admin_drop{
+  background-color: white;
+}
+
+.admin_drop:hover{
+  background-color: #f5f4f2;
 }
 
 .border-dark {
