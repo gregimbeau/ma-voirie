@@ -1,6 +1,13 @@
 <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-6">
-  <h1 class="flex justify-center font-bold">WELCOME</h1>
-  <p class="flex justify-center">Description</p>
+
+  <div class="bg-ffe05d rounded-lg p-6 border-y-4 border-x-4 border-ff9642">
+    <h2 class="text-2xl text-646464 mb-4 text-center">Ma Voirie</h2>
+    <p class="text-646464 mb-4">Ma Voirie est un site en ligne qui offre aux utilisateurs la possibilité de signaler facilement les problèmes de voirie qu'ils rencontrent dans leur commune. Le site vise à faciliter la communication entre les citoyens et les autorités locales responsables de l'entretien des routes, des trottoirs et des espaces publics.</p>
+    <p class="text-646464 mb-4">Grâce à Ma Voirie, les utilisateurs peuvent signaler divers problèmes liés à la voirie tels que des nids-de-poule, des feux de circulation défectueux, des trottoirs endommagés, des éclairages publics défaillants ou tout autre incident qui nécessite l'intervention des services municipaux.</p>
+    <p class="text-646464 mb-4">Le processus de signalement sur Ma Voirie est simple et convivial. Les utilisateurs peuvent fournir des informations détaillées sur le problème rencontré, inclure des photos ou des vidéos pour illustrer la situation, et spécifier l'emplacement précis du souci signalé. Ces informations sont ensuite transmises aux communes concernées afin qu'elles puissent prendre les mesures nécessaires pour résoudre les problèmes signalés.</p>
+    <p class="text-646464 mb-4">Le site Ma Voirie vise à améliorer la qualité de vie des citoyens en facilitant la résolution rapide des problèmes de voirie. En permettant aux utilisateurs de signaler directement les incidents, il favorise la participation citoyenne et contribue à une meilleure gestion de l'entretien des infrastructures publiques.</p>
+  </div>
+  
   <% @reports.sort.reverse_each do |report| %>
     <%= render report %>
   <% end %>
