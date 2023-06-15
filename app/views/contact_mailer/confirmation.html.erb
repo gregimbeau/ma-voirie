@@ -1,0 +1,29 @@
+<body class="shadow-lg cstm-dark">
+  <div class="w-full lg:w-7/12 cstm-bg-sand p-5 rounded">
+    <h3 class="pt-4 text-2xl text-center  mb-10">Confirmation de l'envoi</h3>
+        <div class= mb-10>
+      <%= image_tag('message_contact.png', alt: 'Message Contact', class: "h-16 w-16 mx-auto") %>
+        </div>
+        <div class="space-y-4 text-center">
+      <p class="block text-sm font-medium text-gray-900 dark:text-white mb-2">
+        Nous avons bien reçu votre message!
+      </p>
+      <p class="block text-sm font-medium text-gray-900 dark:text-white mb-2">
+        Merci de nous avoir contactés. Votre email est transmis à notre équipe et sera traité prochainement.
+      </p>
+      <p class="block text-sm font-medium text-gray-900 dark:text-white mb-2">
+        A très bientôt!
+      </p>
+    </div>
+    <div class="mt-8 px-1 container mx-auto flex justify-center items-center mb-2">
+      <%= button_to root_path, class: "relative inline-flex items-center justify-center w-40 p-8 px-10 py-4 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-white rounded-full shadow-md group", method: :get do %>
+        <span class="absolute inset-0 flex items-center justify-center w-full h-full text-orange-400 duration-300 -translate-x-full bg-white group-hover:translate-x-0 ease">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+          </svg>
+        </span>
+          <span class="absolute flex items-center justify-center w-full h-full text-black transition-all duration-300 transform group-hover:translate-x-full ease ">Retour à l'accueil </span>
+      <% end %>
+    </div>
+  </div>
+</body>

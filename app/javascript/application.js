@@ -70,7 +70,7 @@ document.addEventListener("turbo:load", ()=>{
 
 timer = setInterval(() => {
   seconds++;
-  if (notice == "true" && seconds>=7)
+  if (notice == "true" && seconds>=4)
   {
     div_alert.classList.add("hidden");
   }

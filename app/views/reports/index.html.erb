@@ -1,7 +1,6 @@
 <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-6">
-<h1 class="flex justify-center font-bold">WELCOME</h1>
-<p class="flex justify-center">Description</p>
-<div>
+  <h1 class="flex justify-center font-bold">WELCOME</h1>
+  <p class="flex justify-center">Description</p>
   <% @reports.sort.reverse_each do |report| %>
     <%= render report %>
   <% end %>
