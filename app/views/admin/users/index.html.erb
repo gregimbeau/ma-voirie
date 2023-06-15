@@ -1,54 +1,15 @@
-<div class="w-full">
+  <div id="index">
   <div class="text-center pb-4">
     <%= button_to admin_root_path, class: "relative inline-flex items-center justify-center p-28 px-28 py-8 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-white rounded-full shadow-md group", method: :get do %>
-      <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full cstm-bg-valid group-hover:translate-x-0 ease">
+      <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full cstm-bg-yellow group-hover:translate-x-0 ease">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
         </svg>
       </span>
-      <span class="cstm-bg-primary absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease">Revenir sur le dashboard admin</span>
+      <span class="cstm-bg-sand absolute flex items-center justify-center w-full h-full cstm-dark transition-all duration-300 transform group-hover:translate-x-full ease">Revenir sur le dashboard admin</span>
     <% end %>
   </div>
-    <table>
-    <colgroup>
-      <col span="1" style="width: 10%;">
-      <col span="2" style="width: 10%;">
-      <col span="3" style="width: 10%;">
-      <col span="4" style="width: 10%;">
-      <col span="5" style="width: 20%;">
-      <col span="6" style="width: 20%;">
-      <col span="7" style="width: 10%;">
-      <col span="8" style="width: 10%;">
-    </colgroup>
-    <thead>
-      <tr>
-        <th>Pseudo</th>
-        <th>Prénom</th>
-        <th>Nom de famille</th>
-        <th>Age</th>
-        <th>Email</th>
-        <th>Téléphone</th>
-        <th>Rôle</th>
-        <th>Suppression</th>
-      </tr>
-    </thead>
-    <% @users.each do |user| %>
-      <tbody>
-        <th><%= user.nickname %></th>
-        <th><%= user.first_name %></th>
-        <th><%= user.last_name %></th>
-        <th><%= user.age %></th>
-        <th><%= user.email %></th>
-        <th><%= user.phone_number %></th>
-        <th><% if user.is_admin %> Admin <% else %> Membre <% end %></th>
-        <th>
-          <% if !user.is_admin %>
-            <%= button_to "Supprimer", admin_user_path(user), class:' bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded', form: { data: { turbo_confirm: "Es-tu sur de vouloir supprimer cet utilisateur ?" } }, method: :delete %>
-          <% else %>
-            <%= button_to "Supprimer", "", class:'cursor-not-allowed cstm-bg-dark cstm-light font-bold py-2 px-4 rounded' %>
-          <% end %>
-        </th>
-      </tbody>
-    <% end %>
-    </table>
+  <div id="users" class="relative overflow-x-auto">
+    <%= render 'users', users: @users %>
   </div>
+</div>
