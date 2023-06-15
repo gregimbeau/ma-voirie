@@ -1,4 +1,4 @@
-<h5 class="text-center text-3xl py-4 cstm-dark">Signalements en attente de validation</h5>
+<h5 class="text-center text-3xl py-4 cstm-dark">Signalements validés</h5>
 <table class="w-full text-sm text-left cstm-dark mb-10">
   <thead class="text-xs uppercase cstm-bg-dark text-center">
     <tr>
@@ -10,7 +10,7 @@
       <th scope="col" class="px-6 pl-2 cstm-yellow">Actions</th>
     </tr>
   </thead>
-  <% @reports.each do |report| %>
+  <% @validated.each do |report| %>
     <tbody class="cstm-bg-sand">
       <th scope="col" class="px-6 py-3"><%= report.status.title %></th>
       <% if report.title.length > 29 %>

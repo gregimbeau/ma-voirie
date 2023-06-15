@@ -1,0 +1,36 @@
+<h5 class="text-center text-3xl py-4">Liste des utilisateurs</h5>
+<div class="w-full text-sm text-left cstm-dark">
+  <table>
+
+    <thead class="text-xs uppercase cstm-bg-dark text-center">
+      <tr>
+        <th scope="col" class="px-6 py-3 cstm-yellow">Pseudo</th>
+        <th scope="col" class="px-6 py-3 cstm-yellow">Prénom</th>
+        <th scope="col" class="px-6 py-3 cstm-yellow">Nom de famille</th>
+        <th scope="col" class="px-6 py-3 cstm-yellow">Age</th>
+        <th scope="col" class="px-6 py-3 cstm-yellow">Email</th>
+        <th scope="col" class="px-6 py-3 cstm-yellow">Téléphone</th>
+        <th scope="col" class="px-6 py-3 cstm-yellow">Rôle</th>
+        <th scope="col" class="px-6 py-3 cstm-yellow">Suppression</th>
+      </tr>
+    </thead>
+    <% @users.each do |user| %>
+      <tbody class="cstm-bg-sand">
+        <th scope="col" class="px-6 py-3"><%= user.nickname %></th>
+        <th scope="col" class="px-6 py-3"><%= user.first_name %></th>
+        <th scope="col" class="px-6 py-3"><%= user.last_name %></th>
+        <th scope="col" class="px-6 py-3"><%= user.age %></th>
+        <th scope="col" class="px-6 py-3"><%= user.email %></th>
+        <th scope="col" class="px-6 py-3"><%= user.phone_number %></th>
+        <th scope="col" class="px-6 py-3"><% if user.is_admin %> Admin <% else %> Membre <% end %></th>
+        <th scope="col" class="px-6 py-3">
+          <% if !user.is_admin %>
+            <%= button_to "Supprimer", admin_user_path(user), class:'cstm-bg-danger cstm-light font-bold py-2 px-4 rounded', form: { data: { turbo_confirm: "Es-tu sur de vouloir supprimer cet utilisateur ?" } }, method: :delete %>
+          <% else %>
+            <%= button_to "Supprimer", "", class:'cursor-not-allowed cstm-bg-dark cstm-light font-bold py-2 px-4 rounded' %>
+          <% end %>
+        </th>
+      </tbody>
+    <% end %>
+  </table>
+</div>
