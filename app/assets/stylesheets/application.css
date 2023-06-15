@@ -54,7 +54,11 @@
 }
 
 .cstm-bg-danger{
-  background-color: #ed5c2a;
+  background-color: #ed5c2a !important;
+}
+
+.cstm-bg-danger:hover{
+  background-color: #ac330b !important;
 }
 
 .cstm-danger{
@@ -77,17 +81,38 @@
   color: #e8e6e1;
 }
 
+.cstm-gray{
+  color: #e8e6e1;
+}
+
+.cstm-gray:hover{
+  color: #646464;
+}
+
 .cstm-bg-valid{
-  background-color: #a8dfdd;
+  background-color: #a8dfdd !important;
 }
 
 .cstm-valid{
   color: #a8dfdd;
 }
 
+.cstm-bg-valid-dark{
+  background-color: #76CBC8 !important;
+}
+
+.cstm-bg-valid-dark:hover{
+  background-color: #a8dfdd !important;
+}
+
+.cstm-valid-dark{
+  color: #76CBC8;
+}
+
 .border-dark {
   border: 2px solid #646464;
 }
+
 footer {
   margin-top: auto !important;
   bottom: 0 !important;
