@@ -2,8 +2,8 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 
-var notice;
-var div_alert;
+var _notice, _alert;
+var div_notice, div_alert;
 var seconds = 0;
 var timer = 0;
 
@@ -56,24 +56,42 @@ $(document).ready(function() {
 });
 
 document.addEventListener("turbo:load", ()=>{
+  div_notice = document.getElementById("show_notice");
+  _notice = div_notice.getAttribute("data");
+
   div_alert = document.getElementById("show_alert");
-  notice = div_alert.getAttribute("data-notice");
-  if (notice == "true")
+  _alert = div_alert.getAttribute("data");
+
+  seconds = 0;
+
+  if (_notice == "true")
   {
-    seconds = 0;
+    div_notice.classList.remove("hidden");
+  } else {
+    div_notice.classList.add("hidden");
+  }
+
+  if (_alert == "true")
+  {
     div_alert.classList.remove("hidden");
   } else {
     div_alert.classList.add("hidden");
-    seconds = 0;
   }
+
 });
 
 timer = setInterval(() => {
   seconds++;
-  if (notice == "true" && seconds>=4)
+  if (seconds>=4)
   {
-    div_alert.classList.add("hidden");
+    if (_notice == "true")
+    {
+      div_notice.classList.add("hidden");
+    }
+    if (_alert == "true")
+    {
+      div_alert.classList.add("hidden");
+    }
   }
+
 }, 1000);
-
-
