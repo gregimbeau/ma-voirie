@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/conditions' => 'static_pages#conditions'
+
   resources :reports do
     member do
       delete :delete_image_attachment

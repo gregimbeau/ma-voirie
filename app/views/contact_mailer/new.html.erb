@@ -1,8 +1,8 @@
-<body class="shadow-lg cstm-dark">
+<body data-sitekey="<%= ENV['RECAPTCHA_SITE_KEY'] %>" class="shadow-lg cstm-dark">
   <div class="w-full lg:w-7/12 cstm-bg-sand p-5 rounded">
     <h3 class="pt-4 text-2xl text-center ">Contactez-nous</h3>
-    <%= form_with(model: @contact_message, url: contact_index_path, local: true, html: {class: "px-8 pt-6 pb-1 mb-4 rounded cstm-bg-sand"}) do |form| %>
-
+    <%= form_with(model: @contact_message, url: contact_index_path, local: true, html: {class: "px-8 pt-6 pb-1 mb-4 rounded cstm-bg-sand", id: "contact_form"}) do |form| %>
+    
       <div class="mb-4">
         <%= form.label :name, "Votre Nom", class: "block mb-2 text-sm font-bold" %>
         <%= form.text_field :name, class: "w-full px-3 py-2 mb-3 text-sm leading-tight rounded shadow appearance-none focus:border-sky-200", placeholder: "Nom", required: true, autofocus: true, autocomplete: "name" %>
@@ -23,12 +23,26 @@
       </div>
 
       <hr class="mb-4 border-t" style="border-color: orange;">
-
-      <div class="mb-6 text-center">
-        <%= form.submit "Envoyer le message", class: "mb-6 text-center relative inline-flex items-center justify-center p-2 px-6 py-1 overflow-hidden font-medium text-white transition-all duration-300 ease-out rounded-full shadow-md group bg-orange-600 hover:bg-orange-800" %>
+      <div class="mb-4 flex justify-center">
+            <%= form.hidden_field :captcha, value: @contact_message.captcha %>
+            <% if @contact_message.errors[:captcha].any? %>
+              <div class="error-message">
+                <%= @contact_message.errors.full_messages_for(:captcha).join(", ") %>
+              </div>
+            <% end %>
+            <%= recaptcha_tags %>
       </div>
 
-      <hr class="mb-6 border-t" style="border-color: orange;">
+      <div class="text-center">
+        <%= button_to root_path, { class: "relative inline-flex items-center justify-center w-44 p-8 px-10 py-4 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-white rounded-full shadow-md group", method: :get } do %>
+          <span class="absolute inset-0 flex items-center justify-center w-full h-full text-orange-400 duration-300 -translate-x-full bg-white group-hover:translate-x-0 ease">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+            </svg>
+          </span>
+          <span class="absolute flex items-center justify-center w-full h-full text-black transition-all duration-300 transform group-hover:translate-x-full ease">Envoyer le message</span>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </body>
