@@ -1,3 +1,5 @@
+<h1 class="pt-4 text-2xl text-center font-medium text-gray-700">Nouveau signalement</h1>
+
 <%= form_with(model: report, class: "contents") do |form| %>
   <% if report.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
@@ -11,12 +13,12 @@
   <% end %>
 
   <div class="my-5">
-    <%= form.label :title %>
+    <%= form.label "Le titre de votre signalement :" %>
     <%= form.text_field :title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :content %>
+    <%= form.label "Décrivez la problématique rencontrée :" %>
     <%= form.text_area :content, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
@@ -25,7 +27,7 @@
   <%= form.hidden_field :status_id, value: Status.first.id %>
 
   <div class="my-5 relative">
-    <%= form.label :address, class: "block" %>
+    <%= form.label "Adresse concernée par votre signalement :", class: "block" %>
     <%= form.text_field :address, id: "addressInput", placeholder: "Saisissez votre adresse", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
 
     <div id="resultContainer" class="absolute left-0 w-full bg-white rounded-b shadow-md border border-gray-200 z-10" style="display: none;">
@@ -34,16 +36,37 @@
   </div>
 
   <div class="my-5">
-<div class="my-5">
-  <%= form.label :images, class: "block" %>
-  <%= form.file_field :images, multiple: true, accept: "image/*", class: "block mt-2" %>
-</div>
-
+    <div class="my-5">
+      <%= form.label :images, class: "block" %>
+      <%= form.file_field :images, multiple: true, accept: "image/*", class: "block mt-2" %>
+    </div>
   </div>
 
-  <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  <div class = "flex justify-between">
+
+
+      <%= link_to reports_path, class: "relative inline-flex items-center justify-center p-28 px-28 py-8 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-white rounded-full shadow-md group", method: :get do %>
+        <span class="bg-stone-400 text-white absolute flex items-center justify-center w-full h-full px-11 cstm-dark transition-all duration-300 transform group-hover:translate-x-full ease">
+          Retour sur la page des signalements
+        </span>
+        <span class="bg-stone-500 absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 translate-x-full cstm-bg-yellow group-hover:translate-x-0 ease">
+          <svg class="w-6 h-6 transform -rotate-270" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+          </svg>
+        </span>
+      <% end %>
+
+
+    <%= button_to reports_path, class: "relative inline-flex items-center justify-center p-28 px-28 py-8 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-white rounded-full shadow-md group", method: :post do %>
+      <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full cstm-bg-yellow group-hover:translate-x-0 ease bg-amber-400 ">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+        </svg>
+      </span>
+      <span class="bg-amber-300 cstm-bg-sand absolute flex items-center justify-center w-full h-full cstm-dark transition-all duration-300 transform group-hover:translate-x-full ease">Créer mon signalement</span>
+    <% end %>
   </div>
+  
 <% end %>
 <% if report.images.any? %>
   <h3>Uploaded Images</h3>
@@ -54,9 +77,4 @@
             data: { confirm: 'Êtes-vous certain(e) ?', turbolinks: false } %>
 
   <% end %>
-<% end %>
-
-
-<%= form_with(model: report, class: "contents") do |form| %>
-<!-- Your form code here -->
 <% end %>
