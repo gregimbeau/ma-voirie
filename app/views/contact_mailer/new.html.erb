@@ -65,7 +65,7 @@ document.addEventListener("turbo:load", function() {
   contactForm.addEventListener('submit', function(event) {
     if (grecaptcha.getResponse() == '') {
       event.preventDefault();
-      alert('Please complete the reCAPTCHA to submit the form');
+          alert('Merci de completer le reCAPTCHA');
     }
   });
 });
