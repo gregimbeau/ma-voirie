@@ -3,22 +3,14 @@
   <thead class="text-xs uppercase cstm-bg-dark text-center">
     <tr>
       <th scope="col" class="md:px-6 py-3 cstm-yellow">Pseudo</th>
-      <th scope="col" class="md:px-6 py-3 cstm-yellow hidden md:table-cell">Prénom</th>
-      <th scope="col" class="md:px-6 py-3 cstm-yellow hidden md:table-cell">Nom de famille</th>
-      <th scope="col" class="md:px-6 py-3 cstm-yellow hidden md:table-cell">Age</th>
       <th scope="col" class="md:px-6 py-3 cstm-yellow">Email</th>
-      <th scope="col" class="md:px-6 py-3 cstm-yellow">Téléphone</th>
       <th scope="col" class="md:px-6 py-3 cstm-yellow">Suppression</th>
     </tr>
   </thead>
   <% @users.each do |user| %>
     <tbody class="cstm-bg-sand text-center">
       <th scope="col" class="md:px-6 py-3"><%= user.nickname %></th>
-      <th scope="col" class="md:px-6 py-3 hidden md:table-cell"><%= user.first_name %></th>
-      <th scope="col" class="md:px-6 py-3 hidden md:table-cell"><%= user.last_name %></th>
-      <th scope="col" class="md:px-6 py-3 hidden md:table-cell"><%= user.age %></th>
       <th scope="col" class="md:px-6 py-3"><%= user.email %></th>
-      <th scope="col" class="md:px-6 py-3"><%= user.phone_number %></th>
       <th scope="col" class="md:px-6 py-3">
         <% if !user.is_admin %>
           <%= button_to "Supprimer", admin_user_path(user), class:'cstm-bg-danger cstm-light font-bold py-2 md:px-4 rounded', form: { data: { turbo_confirm: "Es-tu sur de vouloir supprimer cet utilisateur ?" } }, method: :delete %>
