@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :reports
 
   validates :nickname, presence: true
-  validates :is_admin, default: false
+  
   
   attr_reader :password_changed
   def password=(new_password)
