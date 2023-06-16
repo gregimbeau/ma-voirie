@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :reports, only: [:new, :create]
   end
 
-  resources :contact_mailer, only: [:new, :create], path: 'contact', as: 'contact' do
+  resources :contact_mailer, only: [:new, :create] do
     collection do
       get :confirmation
     end
@@ -18,12 +18,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: [:show, :edit, :update] do
-    resources :avatars, only: [:create, :destroy]
-    member do
-      post :reset_password
-    end
-  end
+  resources :users, only: [:show, :edit, :update]
 
   root to: "reports#index"
 
