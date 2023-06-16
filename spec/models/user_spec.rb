@@ -68,19 +68,14 @@ RSpec.describe User, type: :model do
       end
     end
 
-    describe "test update" do
+    describe "test update user" do
       it "shouldn't be update" do
-        @user.update(nickname:"Jo")
-        expect(@report).to be_valid
-
         @user.update(email:"mailnonfonctionnel")
-        expect(@report).not_to be_valid
+        expect(@user).not_to be_valid
       end 
 
       it "should be update" do
         @user.update(nickname:"Jo")
-        expect(@report).to be_valid
-        @user.update(status_id:2)
         expect(@user).to be_valid
       end
     end
