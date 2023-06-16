@@ -146,3 +146,7 @@ footer {
   width: 100% !important;
   background-color: #ededed;
 }
+
+::selection{
+  background-color:#ffe05d; 
+}
