@@ -8,7 +8,7 @@ class ContactMailerController < ApplicationController
     
     if verify_recaptcha(model: @contact_message) && @contact_message.save
       ContactMailer.contact_message(@contact_message).deliver_now
-      redirect_to confirmation_contact_index_path, notice: 'Message envoyé avec succès.'
+      redirect_to confirmation_contact_mailer_index_path, notice: 'Message envoyé avec succès.'
     else
       if !verify_recaptcha(model: @contact_message)
         @contact_message.errors.add(:captcha, 'Veuillez remplir le captcha')

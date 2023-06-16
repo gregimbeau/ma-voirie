@@ -61,5 +61,24 @@ RSpec.describe User, type: :model do
       end
     end
 
+    describe "test admin" do
+      it "should indicate that the user is an admin" do
+        @user.update(is_admin:true)
+        expect(@user.is_admin).to eq(true)
+      end
+    end
+
+    describe "test update user" do
+      it "shouldn't be update" do
+        @user.update(email:"mailnonfonctionnel")
+        expect(@user).not_to be_valid
+      end 
+
+      it "should be update" do
+        @user.update(nickname:"Jo")
+        expect(@user).to be_valid
+      end
+    end
+
   end
 end
