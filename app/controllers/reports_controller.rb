@@ -1,6 +1,7 @@
 class ReportsController < ApplicationController
   before_action :set_report, only: %i[ show edit update destroy ]
   before_action :authenticate_user, only: [:new, :create]
+  before_action :check_if_admin_or_creator, only: [:show]
 
   # GET /reports or /reports.json
   def index
