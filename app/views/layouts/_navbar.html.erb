@@ -24,12 +24,12 @@
         <% if current_user %>
           <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center text-2xl font-semibold whitespace-nowrap md:mt-0 sm:mt-3">
             <span class="text-2xl font-semibold whitespace-nowrap drop-shadow mr-2"><%= current_user.nickname %></span>
-            <%= image_tag("user.png", class: "w-10 banner md:mt-1", draggable: "false", unselectable: "on") %>
+            <%= image_tag("user.png", class: "w-10 banner md:mt-1", draggable: "false", unselectable: "on", alt: "Icone utilisateur") %>
           </button>
         <% else %>
           <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center text-2xl font-semibold whitespace-nowrap md:mt-0 sm:mt-3">
             <span class="text-2xl font-semibold whitespace-nowrap drop-shadow mr-2">Se connecter</span>
-            <%= image_tag("user.png", class: "w-10 banner md:mt-1", draggable: "false", unselectable: "on") %>
+            <%= image_tag("user.png", class: "w-10 banner md:mt-1", draggable: "false", unselectable: "on", alt: "Icone utilisateur") %>
           </button>
         <% end %>
         <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
