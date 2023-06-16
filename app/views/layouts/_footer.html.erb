@@ -1,16 +1,16 @@
 <footer>
   <div>
-    <div class="h-1 w-full bg-yellow-400"></div>
-    <div class="h-1 w-full bg-orange-400"></div>
-    <div class="h-1 w-full bg-white"></div>
-    <div class="h-1 w-full bg-gray-600"></div>
+    <div class="h-1 w-full cstm-bg-yellow"></div>
+    <div class="h-1 w-full cstm-bg-primary"></div>
+    <div class="h-1 w-full cstm-bg-light"></div>
+    <div class="h-1 w-full cstm-bg-dark"></div>
   </div>
   <div  class="relativ pt-2.5">
     <section class="page-section flex justify-center items-center" id="footer">
       <div class="container text-center">
-        <div class="grid grid-cols-5 gap-4">
+        <div class="flex justify-center">
           <div class="col-start-3 col-end-4">
-            <img src="<%= asset_path('bouxwiller_logo.png') %>" class="h-16 w-16 mx-auto" alt="bouxwiller_logo">
+            <img src="<%= asset_path('bouxwiller_logo.png') %>" class="mx-auto h-[60px] w-[60px]" alt="bouxwiller_logo">
             <h4 class="text-center">Ville de Bouxwiller</h4>
             <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/mairiedebouxwiller67/" target=_blank aria-label="Facebook de votre commune"><i class="fab fa-facebook-f"></i></a>
             <a class="btn btn-dark btn-social mx-2" href="https://bouxwiller.eu/" target=_blank aria-label="Site de votre commune"><i class="far fa-building"></i></a>
@@ -18,24 +18,12 @@
         </div>
       </div>
     </section>
-      <hr class="my-4 border-blueGray-300">
-      <div class="flex flex-wrap items-center md:justify-between justify-center">
-        <div class="w-full md:w-4/12 px-4 mx-auto text-center">
-          <div class="text-sm text-blueGray-500 font-semibold py-1">
-            <a href="#top" class="text-blueGray-500 hover:text-orange-800 ">Ma Voirie |</a>
-            <%= link_to "Conditions d'utilisation |", '/conditions' ,class: "text-blueGray-500 hover:text-orange-800 "%>
-            <%= link_to 'Contact', new_contact_path, class: 'text-blueGray-500 hover:text-orange-800', data: {turbo:false} %>
-          </div>
-        </div>  
-      </div>
-    </section>
-    <hr class="my-4 border-blueGray-300">
     <div class="flex flex-wrap items-center md:justify-between justify-center">
       <div class="w-full md:w-4/12 px-4 mx-auto text-center">
-        <div class="text-sm text-blueGray-500 font-semibold py-1">
-          <a href="#top" class="text-blueGray-500 hover:text-orange-800 ">Ma Voirie |</a>
-          <%= link_to "Conditions d'utilisation |", '/conditions' ,class: "text-blueGray-500 hover:text-orange-800 "%>
-          <%= link_to 'Contact', new_contact_path, class: 'text-blueGray-500 hover:text-orange-800' %>
+        <div class="text-md cstm-dark font-semibold py-1">
+          <a href="#top" class="cstm-dark hover:text-orange-800 h-[48px] w-[48px]">Ma Voirie |</a>
+          <%= link_to "Conditions d'utilisation |", '/conditions' ,class: "cstm-dark hover:text-orange-800 "%>
+          <%= link_to 'Contact', new_contact_path, class: 'cstm-dark hover:text-orange-800', data: {turbo:false} %>
         </div>
       </div>  
     </div>
