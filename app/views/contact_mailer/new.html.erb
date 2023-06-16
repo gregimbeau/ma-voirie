@@ -26,7 +26,8 @@
       <div class="mb-4 flex justify-center">
 
 
-<%= recaptcha_tags id: 'recaptcha', callback: 'recaptchaCallback', expired_callback: 'recaptchaExpiredCallback' %>
+
+      <%= recaptcha_tags id: 'recaptcha', callback: 'recaptchaCallback', expired_callback: 'recaptchaExpiredCallback' %>
 
 
       </div>
@@ -44,8 +45,22 @@
       </div>
     <% end %>
   </div>
-  <script>
-document.addEventListener("DOMContentLoaded", function() {
+
+<script>
+window.onload = function() {
+  if (typeof grecaptcha !== "undefined") {
+    grecaptcha.ready(function() {
+      grecaptcha.reset();
+    });
+  }
+}
+document.addEventListener("turbo:load", function() {
+  if (typeof grecaptcha !== "undefined") {
+    grecaptcha.ready(function() {
+      grecaptcha.reset();
+    });
+  }
+
   var contactForm = document.getElementById('contact_form');
   contactForm.addEventListener('submit', function(event) {
     if (grecaptcha.getResponse() == '') {
@@ -55,5 +70,6 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 
-  </script>
+
+</script>
 </body>
