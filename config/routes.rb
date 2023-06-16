@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :reports, only: [:new, :create]
   end
 
-  resources :contact_mailer, only: [:new, :create] do
+  resources :contact_mailer, only: [:new, :create], path: 'contact', as: 'contact' do
     collection do
       get :confirmation
     end
