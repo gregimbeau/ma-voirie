@@ -1,7 +1,7 @@
 <body data-sitekey="<%= ENV['RECAPTCHA_SITE_KEY'] %>" class="shadow-lg cstm-dark">
   <div class="w-full lg:w-7/12 cstm-bg-sand p-5 rounded">
     <h3 class="pt-4 text-2xl text-center ">Contactez-nous</h3>
-    <%= form_with(model: @contact_message, url: contact_index_path, local: true, html: {class: "px-8 pt-6 pb-1 mb-4 rounded cstm-bg-sand", id: "contact_form"}) do |form| %>
+    <%= form_with(model: @contact_message, url: contact_mailer_index_path, local: true, html: {class: "px-8 pt-6 pb-1 mb-4 rounded cstm-bg-sand", id: "contact_form"}) do |form| %>
     
       <div class="mb-4">
         <%= form.label :name, "Votre Nom", class: "block mb-2 text-sm font-bold" %>
