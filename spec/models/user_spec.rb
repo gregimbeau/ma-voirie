@@ -1,11 +1,65 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  
-  it 'return the full_name for a user' do
-    user = User.create(first_name: "Philippe", last_name:"Popo");
-    expect(user.full_name).to eq 'Philippe Popo'
+ 
+  before(:each) do 
+    @user = User.create(nickname: "John", email:"test@test.com", password:"password", password_confirmation: "password")
   end
 
+  context "validation" do
 
+    it "is valid with valid attributes" do
+      expect(@user).to be_a(User)
+      expect(@user).to be_valid
+    end
+
+    describe "#nickname" do
+      it "should not be valid with only nickname" do
+        bad_user = User.create(nickname: "Doe")
+        expect(bad_user).not_to be_valid
+        expect(bad_user.errors.include?(:email)).to eq(true)
+        expect(bad_user.errors.include?(:password)).to eq(true)
+      end
+    end
+
+    describe "#email" do
+      it "should not be valid with only email" do
+        bad_user = User.create(email: "test@test.com")
+        expect(bad_user).not_to be_valid
+        expect(bad_user.errors.include?(:nickname)).to eq(true)
+        expect(bad_user.errors.include?(:password)).to eq(true)
+      end
+    end
+
+    describe "#email_empty" do
+      it "should not be valid with an empty email" do
+        bad_user = User.create(nickname: "John", email: "", password:"password", password_confirmation: "password")
+        expect(bad_user).not_to be_valid
+        expect(bad_user.errors.include?(:email)).to eq(true)
+      end
+    end
+
+    describe "verify existing user" do
+      it "should find the existing user" do
+        test_user = User.find_by(email: @user.email)
+        expect(test_user).to be_valid
+        expect(test_user.nickname).to eq("John")
+        expect(test_user.nickname).to eq(@user.nickname)
+      end
+    end
+
+    describe "destroy user" do
+      it "should destroy the existing user" do
+        @user.delete
+        expect(User.find_by(email: @user.email)).to eq(nil)
+      end
+    end
+
+    describe "test user" do
+      it "should indicate that the user isn't an admin" do
+        expect(@user.is_admin).to eq(nil)
+      end
+    end
+
+  end
 end

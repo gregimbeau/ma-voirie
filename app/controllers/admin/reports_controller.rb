@@ -19,7 +19,6 @@ class Admin::ReportsController < ApplicationController
 
   def update
     @report = Report.find(params[:id])
-    
     if params['report'] == "true"
       @report.update!(is_validate: true, status_id: 2)
       flash[:notice] = "Le signalement a été validé !"
