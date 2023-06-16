@@ -71,7 +71,7 @@
 <% if report.images.any? %>
   <h3>Uploaded Images</h3>
   <% report.images.each do |image| %>
-    <%= image_tag(url_for(image), width: 100) %>
+    <%= image_tag(url_for(image), width: 100, alt: "Image de signalement") %>
 <%= link_to 'Delete Image', delete_image_attachment_report_path(:id, :image_id),
             method: :delete,
             data: { confirm: 'Êtes-vous certain(e) ?', turbolinks: false } %>
