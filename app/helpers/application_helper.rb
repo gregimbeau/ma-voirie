@@ -7,4 +7,10 @@ module ApplicationHelper
     end
   end
 
+  def check_if_admin_or_creator
+    unless current_user&.is_admin || current_user&.id == Report.find(params['id']).user_id
+      flash[:alert] = "Cet évènement n'est pas encore validé !"
+      redirect_to root_path
+    end
+  end
 end
