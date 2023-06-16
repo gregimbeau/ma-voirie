@@ -2,7 +2,7 @@ class Admin::ReportsController < ApplicationController
   before_action :check_if_admin
 
   def index
-    @reports = Report.all.where(is_validate: nil)
+    @reports = Report.where(is_validate: nil)
     @validated = Report.all.where(status_id: 2)
     @accepted = Report.all.where(status_id: 3)
     @in_progress = Report.all.where(status_id: 4)

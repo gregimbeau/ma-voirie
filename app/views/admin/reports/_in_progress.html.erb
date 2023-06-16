@@ -26,21 +26,21 @@
       </th>
       <th><%= button_to "Voir le signalement", report, class:"cstm-bg-valid-dark cstm-light font-bold py-2 px-4 rounded", method: :get %></th>
       <th class="items-end">
-        <button id="dropdownInProgress" data-dropdown-toggle="dropdown4" class="cstm-bg-action cstm-light font-bold py-2 px-5 rounded inline-flex" type="button">
+        <button id="dropdownInProgress<%= report.id %>" data-dropdown-toggle="dropdown4<%= report.id %>" class="cstm-bg-action cstm-light font-bold py-2 px-5 rounded inline-flex" type="button">
           Actions<svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
         </button>
-        <div id="dropdown4" class="z-10 hidden bg-white rounded-lg shadow divide-y">
-          <ul class="text-sm" aria-labelledby="dropdownInProgress">
+        <div id="dropdown4<%= report.id %>" class="z-10 hidden bg-white rounded-lg shadow divide-y">
+          <ul class="text-sm" aria-labelledby="dropdownInProgress<%= report.id %>">
             <li>
-              <%= button_to "Etape précédente", admin_report_path(report), class:"w-full block px-4 py-2 admin_drop cstm-dark", method: :patch, params: { "report" =>  "accepted" } %>
+              <%= button_to "Etape précédente", admin_report_path(report.id), class:"w-full block px-4 py-2 admin_drop cstm-dark", method: :patch, params: { "report" =>  "accepted" } %>
             </li>
             <li>
-              <%= button_to "Travaux effectués", admin_report_path(report), class:"w-full block px-4 py-2 admin_drop cstm-dark", method: :patch, params: { "report" =>  "resolved" } %>
+              <%= button_to "Travaux effectués", admin_report_path(report.id), class:"w-full block px-4 py-2 admin_drop cstm-dark", method: :patch, params: { "report" =>  "resolved" } %>
             </li>
           </ul>
           <div>
-            <%= button_to "Supprimer", admin_report_path(report), class:"w-full block px-4 py-2 admin_drop cstm-danger", method: :delete %>
+            <%= button_to "Supprimer", admin_report_path(report.id), class:"w-full block px-4 py-2 admin_drop cstm-danger", method: :delete %>
           </div>
         </div>
       </th>
