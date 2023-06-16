@@ -36,17 +36,23 @@ RSpec.describe Report, type: :model do
       expect(Report.find_by(title:"Un trou dans la route")).to eq(nil)
     end
 
-    describe "test update" do
+    describe "test update report" do
       it "shouldn't be update" do
-        @report.update(status_id:2)
+        @report.update(content:"")
         expect(@report).not_to be_valid
       end 
 
       it "should be update" do
-        @new_status = Status.create(id: 2, title:"nouveau status")
-        @report.update(status_id:2)
+        @report.update(content:"Et donc là il y a un trou dans la route à l'impasse John Doe")
         expect(@report).to be_valid
       end
+    end
+  end
+
+  context "association" do
+
+    it "should find the nickname of the creator's report" do
+      expect(@report.user.nickname).to eq("John")
     end
   end
 end
