@@ -21,7 +21,7 @@
     <div class="flex flex-wrap items-center md:justify-between justify-center">
       <div class="w-full md:w-4/12 px-4 mx-auto text-center">
         <div class="text-md cstm-dark font-semibold py-1">
-          <a href="#top" class="cstm-dark hover:text-orange-800 h-[48px] w-[48px]">Ma Voirie |</a>
+          <%= link_to "Ma Voirie |", root_path, class: "cstm-dark hover:text-orange-800 h-[48px] w-[48px]" %>
           <%= link_to "Conditions d'utilisation |", '/conditions' ,class: "cstm-dark hover:text-orange-800 "%>
           <%= link_to 'Contact', new_contact_mailer_path, class: 'cstm-dark hover:text-orange-800', data: {turbo:false} %>
         </div>

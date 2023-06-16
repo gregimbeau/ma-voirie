@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-6">
 
   <div class="bg-ffe05d rounded-lg p-6 border-y-4 border-x-4 border-ff9642">
@@ -11,4 +12,11 @@
   <% @reports.sort.reverse_each do |report| %>
     <%= render report %>
   <% end %>
+=======
+<div class="grid grid-cols-1 gap-6">
+  <h2 class="text-3xl text-center font-semibold cstm-dark">Les signalements en cours</h2>
+    <% @reports.sort.reverse_each do |report| %>
+      <%= render report %>
+    <% end %>
+>>>>>>> a74e15924e5a91cfc81ccba0cbd0d2885fd197b0
 </div>
