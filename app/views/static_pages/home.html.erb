@@ -1,0 +1,93 @@
+<div class="grid grid-cols-1 gap-6">
+
+  <div class="bg-ffe05d rounded-lg p-6 border-y-2 border-x-2 border-orange-400 shadow-2xl">
+    <h2 class="fa-3x cstm-primary font-bold mb-1 text-center">MA<span class="cstm-dark">VOIRIE</span></h2>
+    <h3 class="fa-2x cstm-dark font-semibold mb-6 text-center">Qu'est ce que c'est ?</h2>
+    <li class="cstm-dark mb-4 font-semibold">Ma Voirie est un site en ligne qui offre aux utilisateurs la possibilité de signaler facilement les problèmes de voirie qu'ils rencontrent dans leur commune. Le site vise à faciliter la communication entre les citoyens et les autorités locales responsables de l'entretien des routes, des trottoirs et des espaces publics, </li>
+    <li class="cstm-dark mb-4 font-semibold">Cela vise à améliorer la qualité de vie des citoyens en facilitant la résolution rapide des problèmes de voirie; en permettant aux utilisateurs de signaler directement les incidents, il favorise la participation citoyenne et contribue à une meilleure gestion de l'entretien des infrastructures publiques.</li>
+    <div class = "flex items-center justify-center gap-10 mt-8">
+      <%= link_to reports_path, class: "rounded relative inline-flex group items-center justify-center w-full sm:w-1/5 h-12 cursor-pointer border-b-4 border-l-2 active:border-orange-500 active:shadow-none shadow-lg bg-gradient-to-tr from-orange-500 to-orange-300 border-orange-500 text-white font-semibold", data: {turbo: false} do %>
+        <span class="absolute w-0 h-0 transition-all duration-300 ease-out bg-white rounded group-hover:w-full sm:w-64 group-hover:h-16 opacity-10"></span>
+        <span class="flex items-center justify-center w-full h-full text-center text-xl">Parcourir les signalements</span>
+      <% end %>
+
+      <%= link_to new_report_path, class: "rounded relative inline-flex group items-center justify-center w-full sm:w-1/5 h-12 cursor-pointer border-b-4 border-l-2 active:border-orange-500 active:shadow-none shadow-lg bg-gradient-to-tr from-orange-500 to-orange-300 border-orange-500 text-white font-semibold", data: {turbo: false} do %>
+        <span class="absolute w-0 h-0 transition-all duration-300 ease-out bg-white rounded group-hover:w-full sm:w-64 group-hover:h-16 opacity-10"></span>
+        <span class="flex items-center justify-center text-center w-full h-full text-xl">Nouveau signalement</span>
+        <% end %>
+    </div>
+  </div>
+
+  <hr class="border-gray-300 mt-10">
+  <div class="container mx-auto">
+  <div class="text-center">
+    <h2 class="fa-2x cstm-dark font-semibold mb-6 text-center">Comment ça fonctionne ?</h2>
+  </div>
+  <div class="flex justify-center space-x-72 mt-8 mb-3">
+    <div class="items-center mx-4 w-64">
+    <div class="flex justify-center">
+      <div class="rounded-full cstm-bg-primary h-28 w-28 flex items-center justify-center">
+        <i class="fas fa-calendar-check text-white fa-3x"></i>
+        </div>
+      </div>
+      <div class="mt-3">
+        <h4 class="text-xl text-center font-bold cstm-dark">Signaler</h4>
+        <p class="text-muted cstm-dark text-center">Signalez facilement les problèmes de voirie dans votre commune.</p>
+      </div>
+    </div>
+    <div class="items-center mx-4 w-64">
+    <div class="flex justify-center">
+      <div class="rounded-full cstm-bg-primary h-28 w-28 flex items-center justify-center">
+        <i class="fa-solid fa-person-digging text-white fa-3x"></i>
+        </div>
+      </div>
+      <div class="mt-3">
+        <h4 class="text-xl text-center font-bold cstm-dark">Suivi</h4>
+        <p class="text-muted cstm-dark text-center">Suivez l'état d'avancement des problèmes signalés dans votre commune grâce aux status présents sur les signalements.</p>
+      </div>
+    </div>
+    <div class="items-center mx-4 w-64">
+    <div class="flex justify-center">
+      <div class="rounded-full cstm-bg-primary h-28 w-28 flex items-center justify-center">
+        <i class="fa-solid fa-handshake-simple fa-3x text-white"></i>
+      </div>
+      </div>
+      <div class="mt-3 mb-2">
+        <h4 class="text-xl text-center font-bold cstm-dark">Résolution</h4>
+        <p class="text-muted cstm-dark text-center">Contribuez à la résolution rapide des problèmes de voirie et améliorez votre commune.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<hr class="border-gray-300">
+  <h2 class="text-center fa-2x cstm-dark font-semibold pt-7">En quelques chiffres
+  </h2>
+<div class="px-4 py-6 w-full mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-6">
+  <div class="grid grid-cols-2 row-gap-8 md:grid-cols-4">
+  <div class="text-center md:border-r-[2px] border-orange-400">
+      <h6 class="text-4xl font-bold lg:text-5xl xl:text-6xl cstm-dark"><%= User.all.count %></h6>
+      <p class="text-sm font-medium tracking-widest cstm-primary uppercase lg:text-base">
+        Utilisateurs
+      </p>
+    </div>
+    <div class="text-center md:border-r-[2px] border-orange-400">
+      <h6 class="text-4xl font-bold lg:text-5xl xl:text-6xl cstm-dark"><%= Report.all.count %></h6>
+      <p class="text-sm font-medium tracking-widest cstm-primary uppercase lg:text-base">
+        Signalements
+      </p>
+    </div>
+    <div class="text-center md:border-r-[2px] border-orange-400">
+      <h6 class="text-4xl font-bold lg:text-5xl xl:text-6xl cstm-dark"><%= Report.all.where(status_id:3).count %></h6>
+      <p class="text-sm font-medium tracking-widest cstm-primary uppercase lg:text-base">
+        Travaux en cours
+      </p>
+    </div>
+    <div class="text-center">
+      <h6 class="text-4xl font-bold lg:text-5xl xl:text-6xl cstm-dark"><%= Report.all.where(status_id:5).count %></h6>
+      <p class="text-sm font-medium tracking-widest cstm-primary uppercase lg:text-base">
+        Travaux terminés
+      </p>
+    </div>
+  </div>
+</div>
+</div>
