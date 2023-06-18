@@ -10,7 +10,7 @@
         <span class="nav-btn text-2xl font-semibold whitespace-nowrap drop-shadow">Accueil</span>
       </a>
       <a href="<%= root_path %>" class="md:px-1 md:py-2 md:ml-[3%] lg:ml-[2%]">
-          <span class="nav-btn text-2xl font-semibold whitespace-nowrap drop-shadow">Signalements</span>
+        <span class="nav-btn text-2xl font-semibold whitespace-nowrap drop-shadow">Signalements</span>
       </a>
       <% if current_user %>
         <div class="md:px-1 md:py-2 md:ml-[3%] lg:ml-[2%]">
@@ -18,7 +18,7 @@
         </div>
       <% else %>
         <a href="<%= new_user_session_path %>" class="md:px-1 md:py-2 md:ml-[3%] lg:ml-[2%]">
-            <span class="text-2xl font-semibold whitespace-nowrap drop-shadow">Nouveau signalement</span>
+          <span class="text-2xl font-semibold whitespace-nowrap drop-shadow">Nouveau signalement</span>
         </a>
       <% end %>
       <div class="flex items-center md:ml-auto md:mr-[11%] lg:mr-[15%]" id="to_right">

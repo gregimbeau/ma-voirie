@@ -30,7 +30,6 @@ $(document).ready(function() {
     var results = response.features;
     var resultsList = $('#addressResults');
     resultsList.empty();
-
     var maxSuggestions = Math.min(results.length, 3);
 
     for (var i = 0; i < maxSuggestions; i++) {
@@ -58,10 +57,8 @@ $(document).ready(function() {
 document.addEventListener("turbo:load", ()=>{
   div_notice = document.getElementById("show_notice");
   _notice = div_notice.getAttribute("data");
-
   div_alert = document.getElementById("show_alert");
   _alert = div_alert.getAttribute("data");
-
   seconds = 0;
 
   if (_notice == "true")

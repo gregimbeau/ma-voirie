@@ -1,5 +1,4 @@
 <div class="grid grid-cols-1 gap-6">
-
   <div class="bg-ffe05d rounded-lg p-6 border-y-2 border-x-2 border-orange-400 shadow-2xl">
     <h2 class="fa-3x cstm-primary font-bold mb-1 text-center">MA<span class="cstm-dark">VOIRIE</span></h2>
     <h3 class="fa-2x cstm-dark font-semibold mb-6 text-center">Qu'est ce que c'est ?</h2>
@@ -16,51 +15,49 @@
           </svg>
         </span>
       <% end %>
-
-    <%= link_to new_report_path, class: "relative inline-flex items-center justify-center w-1/2 2xl:w-2/5 xl:w-2/5 md:w-2/5 lg:w-2/5 sm:w-2/5 h-12 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-white rounded-lg shadow-md group", data: {turbo: false} do %>
-      <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full cstm-bg-yellow group-hover:translate-x-0 ease">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-        </svg>
-      </span>
-      <span class="cstm-bg-primary shadow-2xl cstm-bg-sand absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease">Nouveau signalement</span>
-    <% end %>
+      <%= link_to new_report_path, class: "relative inline-flex items-center justify-center w-1/2 2xl:w-2/5 xl:w-2/5 md:w-2/5 lg:w-2/5 sm:w-2/5 h-12 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-white rounded-lg shadow-md group", data: {turbo: false} do %>
+        <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full cstm-bg-yellow group-hover:translate-x-0 ease">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+          </svg>
+        </span>
+        <span class="cstm-bg-primary shadow-2xl cstm-bg-sand absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease">Nouveau signalement</span>
+      <% end %>
     </div>
   </div>
-
   <hr class="border-gray-300 mt-10">
   <div class="container mx-auto">
-  <div class="text-center">
-    <h2 class="fa-2x cstm-dark font-semibold mb-6 text-center">Comment ça fonctionne ?</h2>
-  </div>
-  <div class="flex justify-center mt-8">
-    <div class="items-center mx-4">
-    <div class="flex justify-center">
-      <div class="rounded-full cstm-bg-primary h-28 w-28 flex items-center justify-center">
-        <i class="fas fa-calendar-check text-white fa-3x"></i>
-        </div>
-      </div>
-      <div class="mt-3">
-        <h4 class="text-xl text-center font-bold cstm-dark">Search</h4>
-        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-      </div>
+    <div class="text-center">
+      <h2 class="fa-2x cstm-dark font-semibold mb-6 text-center">Comment ça fonctionne ?</h2>
     </div>
-    <div class="items-center mx-4">
-    <div class="flex justify-center">
-      <div class="rounded-full cstm-bg-primary h-28 w-28 flex items-center justify-center">
-        <i class="fa-solid fa-person-digging text-white fa-3x"></i>
+    <div class="flex justify-center mt-8">
+      <div class="items-center mx-4">
+        <div class="flex justify-center">
+          <div class="rounded-full cstm-bg-primary h-28 w-28 flex items-center justify-center">
+            <i class="fas fa-calendar-check text-white fa-3x"></i>
+          </div>
+        </div>
+        <div class="mt-3">
+          <h4 class="text-xl text-center font-bold cstm-dark">Search</h4>
+          <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
         </div>
       </div>
+      <div class="items-center mx-4">
+        <div class="flex justify-center">
+          <div class="rounded-full cstm-bg-primary h-28 w-28 flex items-center justify-center">
+            <i class="fa-solid fa-person-digging text-white fa-3x"></i>
+          </div>
+        </div>
       <div class="mt-3">
         <h4 class="text-xl text-center font-bold cstm-dark">Book</h4>
         <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
       </div>
     </div>
     <div class="items-center mx-4">
-    <div class="flex justify-center">
-      <div class="rounded-full cstm-bg-primary h-28 w-28 flex items-center justify-center">
-        <i class="fa-solid fa-handshake-simple fa-3x text-white"></i>
-      </div>
+      <div class="flex justify-center">
+        <div class="rounded-full cstm-bg-primary h-28 w-28 flex items-center justify-center">
+          <i class="fa-solid fa-handshake-simple fa-3x text-white"></i>
+        </div>
       </div>
       <div class="mt-3 mb-2">
         <h4 class="text-xl text-center font-bold cstm-dark">Work</h4>
@@ -71,7 +68,7 @@
 </div>
 <hr class="border-gray-300">
 <h2 class="text-3xl text-center font-semibold cstm-dark">Les signalements en cours</h2>
-  <% @reports.sort.reverse_each do |report| %>
-    <%= render report %>
-  <% end %>
-</div>
+<% @reports.sort.reverse_each do |report| %>
+  <%= render report %>
+<% end %>
+

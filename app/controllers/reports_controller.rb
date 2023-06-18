@@ -3,29 +3,23 @@ class ReportsController < ApplicationController
   before_action :authenticate_user, only: [:new, :create]
   before_action :check_if_admin_or_creator, only: [:show]
 
-  # GET /reports or /reports.json
   def index
     @reports = Report.where(is_validate:true)
   end
 
-  # GET /reports/1 or /reports/1.json
   def show
   end
 
-  # GET /reports/new
   def new
     @report = Report.new
   end
 
-  # GET /reports/1/edit
   def edit
   end
 
-  # POST /reports or /reports.json
   def create
     puts params
     @report = Report.new(report_params)
-  
     respond_to do |format|
       if @report.save
         format.html { redirect_to report_url(@report), notice: "Le signalement a correctement été créé." }
@@ -38,8 +32,6 @@ class ReportsController < ApplicationController
     end
   end
   
-
-  # PATCH/PUT /reports/1 or /reports/1.json
   def update
     respond_to do |format|
       if @report.update(report_params)
@@ -52,10 +44,8 @@ class ReportsController < ApplicationController
     end
   end
 
-  # DELETE /reports/1 or /reports/1.json
   def destroy
     @report.destroy
-
     respond_to do |format|
       format.html { redirect_to reports_url, notice: "Le signalement a correctement été supprimé." }
       format.json { head :no_content }
@@ -68,24 +58,21 @@ class ReportsController < ApplicationController
     redirect_back(fallback_location: request.referer)
   end
   
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_report
-      @report = Report.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def report_params
-      params.require(:report).permit(:title, :content, :is_validate, :user_id, :status_id, :address, images: [])
-    end
-    
-end
+  def set_report
+    @report = Report.find(params[:id])
+  end
 
-def authenticate_user
-  unless current_user
-    flash[:alert] = "Merci de vous connecter pour créer un signalement."
-    redirect_to new_user_session_path
+  def report_params
+    params.require(:report).permit(:title, :content, :is_validate, :user_id, :status_id, :address, images: [])
+  end
+
+  def authenticate_user
+    unless current_user
+      flash[:alert] = "Merci de vous connecter pour créer un signalement."
+      redirect_to new_user_session_path
+    end
   end
 
   
