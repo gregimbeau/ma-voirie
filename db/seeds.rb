@@ -23,6 +23,8 @@ if Status.count == 0
   end
 end
 
+User.create(nickname: "compte supprimé", email: "test@test.fr", password: "password", is_admin: true)
+
 2.times do
   user = User.create!(
     nickname: Faker::Name.first_name,

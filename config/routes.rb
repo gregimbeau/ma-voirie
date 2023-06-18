@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
 
   get '/conditions' => 'static_pages#conditions'
+  get '/home' => 'static_pages#home'
 
   resources :reports do
     member do
@@ -20,7 +21,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :edit, :update]
 
-  root to: "reports#index"
+  root to: "static_pages#home"
 
   namespace :admin do
     root to: 'admin#index'
