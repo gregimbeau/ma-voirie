@@ -1,11 +1,7 @@
 class User < ApplicationRecord
-  # after_create :send_welcome
-  after_update_commit :send_password_change_email
+  after_create :send_welcome
 
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
   has_many :reports
   validates :nickname, presence: true
   
@@ -15,7 +11,7 @@ class User < ApplicationRecord
     UserMailer.welcome(self).deliver_now
   end
 
-  def send_password_change_email
+  def send_password_change_notification
     UserMailer.password_changed(self).deliver_now
   end
 
