@@ -7,22 +7,26 @@
   <div class="hidden w-full md:block md:w-auto flex-grow" id="navbar-default">
     <ul class="w-full font-medium flex flex-col p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:mt-0 md:border-0">
       <li class="md:px-1 md:py-2 md:ml-[4%] md:ml-[10%] xl:ml-[13%]">
-        <a href="<%= root_path %>" class="">
+        <a href="<%= root_path %>">
           <span class="nav-btn text-2xl font-semibold whitespace-nowrap drop-shadow">Accueil</span>
         </a>
       </li>
       <li class="md:px-1 md:py-2 md:ml-[1%] lg:ml-[2%]">
-        <a href="<%= reports_path %>" class="">
+        <a href="<%= reports_path %>">
           <span class="nav-btn text-2xl font-semibold whitespace-nowrap drop-shadow">Signalements</span>
         </a>
       </li>
       <% if current_user %>
         <li class="md:px-1 md:py-2 md:ml-[1%] lg:ml-[2%]">
-          <%= link_to "Nouveau signalement", new_report_path, class:"nav-btn text-2xl font-semibold whitespace-nowrap drop-shadow-xl", data: { turbo: "false" } %>
+          <a>
+            <%= link_to "Nouveau signalement", new_report_path, class:"nav-btn text-2xl font-semibold whitespace-nowrap drop-shadow-xl", data: { turbo: "false" } %>
+          </a>
         </li>
       <% else %>
-        <li href="<%= new_user_session_path %>" class="md:px-1 md:py-2 md:ml-[1%] lg:ml-[2%]">
-          <span class="nav-btn text-2xl font-semibold whitespace-nowrap drop-shadow">Nouveau signalement</span>
+        <li class="md:px-1 md:py-2 md:ml-[1%] lg:ml-[2%]">
+          <a href="<%= new_user_session_path %>">
+            <span class="nav-btn text-2xl font-semibold whitespace-nowrap drop-shadow">Nouveau signalement</span>
+          </a>
         </li>
       <% end %>
       <div class="flex items-center md:ml-auto md:mr-[6%] lg:mr-[15%]" id="to_right">
@@ -56,7 +60,9 @@
             </ul>
           <% else %>
             <div class="py-1">
-              <li href="<%= new_user_session_path %>" class="text-center block px-4 py-2 hover:bg-gray-100">Connexion</li>
+              <li>
+                <%= link_to "Connexion", new_user_session_path, class:"w-full text-center block px-4 py-2 hover:bg-gray-100" %>
+              </li>
             </div>
             <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
               <li>
