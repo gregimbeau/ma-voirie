@@ -39,6 +39,31 @@
   user-select: none;
 }
 
+.email-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.banner-contact {
+  width: 100%;
+}
+
+.logo {
+  width: 100px;
+}
+
+.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
 
 .cstm-bg-sand{
   background-color: #fff8cd;
@@ -128,6 +153,10 @@
   color: #76CBC8;
 }
 
+.cstm-bg-body{
+  background-color: #ededed;
+}
+
 .admin_drop{
   background-color: white;
 }
@@ -145,4 +174,8 @@ footer {
   bottom: 0 !important;
   width: 100% !important;
   background-color: #ededed;
+}
+
+::selection{
+  background-color:#ffe05d; 
 }

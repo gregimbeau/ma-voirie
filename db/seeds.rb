@@ -23,15 +23,13 @@ if Status.count == 0
   end
 end
 
+User.create(nickname: "compte supprimé", email: "test@test.fr", password: "password", is_admin: true)
+
 2.times do
   user = User.create!(
     nickname: Faker::Name.first_name,
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name, 
     email: Faker::Internet.email,
     password: Faker::Internet.password,
-    phone_number: "+33 #{rand(1..9)} #{rand(10..99)} #{rand(10..99)} #{rand(10..99)} #{rand(10..99)}",
-    age: Faker::Number.within(range: 20..80),
     is_admin: false
   )
 end

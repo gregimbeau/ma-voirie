@@ -1,5 +1,5 @@
 class Report < ApplicationRecord
-  # after_create :send_confirmation_email
+  after_create :send_confirmation_email
 
   belongs_to :user
   belongs_to :status
@@ -9,7 +9,6 @@ class Report < ApplicationRecord
   validates :title, presence: true, length: { minimum: 15, maximum: 60 }
 
   has_many_attached :images
-
 
   validate :validate_images
 

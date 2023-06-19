@@ -4,7 +4,6 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    @can_change_password = can_change_password?
   end
 
   def update

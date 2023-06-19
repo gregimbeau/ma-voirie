@@ -7,17 +7,17 @@
             <div class="h-64 md:h-80 rounded mb-4">
               <div x-show="image === 1" class="h-full w-full md:h-80 rounded mb-4">
                 <a href="<%= url_for(@report.images[0]) %>" data-lightbox="report-images">
-                  <%= image_tag(url_for(@report.images[0]), class: "rounded h-full w-full object-cover") %>
+                  <%= image_tag(url_for(@report.images[0]), class: "rounded h-full w-full object-cover", alt: "Photo signalement n°1") %>
                 </a>
               </div>
               <div x-show="image === 2" class="h-full w-full md:h-80 rounded mb-4">
                 <a href="<%= url_for(@report.images[1]) %>" data-lightbox="report-images">
-                  <%= image_tag(url_for(@report.images[1]), class: "rounded h-full w-full object-cover") %>
+                  <%= image_tag(url_for(@report.images[1]), class: "rounded h-full w-full object-cover", alt: "Photo signalement n°2") %>
                 </a>
               </div>
               <div x-show="image === 3" class="h-full w-full md:h-80 rounded mb-4">
                 <a href="<%= url_for(@report.images[2]) %>" data-lightbox="report-images">
-                  <%= image_tag(url_for(@report.images[2]), class: "rounded h-full w-full object-cover") %>
+                  <%= image_tag(url_for(@report.images[2]), class: "rounded h-full w-full object-cover", alt: "Photo signalement n°3") %>
                 </a>
               </div>
             </div>
