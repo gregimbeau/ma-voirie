@@ -7,26 +7,18 @@
   <div class="hidden w-full md:block md:w-auto flex-grow" id="navbar-default">
     <ul class="w-full font-medium flex flex-col p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:mt-0 md:border-0">
       <li class="md:px-1 md:py-2 md:ml-[4%] md:ml-[10%] xl:ml-[13%]">
-        <a href="<%= root_path %>">
-          <span class="nav-btn text-2xl font-semibold whitespace-nowrap drop-shadow">Accueil</span>
-        </a>
+        <%= link_to "Accueil", root_path, class:"nav-btn text-2xl font-semibold whitespace-nowrap drop-shadow-xl", data: { turbo: "false" } %>
       </li>
       <li class="md:px-1 md:py-2 md:ml-[1%] lg:ml-[2%]">
-        <a href="<%= reports_path %>">
-          <span class="nav-btn text-2xl font-semibold whitespace-nowrap drop-shadow">Signalements</span>
-        </a>
+        <%= link_to "Signalements", reports_path, class:"nav-btn text-2xl font-semibold whitespace-nowrap drop-shadow-xl", data: { turbo: "false" } %>
       </li>
       <% if current_user %>
         <li class="md:px-1 md:py-2 md:ml-[1%] lg:ml-[2%]">
-          <a>
-            <%= link_to "Nouveau signalement", new_report_path, class:"nav-btn text-2xl font-semibold whitespace-nowrap drop-shadow-xl", data: { turbo: "false" } %>
-          </a>
+          <%= link_to "Nouveau signalement", new_report_path, class:"nav-btn text-2xl font-semibold whitespace-nowrap drop-shadow-xl", data: { turbo: "false" } %>
         </li>
       <% else %>
         <li class="md:px-1 md:py-2 md:ml-[1%] lg:ml-[2%]">
-          <a href="<%= new_user_session_path %>">
-            <span class="nav-btn text-2xl font-semibold whitespace-nowrap drop-shadow">Nouveau signalement</span>
-          </a>
+          <%= link_to "Nouveau signalement", new_user_session_path, class:"nav-btn text-2xl font-semibold whitespace-nowrap drop-shadow-xl", data: { turbo: "false" } %>
         </li>
       <% end %>
       <div class="flex items-center md:ml-auto md:mr-[6%] lg:mr-[15%]" id="to_right">
