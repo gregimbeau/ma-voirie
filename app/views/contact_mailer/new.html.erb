@@ -47,12 +47,11 @@
           grecaptcha.reset();
         });
       }
-
       var contactForm = document.getElementById('contact_form');
       contactForm.addEventListener('submit', function(event) {
         if (grecaptcha.getResponse() == '') {
           event.preventDefault();
-              alert('Merci de completer le reCAPTCHA');
+          alert('Merci de completer le reCAPTCHA');
         }
       });
     });
