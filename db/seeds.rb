@@ -3,25 +3,8 @@ require 'faker'
 Report.delete_all
 User.delete_all
 
-
-array_status = [
-  "En cours de validation",
-  "Validé",
-  "Accepté",
-  "En cours",
-  "Résolu"
-]
-
 photo_files = Dir.glob(Rails.root.join('app', 'assets', 'images', 'seed_report_images', '*.jpg'))
 
-if Status.count == 0
-  5.times do
-    status = Status.create!(
-    title: array_status.first 
-    )
-    array_status.rotate!
-  end
-end
 
 User.create(nickname: "compte supprimé", email: "test@test.fr", password: "password", is_admin: true)
 
@@ -41,7 +24,7 @@ end
     is_validate: nil,
     address: Faker::Address.street_address,
     user_id: User.all.sample.id,
-    status_id: Status.first.id
+    status: 0
   )
 
     selected_images = photo_files.sample(rand(1..3))

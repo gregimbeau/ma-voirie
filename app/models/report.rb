@@ -1,8 +1,7 @@
 class Report < ApplicationRecord
   after_create :send_confirmation_email
-
   belongs_to :user
-  belongs_to :status
+  enum :status, ["en cours de validation", "validé", "accepté","en cours","résolu"]
 
   validates :address, presence: true
   validates :content, presence: true, length: { minimum: 20 }
