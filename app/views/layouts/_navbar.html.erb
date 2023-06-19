@@ -18,20 +18,20 @@
         </div>
       <% else %>
         <a href="<%= new_user_session_path %>" class="md:px-1 md:py-2 md:ml-[3%] lg:ml-[2%]">
-          <span class="text-2xl font-semibold whitespace-nowrap drop-shadow">Nouveau signalement</span>
+            <span class="nav-btn text-2xl font-semibold whitespace-nowrap drop-shadow">Nouveau signalement</span>
         </a>
       <% end %>
       <div class="flex items-center md:ml-auto md:mr-[11%] lg:mr-[15%]" id="to_right">
         <% if current_user %>
         <div class="nav-btn">
           <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center text-2xl font-semibold whitespace-nowrap md:mt-0 sm:mt-3">
-            <span class="text-2xl font-semibold whitespace-nowrap drop-shadow mr-2"><%= current_user.nickname %></span>
+            <span class="nav-btn text-2xl font-semibold whitespace-nowrap drop-shadow mr-2"><%= current_user.nickname %></span>
             <%= image_tag("user.png", class: "w-10 banner md:mt-1 drop-shadow", draggable: "false", unselectable: "on", alt: "Icone utilisateur") %>
           </button>
         </div>
         <% else %>
           <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center text-2xl font-semibold whitespace-nowrap md:mt-0 sm:mt-3">
-            <span class="text-2xl font-semibold whitespace-nowrap drop-shadow mr-2">Se connecter</span>
+            <span class="nav-btn text-2xl font-semibold whitespace-nowrap drop-shadow mr-2">Se connecter</span>
             <%= image_tag("user.png", class: "w-10 banner md:mt-1", draggable: "false", unselectable: "on", alt: "Icone utilisateur") %>
           </button>
         <% end %>
