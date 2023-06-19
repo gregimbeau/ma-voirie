@@ -1,6 +1,6 @@
-<div class="grid grid-cols-1 gap-6">
+<section class="grid grid-cols-1 gap-6">
   <h2 class="text-3xl text-center font-semibold cstm-dark">Les signalements en cours</h2>
-    <% @reports.sort.reverse_each do |report| %>
-      <%= render report %>
-    <% end %>
-</div>
+  <% @reports.sort.reverse_each do |report| %>
+    <%= render report %>
+  <% end %>
+</section>

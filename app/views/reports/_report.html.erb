@@ -1,9 +1,9 @@
-<div class="w-full lg:w-4/5 lg:ml-[10%] max-h-full lg:flex rounded-t mt-6">
+<main class="w-full lg:w-4/5 lg:ml-[10%] max-h-full lg:flex rounded-t mt-6">
   <% if report.images.any? %>
     <div class="h-48 lg:h-auto lg:w-96 flex-none bg-cover lg:rounded-l text-center overflow-hidden" style="background-image: url('<%= url_for(report.images.first) %>')" title="Image description">
     </div>
   <% end %>
-  <div class="shadow-2xl border-r border-b border-l border-orange-400 lg:border-l-0 lg:border-t lg:border-orange-400 cstm-bg-primary rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal flex-grow">
+  <section class="shadow-2xl border-r border-b border-l border-orange-400 lg:border-l-0 lg:border-t lg:border-orange-400 cstm-bg-primary rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal flex-grow">
     <div class="mb-8">
       <p class="text-sm cstm-dark flex justify-end items-center">
         <span class="flex justify-end  ml-auto bg-green-200 rounded-full px-3 py-1 text-sm font-semibold cstm-dark mr-2">
@@ -41,5 +41,5 @@
         <span class="absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease">Détails</span>
       <% end %>
     </div>    
-  </div>
-</div>
+  </section>
+</main>

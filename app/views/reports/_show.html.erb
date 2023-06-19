@@ -1,8 +1,8 @@
-<section class="max-w-screen-xl w-full grid grid-cols-1">
+<main class="max-w-screen-xl w-full grid grid-cols-1">
   <div class="shadow-2xl max-w-full max-h-full lg:flex rounded bg-orange-400">
-    <div class="max-w-full max-h-full mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+    <article class="max-w-full max-h-full mx-auto px-4 sm:px-6 lg:px-8 mt-6">
       <div class="flex flex-col md:flex-row -mx-4">
-        <div class="md:flex-1 px-4 ml-4 mt-4 mr-4">
+        <section class="md:flex-1 px-4 ml-4 mt-4 mr-4">
           <div x-data="{ image: 1 }" x-cloak>
             <div class="h-64 md:h-80 rounded mb-4">
               <div x-show="image === 1" class="h-full w-full md:h-80 rounded mb-4">
@@ -31,8 +31,8 @@
               <% end %>
             </div>
           </div>
-        </div>
-        <div class="md:flex-1 px-4 pt-1">
+        </section>
+        <section class="md:flex-1 px-4 pt-1">
           <p class="text-sm text-grey-dark flex justify-end items-center">
             <span class="flex justify-end  ml-auto bg-green-200 rounded-full px-3 py-2 text-sm font-semibold text-gray-700 mr-2"><%= @report.status.title %></span>
           </p>
@@ -44,7 +44,7 @@
             <% else %>
               <%= @report.user.nickname %>
             <% end %>
-            , le <%= @report.created_at.strftime("%d %b %Y") %>
+            , le <%= @report.created_at.strftime("%d/%m/%Y") %>
           </p>
             <hr><hr>
           <p class="text-white mt-4"><%= @report.content %></p>
@@ -58,11 +58,11 @@
               <span class="absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease">Accueil</span>
             <% end %>
           </div>
-        </div>
+        </section>
       </div>
-    </div>
+    </article>
   </div>
-  <div class="flex justify-center mt-16">
+  <article class="flex justify-center mt-16">
     <% if current_user && current_user.is_admin && @report.is_validate == nil %>
       <%= button_to "Valider le signalement", admin_report_path(@report), class:"cstm-bg-valid-dark cstm-light font-bold py-2 px-4 rounded-full", method: :patch, params: { "report" =>  "true" } %>
       <%= button_to "Refuser le signalement", admin_report_path(@report), class:"cstm-bg-action cstm-light font-bold py-2 px-4 rounded-full ml-10", method: :patch, params: { "report" => "false" } %>
@@ -82,5 +82,5 @@
     <% if current_user && current_user.is_admin %>
       <%= button_to "Supprimer", admin_report_path(@report), class:"cstm-bg-danger cstm-light font-bold py-2 px-4 rounded-full ml-10", method: :delete %>
     <% end %>
-  </div>
-</section>
+  </article>
+</main>

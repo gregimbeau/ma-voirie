@@ -1,11 +1,9 @@
 <footer>
-  <div>
-    <div class="h-1 w-full cstm-bg-yellow"></div>
-    <div class="h-1 w-full cstm-bg-primary"></div>
-    <div class="h-1 w-full cstm-bg-light"></div>
-    <div class="h-1 w-full cstm-bg-dark"></div>
-  </div>
-  <div  class="relativ pt-2.5">
+  <div class="h-1 w-full cstm-bg-yellow"></div>
+  <div class="h-1 w-full cstm-bg-primary"></div>
+  <div class="h-1 w-full cstm-bg-light"></div>
+  <div class="h-1 w-full cstm-bg-dark"></div>
+  <article class="relativ pt-2.5">
     <section class="page-section flex justify-center items-center" id="footer">
       <div class="container text-center">
         <div class="flex justify-center">
@@ -18,7 +16,7 @@
         </div>
       </div>
     </section>
-    <div class="flex flex-wrap items-center md:justify-between justify-center">
+    <section class="flex flex-wrap items-center md:justify-between justify-center">
       <div class="w-full md:w-4/12 px-4 mx-auto text-center">
         <div class="text-md cstm-dark font-semibold py-1">
           <%= link_to "Ma Voirie |", root_path, class: "cstm-dark hover:text-orange-800 h-[48px] w-[48px]" %>
@@ -26,7 +24,7 @@
           <%= link_to 'Contact', new_contact_mailer_path, class: 'cstm-dark hover:text-orange-800', data: {turbo:false} %>
         </div>
       </div>  
-    </div>
-  </div>
+    </section>
+  </article>
 </footer>
 
