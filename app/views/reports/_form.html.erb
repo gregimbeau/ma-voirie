@@ -1,5 +1,4 @@
 <h1 class="pt-4 text-2xl text-center font-medium cstm-dark">Nouveau signalement</h1>
-
 <%= form_with(model: report, class: "contents") do |form| %>
   <% if report.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
@@ -11,52 +10,43 @@
       </ul>
     </div>
   <% end %>
-
   <div class="my-5">
     <%= form.label "Titre de votre signalement :", class: "block mb-2 text-sm font-bold cstm-dark" %>
     <%= form.text_field :title, class: "w-full px-3 py-2 text-sm leading-tight cstm-dark border-orange-300 rounded shadow appearance-none focus:border-orange-500 focus:ring-0 focus:shadow-outline" %>
   </div>
-
   <div class="my-5">
     <%= form.label "Décrivez la problématique rencontrée :", class: "block mb-2 text-sm font-bold cstm-dark" %>
     <%= form.text_area :content, rows: 4, class: "w-full px-3 py-2 text-sm leading-tight cstm-dark border-orange-300 rounded shadow appearance-none focus:border-orange-500 focus:ring-0 focus:shadow-outline" %>
   </div>
-
   <%= form.hidden_field :is_validate, value: nil %>
   <%= form.hidden_field :user_id, value: current_user.id %>
   <%= form.hidden_field :status_id, value: Status.first.id %>
-
   <div class="my-5 relative">
     <%= form.label "Adresse concernée par votre signalement :", class: "block mb-2 text-sm font-bold cstm-dark"%>
     <%= form.text_field :address, id: "addressInput", placeholder: "Saisissez votre adresse", class: "w-full px-3 py-2 text-sm leading-tight cstm-dark border-orange-300 rounded shadow appearance-none focus:border-orange-500 focus:ring-0 focus:shadow-outline" %>
-
     <div id="resultContainer" class="absolute left-0 w-full bg-white rounded-b shadow-md border border-gray-200 z-10" style="display: none;">
       <ul id="addressResults" class="cursor-pointer"></ul>
     </div>
   </div>
-<hr class="border-orange-400 pb-1">
+  <hr class="border-orange-400 pb-1">
   <div class="my-5">
     <div class="my-5">
       <%= form.label :images, "Images (vous pouvez sélectionner jusqu'à 3 photos)", class: "block mb-2 text-sm font-bold cstm-dark pb-2" %>
       <%= form.file_field :images, multiple: true, accept: "image/*", class: "block mt-2" %>
     </div>
   </div>
-<hr class="border-orange-400 pt-1 pb-6">
+  <hr class="border-orange-400 pt-1 pb-6">
   <div class = "flex justify-between">
-
-
-      <%= link_to reports_path, class: "relative inline-flex items-center justify-center w-1/2 2xl:w-2/5 xl:w-2/5 md:w-2/5 lg:w-2/5 sm:w-2/5 h-12 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-white rounded-lg shadow-md group", method: :get do %>
-        <span class="cstm-bg-dark text-white absolute flex items-center justify-center w-full h-full cstm-dark transition-all duration-300 transform group-hover:translate-x-full ease">
-          Retour à l'accueil
-        </span>
-        <span class="bg-orange-400 absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 translate-x-full cstm-bg-yellow group-hover:translate-x-0 ease">
-          <svg class="w-6 h-6 transform -rotate-270" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-          </svg>
-        </span>
-      <% end %>
-
-
+    <%= link_to reports_path, class: "relative inline-flex items-center justify-center w-1/2 2xl:w-2/5 xl:w-2/5 md:w-2/5 lg:w-2/5 sm:w-2/5 h-12 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-white rounded-lg shadow-md group", method: :get do %>
+      <span class="cstm-bg-dark text-white absolute flex items-center justify-center w-full h-full cstm-dark transition-all duration-300 transform group-hover:translate-x-full ease">
+        Retour à l'accueil
+      </span>
+      <span class="bg-orange-400 absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 translate-x-full cstm-bg-yellow group-hover:translate-x-0 ease">
+        <svg class="w-6 h-6 transform -rotate-270" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+        </svg>
+      </span>
+    <% end %>
     <%= button_to reports_path, class: "relative inline-flex items-center justify-center w-1/2 2xl:w-2/5 xl:w-2/5 md:w-2/5 lg:w-2/5 sm:w-2/5 h-12 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-white rounded-lg shadow-md group", method: :post do %>
       <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full cstm-bg-yellow group-hover:translate-x-0 ease bg-green-300">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -66,15 +56,11 @@
       <span class="bg-amber-300 shadow-2xl cstm-bg-sand absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease">Créer mon signalement</span>
     <% end %>
   </div>
-  
 <% end %>
 <% if report.images.any? %>
   <h3>Uploaded Images</h3>
   <% report.images.each do |image| %>
     <%= image_tag(url_for(image), width: 100, alt: "Image de signalement") %>
-<%= link_to 'Delete Image', delete_image_attachment_report_path(:id, :image_id),
-            method: :delete,
-            data: { confirm: 'Êtes-vous certain(e) ?', turbolinks: false } %>
-
+    <%= link_to 'Delete Image', delete_image_attachment_report_path(:id, :image_id), method: :delete, data: { confirm: 'Êtes-vous certain(e) ?', turbolinks: false } %>
   <% end %>
 <% end %>
