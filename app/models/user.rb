@@ -4,7 +4,19 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
   has_many :reports
   validates :nickname, presence: true
-  
+
+  attr_accessor :login
+
+  def self.find_for_database_authentication(warden_conditions)
+    conditions = warden_conditions.dup
+    login = conditions.delete(:login)
+    if login
+      where(conditions.to_h).where("lower(email) = :value OR lower(nickname) = :value", { value: login.downcase }).first
+    elsif conditions.key?(:email) || conditions.key?(:nickname)
+      where(conditions.to_h).first
+    end
+  end
+
   private
 
   def send_welcome
