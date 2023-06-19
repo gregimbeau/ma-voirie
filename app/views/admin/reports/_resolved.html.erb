@@ -11,7 +11,7 @@
   </thead>
   <% @resolved.each do |report| %>
     <tbody class="cstm-bg-sand text-center">
-      <th scope="col" class="md:px-6 md:py-3 hidden md:block"><%= report.status.title %></th>
+      <th scope="col" class="md:px-6 md:py-3 hidden md:block"><%= report.status %></th>
       <% if report.title.length > 29 %>
         <th scope="col" class="md:px-6 md:py-3"><%= report.title.first(26) %>...</th>
       <% else %>

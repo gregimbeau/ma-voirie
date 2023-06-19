@@ -3,10 +3,10 @@ class Admin::ReportsController < ApplicationController
 
   def index
     @reports = Report.where(is_validate: nil)
-    @validated = Report.all.where(status_id: 2)
-    @accepted = Report.all.where(status_id: 3)
-    @in_progress = Report.all.where(status_id: 4)
-    @resolved = Report.all.where(status_id: 5)
+    @validated = Report.where(status: 1)
+    @accepted = Report.where(status: 2)
+    @in_progress = Report.where(status: 3)
+    @resolved = Report.where(status: 4)
   end
 
   def edit
@@ -20,7 +20,7 @@ class Admin::ReportsController < ApplicationController
   def update
     @report = Report.find(params[:id])
     if params['report'] == "true"
-      @report.update!(is_validate: true, status_id: 2)
+      @report.update!(is_validate: true, status: 1)
       flash[:notice] = "Le signalement a été validé !"
       redirect_to admin_reports_path
     elsif params['report'] == "false"
@@ -28,15 +28,15 @@ class Admin::ReportsController < ApplicationController
       flash[:notice] = "Le signalement a été refusé !"
       redirect_to admin_reports_path
     elsif params['report'] == "accepted"
-      @report.update!(status_id:3)
+      @report.update!(status: 2)
       flash[:notice] = "Le signalement a été accepté !"
       redirect_to admin_reports_path
     elsif params['report'] == "in progress"
-      @report.update!(status_id:4)
+      @report.update!(status: 3)
       flash[:notice] = "Les travaux sont en cours !"
       redirect_to admin_reports_path
     else params['report'] == "resolved"
-      @report.update!(status_id:5)
+      @report.update!(status: 4)
       flash[:notice] = "Les travaux sont terminés !"
       redirect_to admin_reports_path
     end

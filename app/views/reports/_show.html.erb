@@ -34,7 +34,7 @@
         </section>
         <section class="md:flex-1 px-4 pt-1">
           <p class="text-sm text-grey-dark flex justify-end items-center">
-            <span class="flex justify-end  ml-auto bg-green-200 rounded-full px-3 py-2 text-sm font-semibold text-gray-700 mr-2"><%= @report.status.title %></span>
+            <span class="flex justify-end  ml-auto bg-green-200 rounded-full px-3 py-2 text-sm font-semibold text-gray-700 mr-2"><%= @report.status %></span>
           </p>
           <h2 class="mb-2 mt-4 leading-tight tracking-tight font-bold text-white text-2xl md:text-3xl"><%= @report.title %></h2>
           <p class="text-white text-sm mb-2 flex justify-start">
@@ -66,17 +66,17 @@
     <% if current_user && current_user.is_admin && @report.is_validate == nil %>
       <%= button_to "Valider le signalement", admin_report_path(@report), class:"cstm-bg-valid-dark cstm-light font-bold py-2 px-4 rounded-full", method: :patch, params: { "report" =>  "true" } %>
       <%= button_to "Refuser le signalement", admin_report_path(@report), class:"cstm-bg-action cstm-light font-bold py-2 px-4 rounded-full ml-10", method: :patch, params: { "report" => "false" } %>
-    <% elsif current_user && current_user.is_admin && @report.status_id == 2 %>
+    <% elsif current_user && current_user.is_admin && @report.status == 1 %>
       <%= button_to "Travaux programmés", admin_report_path(@report), class:"cstm-bg-valid-dark cstm-light font-bold py-2 px-4 rounded-full", method: :patch, params: { "report" =>  "accepted" } %>
       <%= button_to "Travaux en cours", admin_report_path(@report), class:"cstm-bg-valid-dark cstm-light font-bold py-2 px-4 rounded-full ml-10", method: :patch, params: { "report" =>  "in progress" } %>
       <%= button_to "Travaux terminés", admin_report_path(@report), class:"cstm-bg-valid-dark cstm-light font-bold py-2 px-4 rounded-full ml-10", method: :patch, params: { "report" =>  "resolved" } %>
-    <% elsif current_user && current_user.is_admin && @report.status_id == 3 %>
+    <% elsif current_user && current_user.is_admin && @report.status == 2 %>
       <%= button_to "Travaux en cours", admin_report_path(@report), class:"cstm-bg-valid-dark cstm-light font-bold py-2 px-4 rounded-full", method: :patch, params: { "report" =>  "in progress" } %>
       <%= button_to "Travaux terminés", admin_report_path(@report), class:"cstm-bg-valid-dark cstm-light font-bold py-2 px-4 rounded-full ml-10", method: :patch, params: { "report" =>  "resolved" } %>
-    <% elsif current_user && current_user.is_admin && @report.status_id == 4 %>
+    <% elsif current_user && current_user.is_admin && @report.status == 3 %>
       <%= button_to "Etape précédente", admin_report_path(@report), class:"cstm-bg-valid-dark cstm-light font-bold py-2 px-4 rounded-full", method: :patch, params: { "report" =>  "accepted" } %>
       <%= button_to "Travaux terminés", admin_report_path(@report), class:"cstm-bg-valid-dark cstm-light font-bold py-2 px-4 rounded-full ml-10", method: :patch, params: { "report" =>  "resolved" } %>
-    <% elsif current_user && current_user.is_admin && @report.status_id == 5 %>
+    <% elsif current_user && current_user.is_admin && @report.status == 4 %>
       <%= button_to "Etape précédente", admin_report_path(@report), class:"cstm-bg-valid-dark cstm-light font-bold py-2 px-4 rounded-full", method: :patch, params: { "report" =>  "in progress" } %>
     <% end %>
     <% if current_user && current_user.is_admin %>
