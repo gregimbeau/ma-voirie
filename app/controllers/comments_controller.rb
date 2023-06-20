@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
 
   def create
     @report = Report.find(params[:report_id])
-    @comment = @report.comments.build(comment_params)
+    @comment = @report.comments.new(comment_params)
     @comment.user = current_user
 
     if @comment.save
