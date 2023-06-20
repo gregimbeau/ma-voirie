@@ -1,6 +1,6 @@
 <main class="max-w-screen-xl w-full grid grid-cols-1">
-  <div class="shadow-2xl max-w-full max-h-full lg:flex rounded bg-orange-400">
-    <article class="max-w-full max-h-full mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+  <article class="shadow-2xl max-w-full max-h-full lg:flex rounded bg-orange-400">
+    <div class="max-w-full max-h-full mx-auto px-4 sm:px-6 lg:px-8 mt-6">
       <div class="flex flex-col md:flex-row -mx-4">
         <section class="md:flex-1 px-4 ml-4 mt-4 mr-4">
           <div x-data="{ image: 1 }" x-cloak>
@@ -60,8 +60,8 @@
           </div>
         </section>
       </div>
-    </article>
-  </div>
+    </div>
+  </article>
   <article class="flex justify-center mt-16">
     <% if current_user && current_user.is_admin && @report.is_validate == nil %>
       <%= button_to "Valider le signalement", admin_report_path(@report), class:"cstm-bg-valid-dark cstm-light font-bold py-2 px-4 rounded-full", method: :patch, params: { "report" =>  "true" } %>
@@ -83,15 +83,10 @@
       <%= button_to "Supprimer", admin_report_path(@report), class:"cstm-bg-danger cstm-light font-bold py-2 px-4 rounded-full ml-10", method: :delete %>
     <% end %>
   </article>
-<main class="max-w-screen-xl w-full grid grid-cols-1 p-4 mb-4">
-  <!-- Afficher les commentaires -->
-  <div id="comments-section">
-    <%= render partial: 'comments/comments', locals: { report: @report } %>
-  </div>
-
-  <!-- Formulaire de création de commentaires -->
-  <%= render partial: 'comments/form', locals: { report: @report } %>
-</main>
-
-
+  <article class="max-w-screen-xl w-full grid grid-cols-1 p-4 mb-4">
+    <div id="comments-section">
+      <%= render partial: 'comments/comments', locals: { report: @report } %>
+    </div>
+    <%= render partial: 'comments/form', locals: { report: @report } %>
+  </article>
 </main>
