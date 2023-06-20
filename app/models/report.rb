@@ -7,7 +7,7 @@ class Report < ApplicationRecord
   validates :content, presence: true, length: { minimum: 20 }
   validates :title, presence: true, length: { minimum: 15, maximum: 60 }
 
-  has_many_attached :images
+  has_many_attached :images, dependent: :destroy
   has_many :comments
 
   def send_confirmation_email
