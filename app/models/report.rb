@@ -9,18 +9,10 @@ class Report < ApplicationRecord
 
   has_many_attached :images
   has_many :comments
-  validate :validate_images
 
   def send_confirmation_email
     ReportMailer.report_confirmation(self.user).deliver_now
     ReportMailer.admin_report_notification(self.user).deliver_now
   end
 
-  private
-
-  def validate_images
-    if images.count > 3
-      errors.add(:images, 'Vous ne pouvez ajouter que 3 images maximum.')
-    end
-  end
 end

@@ -51,12 +51,6 @@ class ReportsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-  def delete_image_attachment
-    @image = ActiveStorage::Blob.find_signed(params[:id])
-    @image.purge_later
-    redirect_back(fallback_location: request.referer)
-  end
   
   private
 
