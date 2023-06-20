@@ -1,7 +1,15 @@
-<div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="2" data-dropzone-accepted-files="image/*" data-dropzone-max-files="3" data-upload-multiple="true">
+<div class="dropzone dropzone-default dz-clickable border-none" data-controller="dropzone" data-dropzone-max-file-size="2" data-dropzone-accepted-files="image/*" data-dropzone-max-files="3" data-upload-multiple="true">
   <%= form.file_field :images, multiple: true, direct_upload: true, data: { dropzone_target: 'input' } %>
-  <div class="dropzone-msg dz-message needsclick">
-    <h3 class="dropzone-msg-title">Glissez-déposez ou cliquez ici pour sélectionner les images.</h3>
-    <span class="dropzone-msg-desc">Vous devez sélectionner une à trois images avec une taille maximum de 2Mo chacune.</span>
-  </div>
+  <label
+    class="flex justify-center w-full h-42 px-4 transition bg-white border-2 border-orange-300 border-dashed rounded-md appearance-none cursor-pointer hover:border-orange-400 focus:outline-none">
+    <span class="flex items-center space-x-2">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 cstm-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+      </svg>
+      <div class="dropzone-msg dz-message needsclick cstm-dark font-medium">
+        <h3 class="dropzone-msg-title">Glissez-déposez ou cliquez pour sélectionner les images.</h3>
+        <span class="dropzone-msg-desc">Vous devez sélectionner de une à trois images (taille maximum de 2Mo chacune).</span>
+      </div>
+    </span>
+  </label>
 </div>
