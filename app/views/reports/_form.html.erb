@@ -27,12 +27,10 @@
       <ul id="addressResults" class="cursor-pointer"></ul>
     </div>
   </div>
-  <hr class="border-orange-400">
-  <div class="my-2">
+  <div class="my-2 pt-2">
     <%= render 'reports/image_form', form: form %>
   </div>
-  <hr class="border-orange-400 pb-6">
-  <section class = "flex justify-between">
+  <section class = "flex justify-between pt-4">
     <%= link_to reports_path, class: "relative inline-flex items-center justify-center w-1/2 2xl:w-2/5 xl:w-2/5 md:w-2/5 lg:w-2/5 sm:w-2/5 h-12 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-white rounded-lg shadow-md group", method: :get do %>
       <span class="cstm-bg-dark text-white absolute flex items-center justify-center w-full h-full cstm-dark transition-all duration-300 transform group-hover:translate-x-full ease">
         Retour à l'accueil
