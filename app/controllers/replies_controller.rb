@@ -6,7 +6,7 @@ class RepliesController < ApplicationController
   end
 
   def create
-    @reply = Reply.new(user_id: current_user.id, comment_id: params[:comment_id], nickname: "testname", content: params[:content])
+    @reply = Reply.new(user_id: current_user.id, comment_id: params[:comment_id], content: params[:content])
     
     if @reply.save
       redirect_to @reply, notice: 'Commentaire soumis.'

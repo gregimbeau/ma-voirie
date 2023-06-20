@@ -23,7 +23,7 @@
   <%if comment.replies.any?%>
     <%comment.replies.each_with_index do |reply, reply_index|%>
       <div class="border border-b-gray-400 ml-12 rounded-3xl <%= reply_index.zero? ? 'pt-4' : '' %> comment <%= reply_index.even? ? 'cstm-bg-sand' : 'cstm-bg-sand-dark' %> p-2 pl-4">
-          <p class="text-sm text-gray-600"><strong><%= reply.nickname%>:</strong></p>
+          <p class="text-sm text-gray-600"><strong><%= reply.user.nickname%>:</strong></p>
         <p class="text-gray-800 mb-2"><%= reply.content %></p>
       </div>
     <%end%>

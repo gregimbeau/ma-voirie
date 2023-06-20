@@ -1,6 +1,10 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
 
+  def new 
+    @users = User.all
+  end
+
   def create
     @report = Report.find(params[:report_id])
     @comment = @report.comments.new(comment_params)
