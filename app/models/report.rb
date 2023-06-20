@@ -8,7 +8,8 @@ class Report < ApplicationRecord
   validates :title, presence: true, length: { minimum: 15, maximum: 60 }
 
   has_many_attached :images, dependent: :destroy
-  has_many :comments
+  has_many :comments, dependent: :destroy
+  has_many :replies, through: :comments
 
   def send_confirmation_email
     ReportMailer.report_confirmation(self.user).deliver_now

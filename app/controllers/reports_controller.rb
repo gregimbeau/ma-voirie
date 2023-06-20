@@ -48,6 +48,7 @@ class ReportsController < ApplicationController
   end
 
   def destroy
+    @report.comments.each(&destroy)
     @report.destroy
     respond_to do |format|
       format.html { redirect_to reports_url, notice: "Le signalement a correctement été supprimé." }
