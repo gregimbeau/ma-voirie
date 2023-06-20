@@ -18,12 +18,15 @@ class ReportsController < ApplicationController
   end
 
   def create
-    puts params
     @report = Report.new(report_params)
     respond_to do |format|
-      if @report.save
+      if @report.images.attached? && @report.save
         format.html { redirect_to report_url(@report), notice: "Le signalement a correctement été créé." }
         format.json { render :show, status: :created, location: @report }
+      elsif @report&.images.count == 0
+        flash[:alert] = "Vous devez charger au moins une photo pour valider le signalement."
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @report.errors, status: :unprocessable_entity }
       else
         flash[:alert] = @report.errors.full_messages.join(', ')
         format.html { render :new, status: :unprocessable_entity }
@@ -68,6 +71,5 @@ class ReportsController < ApplicationController
       redirect_to new_user_session_path
     end
   end
-
   
 end
