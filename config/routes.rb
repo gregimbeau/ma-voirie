@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get '/home' => 'static_pages#home'
 
   resources :reports do
+    resources :comments, only: [:create, :update, :destroy]
     member do
       delete :delete_image_attachment
     end
