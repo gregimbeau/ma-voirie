@@ -69,6 +69,10 @@
   background-color: #fff8cd;
 }
 
+.cstm-bg-sand-dark{
+  background-color: #F2ECC2;
+}
+
 .cstm-sand{
   color: #fff8cd;
 }
@@ -178,4 +182,8 @@ footer {
 
 ::selection{
   background-color:#ffe05d; 
+}
+
+.bg-color-comments{
+  background-color: #fff8cd;
 }
