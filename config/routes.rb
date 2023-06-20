@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :replies
+
   resources :users, only: [:show, :edit, :update]
 
   root to: "static_pages#home"
