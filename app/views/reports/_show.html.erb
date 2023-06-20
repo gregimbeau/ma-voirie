@@ -63,34 +63,34 @@
     </article>
   </div>
   <article class="flex justify-center mt-16">
-    <% if current_user && current_user.is_admin && @report.is_validate == nil %>
+    <% if current_user && current_user.is_admin && @report.is_validate == "en cours de validation" %>
       <%= button_to "Valider le signalement", admin_report_path(@report), class:"cstm-bg-valid-dark cstm-light font-bold py-2 px-4 rounded-full", method: :patch, params: { "report" =>  "true" } %>
       <%= button_to "Refuser le signalement", admin_report_path(@report), class:"cstm-bg-action cstm-light font-bold py-2 px-4 rounded-full ml-10", method: :patch, params: { "report" => "false" } %>
-    <% elsif current_user && current_user.is_admin && @report.status == 1 %>
+    <% elsif current_user && current_user.is_admin && @report.status == "validé" %>
       <%= button_to "Travaux programmés", admin_report_path(@report), class:"cstm-bg-valid-dark cstm-light font-bold py-2 px-4 rounded-full", method: :patch, params: { "report" =>  "accepted" } %>
       <%= button_to "Travaux en cours", admin_report_path(@report), class:"cstm-bg-valid-dark cstm-light font-bold py-2 px-4 rounded-full ml-10", method: :patch, params: { "report" =>  "in progress" } %>
       <%= button_to "Travaux terminés", admin_report_path(@report), class:"cstm-bg-valid-dark cstm-light font-bold py-2 px-4 rounded-full ml-10", method: :patch, params: { "report" =>  "resolved" } %>
-    <% elsif current_user && current_user.is_admin && @report.status == 2 %>
+    <% elsif current_user && current_user.is_admin && @report.status == "accepté" %>
       <%= button_to "Travaux en cours", admin_report_path(@report), class:"cstm-bg-valid-dark cstm-light font-bold py-2 px-4 rounded-full", method: :patch, params: { "report" =>  "in progress" } %>
       <%= button_to "Travaux terminés", admin_report_path(@report), class:"cstm-bg-valid-dark cstm-light font-bold py-2 px-4 rounded-full ml-10", method: :patch, params: { "report" =>  "resolved" } %>
-    <% elsif current_user && current_user.is_admin && @report.status == 3 %>
+    <% elsif current_user && current_user.is_admin && @report.status == "en cours" %>
       <%= button_to "Etape précédente", admin_report_path(@report), class:"cstm-bg-valid-dark cstm-light font-bold py-2 px-4 rounded-full", method: :patch, params: { "report" =>  "accepted" } %>
       <%= button_to "Travaux terminés", admin_report_path(@report), class:"cstm-bg-valid-dark cstm-light font-bold py-2 px-4 rounded-full ml-10", method: :patch, params: { "report" =>  "resolved" } %>
-    <% elsif current_user && current_user.is_admin && @report.status == 4 %>
+    <% elsif current_user && current_user.is_admin && @report.status == "résolu" %>
       <%= button_to "Etape précédente", admin_report_path(@report), class:"cstm-bg-valid-dark cstm-light font-bold py-2 px-4 rounded-full", method: :patch, params: { "report" =>  "in progress" } %>
     <% end %>
     <% if current_user && current_user.is_admin %>
       <%= button_to "Supprimer", admin_report_path(@report), class:"cstm-bg-danger cstm-light font-bold py-2 px-4 rounded-full ml-10", method: :delete %>
     <% end %>
   </article>
-<main class="max-w-screen-xl w-full grid grid-cols-1 p-4 mb-4">
-  <!-- Afficher les commentaires -->
-  <div id="comments-section">
-    <%= render partial: 'comments/comments', locals: { report: @report } %>
-  </div>
+  <article class="max-w-screen-xl w-full grid grid-cols-1 p-4 mb-4 mt-10%">
+    <div id="comments-section">
+      <%= render partial: 'comments/comments', locals: { report: @report } %>
+    </div>
+    <%= render partial: 'comments/form', locals: { report: @report } %>
+  </article>
 
-  <!-- Formulaire de création de commentaires -->
-  <%= render partial: 'comments/form', locals: { report: @report } %>
+
 </main>
 
 
