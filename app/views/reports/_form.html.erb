@@ -29,10 +29,7 @@
   </div>
   <hr class="border-orange-400 pb-1">
   <div class="my-5">
-    <div class="my-5">
-      <%= form.label :images, "Images (vous pouvez sélectionner jusqu'à 3 photos)", class: "block mb-2 text-sm font-bold cstm-dark pb-2" %>
-      <%= form.file_field :images, multiple: true, accept: "image/*", class: "block mt-2" %>
-    </div>
+    <%= render 'reports/image_form', form: form %>
   </div>
   <hr class="border-orange-400 pt-1 pb-6">
   <section class = "flex justify-between">
@@ -55,11 +52,4 @@
       <span class="bg-amber-300 shadow-2xl cstm-bg-sand absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease">Créer mon signalement</span>
     <% end %>
   </section>
-<% end %>
-<% if report.images.any? %>
-  <h3>Uploaded Images</h3>
-  <% report.images.each do |image| %>
-    <%= image_tag(url_for(image), width: 100, alt: "Image de signalement") %>
-    <%= link_to 'Delete Image', delete_image_attachment_report_path(:id, :image_id), method: :delete, data: { confirm: 'Êtes-vous certain(e) ?', turbolinks: false } %>
-  <% end %>
 <% end %>
