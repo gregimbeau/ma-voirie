@@ -9,12 +9,9 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to @report, notice: 'Commentaire créé'
     else
-      # Handle the case when comment creation fails
-      # You may render the form again with error messages
+      redirect_to @report, alert: 'Erreur lors de la création du commentaire'
     end
   end
-
-  # Other actions like edit, update, destroy, etc.
   
   private
   
