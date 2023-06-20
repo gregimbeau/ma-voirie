@@ -65,6 +65,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_20_100636) do
     t.bigint "comment_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
     t.string "nickname"
     t.index ["comment_id"], name: "index_replies_on_comment_id"
   end
