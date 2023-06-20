@@ -62,19 +62,35 @@
     <div class="grid grid-cols-2 row-gap-8 md:grid-cols-4">
       <div class="text-center md:border-r-[2px] border-orange-400">
         <h6 class="text-4xl font-bold lg:text-5xl xl:text-6xl cstm-dark"><%= User.count %></h6>
-        <p class="text-sm font-medium tracking-widest cstm-primary uppercase lg:text-base">Utilisateurs</p>
+        <% if User.count > 1 %>
+          <p class="text-sm font-medium tracking-widest cstm-primary uppercase lg:text-base">Utilisateurs</p>
+        <% else %>
+          <p class="text-sm font-medium tracking-widest cstm-primary uppercase lg:text-base">Utilisateur</p>
+        <% end %>
       </div>
       <div class="text-center md:border-r-[2px] border-orange-400">
         <h6 class="text-4xl font-bold lg:text-5xl xl:text-6xl cstm-dark"><%= Report.where(is_validate: true).count %></h6>
-        <p class="text-sm font-medium tracking-widest cstm-primary uppercase lg:text-base">Signalements</p>
+        <% if Report.where(is_validate: true).count > 1 %>
+          <p class="text-sm font-medium tracking-widest cstm-primary uppercase lg:text-base">Signalements</p>
+        <% else %>
+          <p class="text-sm font-medium tracking-widest cstm-primary uppercase lg:text-base">Signalement</p>
+        <% end %>
       </div>
       <div class="text-center md:border-r-[2px] border-orange-400">
         <h6 class="text-4xl font-bold lg:text-5xl xl:text-6xl cstm-dark"><%= Report.where(status:3).count %></h6>
-        <p class="text-sm font-medium tracking-widest cstm-primary uppercase lg:text-base">Travaux en cours</p>
+        <% if Report.where(status:3).count > 1 %>
+          <p class="text-sm font-medium tracking-widest cstm-primary uppercase lg:text-base">Travaux en cours</p>
+        <% else %>
+          <p class="text-sm font-medium tracking-widest cstm-primary uppercase lg:text-base">Travail en cours</p>
+        <% end %>
       </div>
       <div class="text-center">
         <h6 class="text-4xl font-bold lg:text-5xl xl:text-6xl cstm-dark"><%= Report.where(status:4).count %></h6>
-        <p class="text-sm font-medium tracking-widest cstm-primary uppercase lg:text-base">Travaux terminés</p>
+        <% if Report.where(status:4).count > 1 %>
+          <p class="text-sm font-medium tracking-widest cstm-primary uppercase lg:text-base">Travaux terminés</p>
+        <% else %>
+          <p class="text-sm font-medium tracking-widest cstm-primary uppercase lg:text-base">Travail terminé</p>
+        <% end %>
       </div>
     </div>
   </article>
