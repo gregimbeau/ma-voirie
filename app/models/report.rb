@@ -8,7 +8,7 @@ class Report < ApplicationRecord
   validates :title, presence: true, length: { minimum: 15, maximum: 60 }
 
   has_many_attached :images
-
+  has_many :comments
   validate :validate_images
 
   def send_confirmation_email

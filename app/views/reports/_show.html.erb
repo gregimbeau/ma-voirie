@@ -83,4 +83,15 @@
       <%= button_to "Supprimer", admin_report_path(@report), class:"cstm-bg-danger cstm-light font-bold py-2 px-4 rounded-full ml-10", method: :delete %>
     <% end %>
   </article>
+<main class="max-w-screen-xl w-full grid grid-cols-1 p-4 mb-4">
+  <!-- Afficher les commentaires -->
+  <div id="comments-section">
+    <%= render partial: 'comments/comments', locals: { report: @report } %>
+  </div>
+
+  <!-- Formulaire de création de commentaires -->
+  <%= render partial: 'comments/form', locals: { report: @report } %>
+</main>
+
+
 </main>
