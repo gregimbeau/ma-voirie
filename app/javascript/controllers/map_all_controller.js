@@ -1,3 +1,10 @@
+import { Controller } from "@hotwired/stimulus"
+
+// Connects to data-controller="map-all"
+export default class extends Controller {
+  connect() {
+  }
+}
 document.addEventListener('DOMContentLoaded', (event) => {
   let mapElement = document.getElementById('map');
   console.log('Dataset:', mapElement.dataset.reports);

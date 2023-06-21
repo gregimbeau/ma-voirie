@@ -1,3 +1,10 @@
+// import { Controller } from "@hotwired/stimulus"
+
+// Connects to data-controller="map"
+//export default class extends Controller {
+//  connect() {
+//  }
+//} 
 document.addEventListener('DOMContentLoaded', (event) => {
   let mapElement = document.getElementById('map');
   let latitude = parseFloat(mapElement.dataset.latitude);
