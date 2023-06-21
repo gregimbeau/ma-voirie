@@ -14,9 +14,6 @@ class ReportsController < ApplicationController
     @report = Report.new
   end
 
-  def edit
-  end
-
   def create
     @report = Report.new(report_params)
     respond_to do |format|
@@ -57,6 +54,18 @@ class ReportsController < ApplicationController
   end
   
   private
+
+  def geocode_address(address)
+    response = HTTParty.get("https://api-adresse.data.gouv.fr/search/?q=#{CGI::escape(address)}&limit=1")
+    if response.code == 200
+        coordinates = response.parsed_response["features"][0]["geometry"]["coordinates"]
+        puts "Coordinates: #{coordinates}"  # Ajoutez ceci
+        return { longitude: coordinates[0], latitude: coordinates[1] }
+    else
+        return { longitude: nil, latitude: nil }
+    end
+  end
+
 
   def set_report
     @report = Report.find(params[:id])

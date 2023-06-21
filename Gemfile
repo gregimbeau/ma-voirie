@@ -90,3 +90,7 @@ gem 'devise-i18n'
 gem "dockerfile-rails", ">= 1.4", :group => :development
 
 gem 'recaptcha', require: 'recaptcha/rails'
+
+gem 'leaflet-rails'
+
+gem 'httparty'

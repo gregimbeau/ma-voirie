@@ -12,8 +12,9 @@ Rails.application.routes.draw do
 
   get '/conditions' => 'static_pages#conditions'
   get '/home' => 'static_pages#home'
+  get '/map' => 'static_pages#map'
 
-  resources :reports do
+  resources :reports, except: [:edit] do
     resources :comments, only: [:create, :update, :destroy]
     resources :report_likes, only: [:create, :destroy]
   end
