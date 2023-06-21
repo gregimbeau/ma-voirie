@@ -187,3 +187,13 @@ footer {
 .bg-color-comments{
   background-color: #fff8cd;
 }
+
+.panel-anchor{
+  background-color: #646464;
+  color: #fff8cd;
+}
+
+.panel-anchor:hover{
+  background-color: #7a7a7a;
+  color: #ff9642;
+}
