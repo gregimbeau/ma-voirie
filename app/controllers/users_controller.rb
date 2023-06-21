@@ -20,14 +20,23 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params['id'])
-    @user.nickname = "Compte supprimé"
-    @user.email = "#{Faker::Lorem.characters(number: 15, min_alpha: 15)}@yopmail.com"
-    @password = Faker::Lorem.characters(number: 15)
-    @user.update(password: @password, password_confirmation: @password)
-    flash[:alert] = "Le compte a bien été supprimé !"
-    User.find(session[:user_id]).destroy      
-    session[:user_id] = nil 
-    redirect_to admin_users_path
+    if !User.find_by(nickname: ENV['DELETE_USER_NICKNAME'], email: ENV['DELETE_USER_EMAIL'])
+      @delete_user = User.create(nickname: ENV['DELETE_USER_NICKNAME'], email: ENV['DELETE_USER_EMAIL'], password: ENV['DELETE_USER_PASSWORD'], password_confirmation: ENV['DELETE_USER_PASSWORD'])
+    else
+      @delete_user = User.find_by(nickname: ENV['DELETE_USER_NICKNAME'], email: ENV['DELETE_USER_EMAIL'])
+    end
+    if @user.reports.count == 0
+      @user.destroy
+      flash[:alert] = "Le compte a bien été supprimé !"
+      redirect_to admin_users_path
+    else
+      @user.reports.each do |report|
+        report.update(user_id: @delete_user.id)
+      end
+      @user.destroy
+      flash[:alert] = "Le compte a bien été supprimé !"
+      redirect_to admin_users_path
+    end
   end
   
   private
