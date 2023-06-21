@@ -8,7 +8,9 @@ class ReportsController < ApplicationController
   end
 
   def show
+    puts "Report latitude: #{@report.latitude}, longitude: #{@report.longitude}"
   end
+
 
   def new
     @report = Report.new
@@ -16,6 +18,9 @@ class ReportsController < ApplicationController
 
   def create
     @report = Report.new(report_params)
+    coords = geocode_address(@report.address)
+    @report.latitude = coords[:latitude]
+    @report.longitude = coords[:longitude]
     respond_to do |format|
       if @report.images.attached? && @report.save
         format.html { redirect_to report_url(@report), notice: "Le signalement a correctement été créé." }
@@ -66,13 +71,13 @@ class ReportsController < ApplicationController
     end
   end
 
-
   def set_report
     @report = Report.find(params[:id])
   end
 
+
   def report_params
-    params.require(:report).permit(:title, :content, :is_validate, :user_id, :status_id, :address, images: [])
+    params.require(:report).permit(:title, :content, :is_validate, :user_id, :status_id, :address, :latitude, :longitude, images: [])
   end
 
   def authenticate_user
