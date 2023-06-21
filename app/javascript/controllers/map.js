@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', (event) => {
-  var mapElement = document.getElementById('map');
-  var latitude = parseFloat(mapElement.dataset.latitude);
-  var longitude = parseFloat(mapElement.dataset.longitude);
-  var address = mapElement.dataset.address;
+  let mapElement = document.getElementById('map');
+  let latitude = parseFloat(mapElement.dataset.latitude);
+  let longitude = parseFloat(mapElement.dataset.longitude);
+  let address = mapElement.dataset.address;
 
-  var map = L.map('map').setView([latitude, longitude], 16);
+  let map = L.map('map').setView([latitude, longitude], 16);
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© OpenStreetMap contributors'
