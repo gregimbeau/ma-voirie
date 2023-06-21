@@ -48,7 +48,22 @@
           </p>
             <hr><hr>
           <p class="text-white mt-4"><%= @report.content %></p>
-          <div class="flex py-4 space-x-4">
+          <section class="flex justify-between items-center pt-32 text-white">
+            <figure class="flex align-baseline items-center">
+              <% if already_exist?(@report) == false %>
+                <%= button_to report_report_likes_path(@report.id), method: :post do %>
+                  <i class="fa-solid fa-thumbs-up"></i>
+                    <%= @report.report_likes.count %>
+                <% end %>
+              <% else %>
+                <%= button_to report_report_like_path(report_id: @report.id, id: current_user.id), method: :delete do %>
+                  <i class="fa-solid fa-thumbs-up fa-rotate-180"></i>
+                  <%= @report.report_likes.count %>
+                <% end %>
+              <% end %>
+              <i class="fa-solid fa-comment-dots pl-4 pr-1"></i>
+                <%= @report.comments.count %>
+            </figure>
             <%= button_to root_path, class: "relative inline-flex items-center justify-center p-8 px-10 py-4 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-white rounded-full shadow-md group", method: :get do %>
               <span class="absolute inset-0 flex items-center justify-center w-full h-full text-orange-400 duration-300 -translate-x-full bg-white group-hover:translate-x-0 ease">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -57,17 +72,7 @@
               </span>
               <span class="absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease">Accueil</span>
             <% end %>
-            <div>
-              <% if already_exist?(@report) == false %>
-                <%= button_to "❤ Like ❤ ", report_report_likes_path(@report.id), method: :post, class:"" %>
-              <% else %>
-                <%= button_to "💩 Unlike 💩", report_report_like_path(report_id: @report.id, id: current_user.id), method: :delete, class:"" %>
-              <% end %>
-              <div> 
-                Nombre de like : <%= @report.report_likes.count %>
-              </div>
-            </div>
-          </div>
+          </section>
         </section>
       </div>
     </div>
