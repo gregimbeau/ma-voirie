@@ -14,9 +14,6 @@ class ReportsController < ApplicationController
     @report = Report.new
   end
 
-  def edit
-  end
-
   def create
     @report = Report.new(report_params)
     respond_to do |format|

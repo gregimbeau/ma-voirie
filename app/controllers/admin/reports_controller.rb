@@ -9,10 +9,6 @@ class Admin::ReportsController < ApplicationController
     @resolved = Report.where(status: 4)
   end
 
-  def edit
-    @report = Report.find(params[:id])
-  end
-
   def show
     @report = Report.find(params[:id])
   end
