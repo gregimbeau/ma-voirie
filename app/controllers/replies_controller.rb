@@ -9,9 +9,9 @@ class RepliesController < ApplicationController
     @reply = Reply.new(user_id: current_user.id, comment_id: params[:comment_id], content: params[:content])
     
     if @reply.save
-      redirect_to @reply, notice: 'Commentaire soumis.'
+      redirect_back(fallback_location: root_path)
     else
-      redirect_to @reply, alert: 'Erreur lors de la publication de votre commentaire'
+      redirect_back(fallback_location: root_path)
     end
   end
 

@@ -7,14 +7,16 @@ export default class extends Controller {
   }
 }
 
-var scrollY;
-
 window.addEventListener('scroll', (e)=>{
-  scrollY = window.scrollY;
-  console.log(scrollY);
-
+  var scrollY = window.scrollY;
+  sessionStorage.setItem("scrollY", scrollY);
+  sessionStorage.setItem("is_reloaded", true);
 });
 
 window.addEventListener("turbo:load", (e)=>{
-  window.scrollTo(0,scrollY);
+  window.scrollTo(0,sessionStorage.getItem("scrollY"));
 });
+
+if (sessionStorage.getItem("is_reloaded")){
+  window.scrollTo(0,sessionStorage.getItem("scrollY"));
+}
