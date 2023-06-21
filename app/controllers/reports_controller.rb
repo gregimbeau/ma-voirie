@@ -64,7 +64,7 @@ class ReportsController < ApplicationController
     else
         return { longitude: nil, latitude: nil }
     end
-end
+  end
 
 
   def set_report
