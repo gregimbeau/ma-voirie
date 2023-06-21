@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', (event) => {
   let mapElement = document.getElementById('map');
+  console.log('Dataset:', mapElement.dataset.reports);
   let reports = JSON.parse(mapElement.dataset.reports);
   let map = L.map('map').setView([48.8217, 7.4843], 14);
-
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© OpenStreetMap contributors'
   }).addTo(map);
