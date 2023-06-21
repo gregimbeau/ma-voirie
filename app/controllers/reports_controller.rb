@@ -8,7 +8,6 @@ class ReportsController < ApplicationController
   end
 
   def show
-    puts "Report latitude: #{@report.latitude}, longitude: #{@report.longitude}"
   end
 
 
