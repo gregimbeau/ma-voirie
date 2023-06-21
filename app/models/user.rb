@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :reports
   has_many :comments
   has_many :replies
+  has_many :report_likes
   validates :nickname, presence: true
 
   attr_accessor :login
