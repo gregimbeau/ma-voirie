@@ -51,7 +51,7 @@
           <section class="flex justify-between items-center pt-18 text-white">
             <figure class="flex align-baseline items-center">
               <% if already_exist?(@report) == false %>
-                <%= button_to report_report_likes_path(@report.id), method: :post, class:"flex justify-between items-center" do %>
+                <%= button_to report_report_likes_path(@report.id), data: { turbo: "false" }, remote: true, method: :post, class:"flex justify-between items-center" do %>
                   <i class="fa-solid fa-thumbs-up pr-1"></i>
                     <p class="pr-1">
                       J'aime
@@ -59,7 +59,7 @@
                     <%= @report.report_likes.count %>
                 <% end %>
               <% else %>
-                <%= button_to report_report_like_path(report_id: @report.id, id: current_user.id), method: :delete, class:"flex justify-between items-center" do %>
+                <%= button_to report_report_like_path(report_id: @report.id, id: current_user.id), data: { turbo: "false" }, method: :delete, class:"flex justify-between items-center" do %>
                   <i class="fa-solid fa-thumbs-up fa-rotate-180 pl-1"></i>
                     <%= @report.report_likes.count %>
                 <% end %>
@@ -110,6 +110,5 @@
     </div>
     <%= render partial: 'comments/form', locals: { report: @report } %>
   </article>
-
 </main>
-<%= javascript_include_tag 'controllers/map' %>
+<%= javascript_include_tag 'controllers/map_controller' %>
