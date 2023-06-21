@@ -48,7 +48,7 @@
           </p>
             <hr><hr>
           <p class="text-white mt-4"><%= @report.content %></p>
-          <section class="flex justify-between items-center pt-20 text-white">
+          <section class="flex justify-between items-center pt-18 text-white">
             <figure class="flex align-baseline items-center">
               <% if already_exist?(@report) == false %>
                 <%= button_to report_report_likes_path(@report.id), method: :post do %>
@@ -70,9 +70,12 @@
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                 </svg>
               </span>
-              <span class="absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease">Accueil</span>
+              <span class="absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease">
+                Accueil
+              </span>
             <% end %>
           </section>
+          <div id="map" style="height: 200px; width: 560px; background: #ddd; margin-top: 20px;" data-latitude="<%= @report.latitude %>" data-longitude="<%= @report.longitude %>" data-address="<%= @report.address %>"></div>
         </section>
       </div>
     </div>
@@ -105,3 +108,4 @@
     <%= render partial: 'comments/form', locals: { report: @report } %>
   </article>
 </main>
+<%= javascript_include_tag 'controllers/map' %>
