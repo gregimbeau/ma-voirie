@@ -6,8 +6,6 @@ User.delete_all
 photo_files = Dir.glob(Rails.root.join('app', 'assets', 'images', 'seed_report_images', '*.jpg'))
 
 
-User.create(nickname: "compte supprimé", email: "test@test.fr", password: "password", is_admin: true)
-
 2.times do
   user = User.create!(
     nickname: Faker::Name.first_name,

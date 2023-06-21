@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
   resources :replies
 
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:show, :edit, :update, :destroy]
 
   root to: "static_pages#home"
 
