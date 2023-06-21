@@ -48,7 +48,7 @@
           </p>
             <hr><hr>
           <p class="text-white mt-4"><%= @report.content %></p>
-          <section class="flex justify-between items-center pt-32 text-white">
+          <section class="flex justify-between items-center pt-20 text-white">
             <figure class="flex align-baseline items-center">
               <% if already_exist?(@report) == false %>
                 <%= button_to report_report_likes_path(@report.id), method: :post do %>
