@@ -4,7 +4,7 @@ class Report < ApplicationRecord
   enum :status, ["en cours de validation", "validé", "accepté","en cours","résolu"]
 
   validates :address, presence: true
-  validates :content, presence: true, length: { minimum: 20 }
+  validates :content, presence: true, length: { minimum: 20, maximum: 550 }
   validates :title, presence: true, length: { minimum: 15, maximum: 60 }
 
   has_many_attached :images, dependent: :destroy
