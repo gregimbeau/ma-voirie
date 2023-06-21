@@ -17,6 +17,18 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
   end
+
+  def destroy
+    @user = User.find(params['id'])
+    @user.nickname = "Compte supprimé"
+    @user.email = "#{Faker::Lorem.characters(number: 15, min_alpha: 15)}@yopmail.com"
+    @password = Faker::Lorem.characters(number: 15)
+    @user.update(password: @password, password_confirmation: @password)
+    flash[:alert] = "Le compte a bien été supprimé !"
+    User.find(session[:user_id]).destroy      
+    session[:user_id] = nil 
+    redirect_to admin_users_path
+  end
   
   private
 
