@@ -10,7 +10,6 @@ class ReportsController < ApplicationController
   def show
   end
 
-
   def new
     @report = Report.new
   end
@@ -73,7 +72,6 @@ class ReportsController < ApplicationController
   def set_report
     @report = Report.find(params[:id])
   end
-
 
   def report_params
     params.require(:report).permit(:title, :content, :is_validate, :user_id, :status_id, :address, :latitude, :longitude, images: [])
