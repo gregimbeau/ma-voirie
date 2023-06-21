@@ -18,7 +18,6 @@
     <%= form.label "Décrivez la problématique rencontrée :", class: "block mb-2 text-sm font-bold cstm-dark" %>
     <%= form.text_area :content, rows: 4, class: "w-full px-3 py-2 text-sm leading-tight cstm-dark border-orange-300 rounded shadow appearance-none focus:border-orange-500 focus:ring-0 focus:shadow-outline" %>
   </div>
-  <%= form.hidden_field :is_validate, value: nil %>
   <%= form.hidden_field :user_id, value: current_user.id %>
   <div class="my-5 relative", data-controller="api">
     <%= form.label "Adresse concernée par votre signalement :", class: "block mb-2 text-sm font-bold cstm-dark"%>
