@@ -6,20 +6,16 @@
 
     <%if current_user%>
       <button id = "reply_show" class = "text-white cstm-bg-action cstm-light font-bold py-2 px-4 rounded-xl mr-10">Répondre</button>
-
-      <div class = "hidden" id = "reply_div">
-        <%= form_with(url:replies_path(comment_id: comment), remote: true, class: "mt-4") do |form| %>
-          <div class="flex">
-            <%= form.text_area :content, placeholder: 'Ajouter un commentaire...', class: "form-input flex-1 mr-2", rows: 2 %>
-            <%= form.button "Envoyer", class: "text-white cstm-bg-action cstm-light font-bold py-2 px-4 rounded-xl ml-10", type: "submit" %>
-          </div>
-        <% end %>
-      </div>
-
+        <div class = "hidden" id = "reply_div">
+          <%= form_with(url:replies_path(comment_id: comment), remote: true, class: "mt-4") do |form| %>
+            <div class="flex">
+              <%= form.text_area :content, placeholder: 'Ajouter un commentaire...', class: "form-input flex-1 mr-2", rows: 2 %>
+              <%= form.button "Envoyer", class: "text-white cstm-bg-action cstm-light font-bold py-2 px-4 rounded-xl ml-10", type: "submit" %>
+            </div>
+          <% end %>
+        </div>
     <%end%>
-  
   </div>
-
   <%if comment.replies.any?%>
     <%comment.replies.each_with_index do |reply, reply_index|%>
       <div class="border border-b-gray-400 ml-12 rounded-3xl <%= reply_index.zero? ? 'pt-4' : '' %> comment <%= reply_index.even? ? 'cstm-bg-sand' : 'cstm-bg-sand-dark' %> p-2 pl-4">
