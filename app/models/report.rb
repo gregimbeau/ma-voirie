@@ -10,6 +10,7 @@ class Report < ApplicationRecord
   has_many_attached :images, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :replies, through: :comments
+  has_many :report_likes, dependent: :destroy
 
   def send_confirmation_email
     ReportMailer.report_confirmation(self.user).deliver_now

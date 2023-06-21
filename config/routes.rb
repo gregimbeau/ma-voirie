@@ -15,9 +15,7 @@ Rails.application.routes.draw do
 
   resources :reports do
     resources :comments, only: [:create, :update, :destroy]
-    member do
-      delete :delete_image_attachment
-    end
+    resources :report_likes, only: [:create, :destroy]
   end
 
   resources :replies

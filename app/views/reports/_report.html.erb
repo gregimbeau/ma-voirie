@@ -31,6 +31,10 @@
         , le <%= report.created_at.strftime("%d %b %Y") %>
       </p>
     </div>
+    <div>
+      <p>Nombre de likes :</p>
+      <%= report.report_likes.count %>
+    </div>
     <div class="flex justify-end items-center">
       <%= button_to report_path(report), class: "relative inline-flex items-center justify-center p-8 px-10 py-4 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-white rounded-full shadow-md group", method: :get do %>
         <span class="absolute inset-0 flex items-center justify-center w-full h-full text-orange-400 duration-300 -translate-x-full bg-white group-hover:translate-x-0 ease">

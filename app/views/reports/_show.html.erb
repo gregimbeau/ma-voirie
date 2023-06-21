@@ -57,6 +57,16 @@
               </span>
               <span class="absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease">Accueil</span>
             <% end %>
+            <div>
+              <% if already_exist?(@report) == false %>
+                <%= button_to "❤ Like ❤ ", report_report_likes_path(@report.id), method: :post, class:"" %>
+              <% else %>
+                <%= button_to "💩 Unlike 💩", report_report_like_path(report_id: @report.id, id: current_user.id), method: :delete, class:"" %>
+              <% end %>
+              <div> 
+                Nombre de like : <%= @report.report_likes.count %>
+              </div>
+            </div>
           </div>
         </section>
       </div>
