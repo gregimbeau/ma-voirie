@@ -1,7 +1,7 @@
 <section class="grid grid-cols-1 gap-6">
   <h2 class="text-3xl text-center font-semibold cstm-dark">Les signalements en cours</h2>
   <div class="text-center">
-    <%= link_to 'Voir les incidents sur la carte', map_path, class: "hover:text-orange-500 transition-colors duration-200", data: { turbo: "false" }  %>
+    <%= link_to 'Cliquez-ici pour voir les signalements sur la carte', map_path, class: "hover:text-orange-500 transition-colors duration-200 cstm-dark font-semibold text-xl", data: { turbo: "false" }  %>
   </div>
   <% @reports.sort.reverse_each do |report| %>
     <%= render report %>
