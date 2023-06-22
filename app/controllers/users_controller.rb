@@ -38,20 +38,21 @@ class UsersController < ApplicationController
       redirect_to admin_users_path
     end
   end
-  
+
   private
 
   def authenticate_user
     unless current_user
-      flash[:alert] = "Merci de vous connecter pour voir votre profil"
+      flash[:alert] = "Merci de vous connecter pour voir votre profil."
       redirect_to new_user_session_path
     end
   end
-  
+
   def authenticate_current_user
     unless current_user == User.find(params['id'])
-      flash[:alert] = "Vous ne pouvez accéder qu'à votre profil"
+      flash[:alert] = "Vous ne pouvez accéder qu'à votre profil."
       redirect_to root_path
     end
   end
+
 end

@@ -28,17 +28,17 @@ class ReportsController < ApplicationController
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @report.errors, status: :unprocessable_entity }
       else
-        flash[:alert] = @report.errors.full_messages.join(', ')
+        flash[:alert] = "Erreur de saisie."
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @report.errors, status: :unprocessable_entity }
       end
     end
   end
-  
+
   def update
     respond_to do |format|
       if @report.update(report_params)
-        format.html { redirect_to report_url(@report), notice: "Le signalement a correctement été mise à jour" }
+        format.html { redirect_to report_url(@report), notice: "Le signalement a correctement été mise à jour." }
         format.json { render :show, status: :ok, location: @report }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -55,17 +55,16 @@ class ReportsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   private
 
   def geocode_address(address)
     response = HTTParty.get("https://api-adresse.data.gouv.fr/search/?q=#{CGI::escape(address)}&limit=1")
     if response.code == 200
-        coordinates = response.parsed_response["features"][0]["geometry"]["coordinates"]
-        puts "Coordinates: #{coordinates}"  # Ajoutez ceci
-        return { longitude: coordinates[0], latitude: coordinates[1] }
+      coordinates = response.parsed_response["features"][0]["geometry"]["coordinates"]
+      return { longitude: coordinates[0], latitude: coordinates[1] }
     else
-        return { longitude: nil, latitude: nil }
+      return { longitude: nil, latitude: nil }
     end
   end
 
@@ -83,5 +82,5 @@ class ReportsController < ApplicationController
       redirect_to new_user_session_path
     end
   end
-  
+
 end

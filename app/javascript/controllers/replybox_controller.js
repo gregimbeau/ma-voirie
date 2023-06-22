@@ -22,7 +22,6 @@ function buttonsAnswerClicks() {
 function buttonsSendReplyClicks() {
   var reply_textareas = document.querySelectorAll("#textarea_reply");
   var reply_buttons = document.querySelectorAll("#btn_send_reply");
-
   var textarea_main_comment = document.querySelector("#textarea_main_comment");
   var button_main_comment = document.querySelector("#button_main_comment");
 

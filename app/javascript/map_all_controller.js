@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
   reports.forEach(function(report) {
     let latitude = parseFloat(report.latitude);
     let longitude = parseFloat(report.longitude);
-    
     let popupContent = `<a href="/reports/${report.id}" class="text-blue-500" data-turbo="false">Signalement à ${report.address}</a>`;
 
     L.marker([latitude, longitude]).addTo(map)
