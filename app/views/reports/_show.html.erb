@@ -53,31 +53,33 @@
             , le <%= @report.created_at.strftime("%d/%m/%Y") %>
           </p>
           <section class="flex justify-between items-center pt-18 text-white">
-            <figure class="flex align-baseline items-center">
-              <% if already_exist?(@report) == false %>
-                <%= @report.report_likes.count %>
-                <div class="border-2 border-white px-1 ml-1 rounded">
-                  <%= button_to report_report_likes_path(@report.id), data: { turbo: "false" }, remote: true, method: :post, class:"flex justify-between items-center" do %>
-                    <i class="fa-solid fa-thumbs-up pr-1"></i>
-                    <p class="pr-1">
-                      J'aime
-                    </p>
-                  <% end %>
-                </div>
-              <% else %>
-                <%= @report.report_likes.count %>
-                <div class="border-2 border-white px-1 ml-1 rounded">
-                  <%= button_to report_report_like_path(report_id: @report.id, id: current_user.id), data: { turbo: "false" }, method: :delete, class:"flex justify-between items-center" do %>
-                    <i class="fa-solid fa-thumbs-up fa-rotate-180 pl-1"></i>
-                    <p class="pr-1">
-                      Je n'aime plus
-                    </p>
-                  <% end %>
-                </div>
-              <% end %>
-              <i class="fa-solid fa-comment-dots pl-6 pr-1"></i>
+            <%= turbo_frame_tag "jaime" do %>
+              <figure class="flex align-baseline items-center">
+                <% if already_exist?(@report) == false %>
+                  <%= @report.report_likes.count %>
+                  <div class="border-2 border-white px-1 ml-1 rounded">
+                    <%= button_to report_report_likes_path(@report.id), data: { turbo_frame: "jaime" }, remote: true, method: :post, class:"flex justify-between items-center" do %>
+                      <i class="fa-solid fa-thumbs-up pr-1"></i>
+                      <p class="pr-1">
+                        J'aime
+                      </p>
+                    <% end %>
+                  </div>
+                <% else %>
+                  <%= @report.report_likes.count %>
+                  <div class="border-2 border-white px-1 ml-1 rounded">
+                    <%= button_to report_report_like_path(report_id: @report.id, id: current_user.id), data: { turbo_frame: "jaime" }, method: :delete, class:"flex justify-between items-center" do %>
+                      <i class="fa-solid fa-thumbs-up fa-rotate-180 pl-1"></i>
+                      <p class="pr-1">
+                        Je n'aime plus
+                      </p>
+                    <% end %>
+                  </div>
+                <% end %>
+                <i class="fa-solid fa-comment-dots pl-6 pr-1"></i>
                 <%= @report.comments.count %>
-            </figure>
+              </figure>
+            <% end %>
             <%= button_to root_path, class: "relative inline-flex items-center justify-center p-8 px-10 py-4 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-white rounded-full shadow-md group", method: :get do %>
               <span class="absolute inset-0 flex items-center justify-center w-full h-full text-orange-400 duration-300 -translate-x-full bg-white group-hover:translate-x-0 ease">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
