@@ -16,7 +16,6 @@
     <link href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.css" integrity="sha512-Woz+DqWYJ51bpVk5Fv0yES/edIMXjj3Ynda+KWTIkGoynAMHrqTcDUQltbipuiaD5ymEo9520lyoVOo9jCQOCA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" /> 
   </head>
 
@@ -25,6 +24,7 @@
     <%= render 'layouts/navbar' %>
     <%= render 'layouts/alerts' %>
     <main class="container mx-auto mt-8 px-1 pb-10 flex justify-center items-center">
+    <%= javascript_importmap_tags %>
       <%= yield %>
     </main>
     <%= render 'layouts/footer'%>
