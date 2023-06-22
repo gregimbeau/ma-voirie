@@ -80,7 +80,7 @@ export default class extends Controller {
   get submitButton() {
     return findElement(this.form, "input[type=submit], button[type=submit]")
   }
-
+  
 }
 
 class DirectUploadController {
