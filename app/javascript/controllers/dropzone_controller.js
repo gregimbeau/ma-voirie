@@ -8,8 +8,6 @@ import {
   insertAfter,
 } from "../helpers/dropzone";
 
-
-// Connects to data-controller="dropzone"
 export default class extends Controller {
   static targets = ["input"];
   connect() {
