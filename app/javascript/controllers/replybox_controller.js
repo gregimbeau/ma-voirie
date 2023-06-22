@@ -63,6 +63,11 @@ function buttonsSendReplyClicks() {
   }
 }
 
+document.addEventListener("turbo:before-fetch-response", ()=>{
+  var textarea_main_comment = document.querySelector("#textarea_main_comment");
+  textarea_main_comment.value = "";
+});
+
 setInterval(() => {
   buttonsAnswerClicks();
   buttonsSendReplyClicks();
