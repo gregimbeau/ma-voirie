@@ -55,18 +55,25 @@
           <section class="flex justify-between items-center pt-18 text-white">
             <figure class="flex align-baseline items-center">
               <% if already_exist?(@report) == false %>
-                <%= button_to report_report_likes_path(@report.id), data: { turbo: "false" }, remote: true, method: :post, class:"flex justify-between items-center" do %>
-                  <i class="fa-solid fa-thumbs-up pr-1"></i>
+                <%= @report.report_likes.count %>
+                <div class="border-2 border-white px-1 ml-1 rounded">
+                  <%= button_to report_report_likes_path(@report.id), data: { turbo: "false" }, remote: true, method: :post, class:"flex justify-between items-center" do %>
+                    <i class="fa-solid fa-thumbs-up pr-1"></i>
                     <p class="pr-1">
                       J'aime
                     </p>
-                    <%= @report.report_likes.count %>
-                <% end %>
+                  <% end %>
+                </div>
               <% else %>
-                <%= button_to report_report_like_path(report_id: @report.id, id: current_user.id), data: { turbo: "false" }, method: :delete, class:"flex justify-between items-center" do %>
-                  <i class="fa-solid fa-thumbs-up fa-rotate-180 pl-1"></i>
-                    <%= @report.report_likes.count %>
-                <% end %>
+                <%= @report.report_likes.count %>
+                <div class="border-2 border-white px-1 ml-1 rounded">
+                  <%= button_to report_report_like_path(report_id: @report.id, id: current_user.id), data: { turbo: "false" }, method: :delete, class:"flex justify-between items-center" do %>
+                    <i class="fa-solid fa-thumbs-up fa-rotate-180 pl-1"></i>
+                    <p class="pr-1">
+                      Je n'aime plus
+                    </p>
+                  <% end %>
+                </div>
               <% end %>
               <i class="fa-solid fa-comment-dots pl-6 pr-1"></i>
                 <%= @report.comments.count %>
