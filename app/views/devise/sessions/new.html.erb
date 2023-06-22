@@ -1,33 +1,35 @@
-<div class="w-full lg:w-7/12 p-5 cstm-bg-sand shadow-2xl">
+<article class="w-full lg:w-7/12 p-5 cstm-bg-sand shadow-2xl">
   <h3 class="pt-4 text-2xl text-center font-medium cstm-dark">Se connecter</h3>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "px-8 pt-6 pb-1 mb-4 rounded cstm-bg-sand" }) do |f| %>
-    <div class="flex-grow md:mr-2 md:mb-0 pb-4">
+    <section class="flex-grow md:mr-2 md:mb-0 pb-4">
       <%= f.label :login, "Email ou Pseudonyme", class: "block mb-2 text-sm font-bold cstm-dark" %>
       <%= f.text_field :login, autofocus: true, autocomplete: "login", class: "w-full px-3 py-2 text-sm leading-tight cstm-dark border-orange-300 rounded shadow appearance-none focus:border-orange-500 focus:ring-0 focus:shadow-outline" %>
-    </div>
-    <div class="flex-grow md:mr-2 md:mb-0">
+    </section>
+    <section class="flex-grow md:mr-2 md:mb-0">
       <%= f.label :mot_de_passe, class: "block mb-2 text-sm font-bold cstm-dark" %>
       <%= f.password_field :password, autocomplete: "current-password", class: "w-full px-3 py-2 text-sm leading-tight cstm-dark border-orange-300 rounded shadow appearance-none focus:border-orange-500 focus:ring-0 focus:shadow-outline" %>
-    </div>
+    </section>
     <% if devise_mapping.rememberable? %>
-      <div class="flex items-center pt-4">
-        <%= f.check_box :remember_me, class: "w-4 h-4 text-orange-400 bg-white border-orange-400 lack rounded focus:ring-transparent dark:focus:ring-transparent dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" %>
-        <%= f.label :Se_souvenir_de_moi, class: "ml-3 text-sm text-gray-500 dark:text-gray-300" %>
-      </div>
+      <section class="flex items-center pt-4">
+        <%= f.check_box :remember_me, class: "w-4 h-4 cstm-primary bg-white border-orange-400 lack rounded focus:ring-transparent focus:ring-2" %>
+        <%= f.label :Se_souvenir_de_moi, class: "ml-3 text-sm cstm-dark" %>
+      </section>
     <% end %>
-    <div class="mt-8 px-1 pb-2 container mx-auto flex justify-center items-center">
+    <section class="mt-8 px-1 pb-2 container mx-auto flex justify-center items-center">
       <%= button_tag(type: 'submit', class: "relative inline-flex items-center justify-center w-2/4 2xl:w-1/5 xl:w-1/5 md:w-1/5 lg:w-1/4 sm:w-2/5 h-8 overflow-hidden font-medium cstm-dark transition duration-300 ease-out border-2 border-gray-700 shadow-md group") do %>
         <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full cstm-bg-primary group-hover:translate-x-0 ease">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
           </svg>
         </span>
-        <span class="absolute flex items-center justify-center w-full h-full cstm-dark transition-all duration-300 transform group-hover:translate-x-full ease">Se connecter</span>
+        <span class="absolute flex items-center justify-center w-full h-full cstm-dark transition-all duration-300 transform group-hover:translate-x-full ease">
+          Se connecter
+        </span>
       <% end %>
-    </div>
+    </section>
   <% end %>
   <hr class="mb-6 border-t border-orange-400">
-  <div class="mt-4 px-1 container mx-auto grid justify-items-center">
+  <section class="mt-4 px-1 container mx-auto grid justify-items-center">
     <%= render "devise/shared/links", class: "my-4" %>
-  </div>
-</div>
+  </section>
+</article>

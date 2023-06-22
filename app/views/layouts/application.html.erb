@@ -20,11 +20,13 @@
   </head>
 
   <body id="top">
-    <%= render 'layouts/banner' %>
-    <%= render 'layouts/navbar' %>
-    <%= render 'layouts/alerts' %>
+    <header>
+      <%= render 'layouts/banner' %>
+      <%= render 'layouts/navbar' %>
+      <%= render 'layouts/alerts' %>
+    </header>
     <main class="container mx-auto mt-8 px-1 pb-10 flex justify-center items-center">
-    <%= javascript_importmap_tags %>
+      <%= javascript_importmap_tags %>
       <%= yield %>
     </main>
     <%= render 'layouts/footer'%>

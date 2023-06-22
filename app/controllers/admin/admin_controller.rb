@@ -6,4 +6,5 @@ class Admin::AdminController < ApplicationController
     @reports = Report.where(is_validate: nil)
     @delete_user = User.find_by(nickname: ENV['DELETE_USER_NICKNAME'], email: ENV['DELETE_USER_EMAIL'])
   end
+
 end

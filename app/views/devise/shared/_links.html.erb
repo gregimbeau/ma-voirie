@@ -1,26 +1,31 @@
 <%- if controller_name != 'sessions' %>
-<p class="text-gray-900">Déja sur notre site ?
-  <%= link_to "Connecte-toi.", new_session_path(resource_name), class: "font-medium text-orange-400 hover:underline" %>
+  <p class="cstm-dark">
+    Déja sur notre site ?
+    <%= link_to "Connecte-toi.", new_session_path(resource_name), class: "font-medium cstm-primary hover:underline" %>
   </p>
 <% end %>
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <p class="text-gray-900">Pas encore de compte ?
-  <%= link_to "Je m'inscris.", new_registration_path(resource_name), class: "font-medium text-orange-400 hover:underline" %>
+  <p class="cstm-dark">
+    Pas encore de compte ?
+    <%= link_to "Je m'inscris.", new_registration_path(resource_name), class: "font-medium cstm-primary hover:underline" %>
   </p>
 <% end %>
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <p class="text-gray-900">
-  <%= link_to "Mot de passe oublié ?", new_password_path(resource_name), class: "font-medium text-orange-400 hover:underline flex" %>
+  <p class="cstm-dark">
+    <%= link_to "Mot de passe oublié ?", new_password_path(resource_name), class: "font-medium cstm-primary hover:underline flex" %>
   </p>
 <% end %>
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-  <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
+  <%= link_to "Vous n'avez pas reçu votre confirmation ?", new_confirmation_path(resource_name) %>
+  <br/>
 <% end %>
 <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
-  <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
+  <%= link_to "Vous n'avez pas reçu les instruction de déblocage ?", new_unlock_path(resource_name) %>
+  <br/>
 <% end %>
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= button_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), data: { turbo: false } %><br />
+    <%= button_to "se connecter avec #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), data: { turbo: false } %>
+    <br/>
   <% end %>
 <% end %>

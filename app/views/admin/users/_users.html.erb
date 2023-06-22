@@ -2,16 +2,26 @@
 <table class="w-full text-sm text-left cstm-dark">
   <thead class="text-xs uppercase cstm-bg-dark text-center">
     <tr>
-      <th scope="col" class="md:px-6 py-3 cstm-yellow">Pseudo</th>
-      <th scope="col" class="md:px-6 py-3 cstm-yellow">Email</th>
-      <th scope="col" class="md:px-6 py-3 cstm-yellow">Suppression</th>
+      <th scope="col" class="md:px-6 py-3 cstm-yellow">
+        Pseudo
+      </th>
+      <th scope="col" class="md:px-6 py-3 cstm-yellow">
+        Email
+      </th>
+      <th scope="col" class="md:px-6 py-3 cstm-yellow">
+        Suppression
+      </th>
     </tr>
   </thead>
   <% @users.each do |user| %>
     <% if (user.nickname != ENV['DELETE_USER_NICKNAME'] && user.email != ENV['DELETE_USER_EMAIL']) %>
       <tbody class="cstm-bg-sand text-center">
-        <th scope="col" class="md:px-6 py-3"><%= user.nickname %></th>
-        <th scope="col" class="md:px-6 py-3"><%= user.email %></th>
+        <th scope="col" class="md:px-6 py-3">
+          <%= user.nickname %>
+        </th>
+        <th scope="col" class="md:px-6 py-3">
+          <%= user.email %>
+        </th>
         <th scope="col" class="md:px-6 py-3">
           <% if !user.is_admin %>
             <%= button_to "Supprimer", admin_user_path(user), class:'cstm-bg-danger cstm-light font-bold py-2 md:px-4 rounded', form: { data: { turbo_confirm: "Es-tu sur de vouloir supprimer cet utilisateur ?" } }, method: :delete %>
