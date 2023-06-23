@@ -153,26 +153,24 @@
       <%= button_to "Supprimer", admin_report_path(@report), class:"cstm-bg-danger cstm-light font-bold py-2 px-4 rounded-full mt-4", method: :delete %>
     <% end %>
   </article>
-  <%= turbo_frame_tag "comments" do %>
-    <article class="max-w-screen-xl w-full grid grid-cols-1 p-4 mb-4">
-      <div id="comments-section">
-        <%= render partial: 'comments/comments', locals: { report: @report } %>
-      </div>
-      <% if current_user %>
-        <%= render partial: 'comments/form', locals: { report: @report } %>
-      <% else %>
-      <div class="mx-auto grid grid-cols-1 pt-6">
-        <p class="font-semibold text-lg cstm-dark text-center">
-          Déja sur notre site ?
-          <%= link_to "Connecte-toi.", new_user_session_path, class: "font-medium cstm-primary hover:underline" %>
-        </p>
-        <p class="font-semibold text-lg cstm-dark text-center">
-          Pas encore de compte ?
-          <%= link_to "Je m'inscris.", new_user_registration_path, class: "font-medium cstm-primary hover:underline" %>
-        </p>
-      </div>
-      <% end %>
-    </article>
-  <% end %>
+  <article class="max-w-screen-xl w-full grid grid-cols-1 p-4 mb-4">
+    <div id="comments-section">
+      <%= render partial: 'comments/comments', locals: { report: @report } %>
+    </div>
+    <% if current_user %>
+      <%= render partial: 'comments/form', locals: { report: @report } %>
+    <% else %>
+    <div class="mx-auto grid grid-cols-1 pt-6">
+      <p class="font-semibold text-lg cstm-dark text-center">
+        Déja sur notre site ?
+        <%= link_to "Connecte-toi.", new_user_session_path, class: "font-medium cstm-primary hover:underline" %>
+      </p>
+      <p class="font-semibold text-lg cstm-dark text-center">
+        Pas encore de compte ?
+        <%= link_to "Je m'inscris.", new_user_registration_path, class: "font-medium cstm-primary hover:underline" %>
+      </p>
+    </div>
+    <% end %>
+  </article>
 </div>
 <%= javascript_import_module_tag 'map_controller' %>
