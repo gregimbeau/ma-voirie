@@ -30,7 +30,7 @@
             <span class="nav-btn text-2xl font-semibold whitespace-nowrap drop-shadow mr-2">
               <%= current_user.nickname %>
             </span>
-            <%= image_tag("user.svg", class: "w-10 banner md:mt-1 drop-shadow", draggable: "false", unselectable: "on", alt: "Icone utilisateur") %>
+            <%= image_tag("user.svg", class: "w-10 md:mt-1 drop-shadow", draggable: "false", alt: "Icone utilisateur") %>
           </button>
         </div>
         <% else %>
@@ -38,7 +38,7 @@
             <span class="nav-btn text-2xl font-semibold whitespace-nowrap drop-shadow mr-2">
               Se connecter
             </span>
-            <%= image_tag("user.svg", class: "w-10 banner md:mt-1", draggable: "false", unselectable: "on", alt: "Icone utilisateur") %>
+            <%= image_tag("user.svg", class: "w-10 md:mt-1", draggable: "false", alt: "Icone utilisateur") %>
           </button>
         <% end %>
         <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
