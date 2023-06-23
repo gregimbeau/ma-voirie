@@ -154,15 +154,12 @@
     <% end %>
   </article>
     <article class="max-w-screen-xl w-full grid grid-cols-1 p-4 mb-4">
+    <%= turbo_frame_tag "reply" do %>
       <div id="comments-section">
-      <%= turbo_frame_tag "comments" do %>
         <%= render partial: 'comments/comments', locals: { report: @report } %>
-        <% end %>
       </div>
       <% if current_user %>
-      <%= turbo_frame_tag "reply" do %>
         <%= render partial: 'comments/form', locals: { report: @report } %>
-        <% end %>
       <% else %>
       <div class="mx-auto grid grid-cols-1 pt-6">
         <p class="font-semibold text-lg cstm-dark text-center">
@@ -174,6 +171,7 @@
           <%= link_to "Je m'inscris.", new_user_registration_path, class: "font-medium cstm-primary hover:underline" %>
         </p>
       </div>
+      <% end %>
       <% end %>
     </article>
 </div>
