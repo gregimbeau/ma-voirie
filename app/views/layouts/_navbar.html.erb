@@ -25,13 +25,17 @@
         <% if current_user %>
         <div class="nav-btn">
           <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center text-2xl font-semibold whitespace-nowrap md:mt-0 sm:mt-3">
-            <span class="nav-btn text-2xl font-semibold whitespace-nowrap drop-shadow mr-2"><%= current_user.nickname %></span>
+            <span class="nav-btn text-2xl font-semibold whitespace-nowrap drop-shadow mr-2">
+              <%= current_user.nickname %>
+            </span>
             <%= image_tag("user.svg", class: "w-10 banner md:mt-1 drop-shadow", draggable: "false", unselectable: "on", alt: "Icone utilisateur") %>
           </button>
         </div>
         <% else %>
           <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center text-2xl font-semibold whitespace-nowrap md:mt-0 sm:mt-3">
-            <span class="nav-btn text-2xl font-semibold whitespace-nowrap drop-shadow mr-2">Se connecter</span>
+            <span class="nav-btn text-2xl font-semibold whitespace-nowrap drop-shadow mr-2">
+              Se connecter
+            </span>
             <%= image_tag("user.svg", class: "w-10 banner md:mt-1", draggable: "false", unselectable: "on", alt: "Icone utilisateur") %>
           </button>
         <% end %>
@@ -58,7 +62,10 @@
             </div>
             <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
               <li>
-                <p class="text-center">Vous n'avez pas encore de compte ? <%= link_to "Cliquez ici pour vous enregistrer.", new_user_registration_path, class:"block px-4 py-2 hover:bg-gray-100 cstm-primary" %></p>
+                <p class="text-center">
+                  Vous n'avez pas encore de compte ?
+                  <%= link_to "Cliquez ici pour vous enregistrer.", new_user_registration_path, class:"block px-4 py-2 hover:bg-gray-100 cstm-primary" %>
+                </p>
               </li>
             </ul>
           <% end %>

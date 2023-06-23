@@ -14,6 +14,7 @@ window.onload = function() {
     });
   }
 }
+
 document.addEventListener("turbo:load", function() {
   if (typeof grecaptcha !== "undefined") {
     grecaptcha.ready(function() {

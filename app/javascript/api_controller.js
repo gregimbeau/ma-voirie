@@ -38,18 +38,14 @@ $(document).ready(function() {
       .append($('<div class="ml-2 py-2 font-medium">').text(address));
       resultsList.append(listItem);
     }
-
     $('#addressResults li').click(function() {
       var selectedAddress = $(this).text();
       $('#addressInput').val(selectedAddress);
       $('#resultContainer').hide();
     });
-
     $('#resultContainer').show();
   }
-
   $('#addressInput').on('input', function() {
     handleInput();
   });
-
 });

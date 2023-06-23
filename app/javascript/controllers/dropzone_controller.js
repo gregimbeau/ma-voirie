@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
-import Dropzone from 'controllers/dropzone_controller';
+import Dropzone from 'dropzone';
 import { DirectUpload } from "@rails/activestorage";
 
 export function getMetaValue(name) {
@@ -24,7 +24,7 @@ export function removeElement(el) {
 }
 
 export function insertAfter(el, referenceNode) {
-    return referenceNode.parentNode.insertBefore(el, referenceNode.nextSibling);
+  return referenceNode.parentNode.insertBefore(el, referenceNode.nextSibling);
 }
 
 // Connects to data-controller="dropzone"
@@ -47,19 +47,15 @@ export default class extends Controller {
     this.dropZone.on("addedfile", (file) => {
       setTimeout(() => { file.accepted && createDirectUploadController(this, file).start() }, 500)
     })
-
     this.dropZone.on("removedfile", (file) => {
       file.controller && removeElement(file.controller.hiddenInput)
     })
-
     this.dropZone.on("canceled", (file) => {
       file.controller && file.controller.xhr.abort()
     })
-
     this.dropZone.on("processing", (file) => {
       this.submitButton.disabled = true
     })
-
     this.dropZone.on("queuecomplete", (file) => {
       this.submitButton.disabled = false
     })
@@ -68,39 +64,30 @@ export default class extends Controller {
   get headers() {
     return { "X-CSRF-Token": getMetaValue("csrf-token") } 
   }
-
   get url() {
     return this.inputTarget.getAttribute("data-direct-upload-url")
   }
-
   get maxFiles() {
     return this.data.get("maxFiles") || 1
   }
-
   get maxFileSize() {
     return this.data.get("maxFileSize") || 256
   }
-
   get acceptedFiles() {
     return this.data.get("acceptedFiles")
   }
-
   get addRemoveLinks() {
     return this.data.get("addRemoveLinks") || true
   }
-
   get uploadMultiple() {
     return this.data.get("uploadMultiple") || false
   }
-
   get form() {
     return this.element.closest("form")
   }
-
   get submitButton() {
     return findElement(this.form, "input[type=submit], button[type=submit]")
   }
-  
 }
 
 class DirectUploadController {

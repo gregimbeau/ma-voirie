@@ -15,11 +15,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© OpenStreetMap contributors'
   }).addTo(map);
-
   L.marker([latitude, longitude]).addTo(map)
-      .bindPopup(address)
-      .openPopup();
-
+    .bindPopup(address)
+    .openPopup();
   $(document).ajaxComplete(function() {
     map.setView([latitude, longitude], 13);
   });
