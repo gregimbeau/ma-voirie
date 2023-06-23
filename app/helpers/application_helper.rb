@@ -1,5 +1,14 @@
 module ApplicationHelper
 
+  private
+
+  def authenticate_user
+    unless current_user
+      flash[:alert] = "Merci de vous connecter pour pouvoir mettre des likes."
+      redirect_to new_user_session_path
+    end
+  end
+
   def check_if_admin
     unless current_user&.is_admin
       flash[:alert] = "Action réservée aux administrateurs !"

@@ -17,12 +17,4 @@ class ReportLikesController < ApplicationController
     end
   end
 
-  private
-
-  def authenticate_user
-    unless current_user
-      flash[:alert] = "Merci de vous connecter pour pouvoir mettre des likes."
-      redirect_to new_user_session_path
-    end
-  end
 end

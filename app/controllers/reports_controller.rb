@@ -76,11 +76,4 @@ class ReportsController < ApplicationController
     params.require(:report).permit(:title, :content, :is_validate, :user_id, :status_id, :address, :latitude, :longitude, images: [])
   end
 
-  def authenticate_user
-    unless current_user
-      flash[:alert] = "Merci de vous connecter pour créer un signalement."
-      redirect_to new_user_session_path
-    end
-  end
-
 end
