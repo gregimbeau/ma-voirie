@@ -1,6 +1,6 @@
-<main class="max-w-screen-xl w-full grid grid-cols-1">
-  <div class="shadow-2xl max-w-full max-h-full lg:flex rounded bg-orange-400">
-    <article class="max-w-full max-h-full mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+<div class="max-w-screen-xl w-full grid grid-cols-1">
+  <article class="shadow-2xl max-w-full max-h-full lg:flex rounded cstm-bg-primary">
+    <div class="max-w-full max-h-full mx-auto px-4 sm:px-6 lg:px-8 mt-6">
       <div class="flex flex-col md:flex-row -mx-4">
         <section class="md:flex-1 px-4 ml-4 mt-4 mr-4">
           <div x-data="{ image: 1 }" x-cloak>
@@ -34,10 +34,40 @@
         </section>
         <section class="md:flex-1 px-4 pt-1">
           <p class="text-sm text-grey-dark flex justify-end items-center">
-            <span class="flex justify-end  ml-auto bg-green-200 rounded-full px-3 py-2 text-sm font-semibold text-gray-700 mr-2"><%= @report.status %></span>
+            <% if @report.status == "en cours de validation" %>
+              <span class="flex justify-end ml-auto rounded-full px-3 py-2 text-sm font-semibold mr-2 cstm-new">
+                <%= @report.status %>
+              </span>
+            <% elsif @report.status == "validé" %>
+              <span class="flex justify-end ml-auto rounded-full px-3 py-2 text-sm font-semibold mr-2 cstm-validated">
+                <%= @report.status %>
+              </span>
+            <% elsif @report.status == "accepté" %>
+              <span class="flex justify-end ml-auto rounded-full px-3 py-2 text-sm font-semibold mr-2 cstm-accepted">
+                <%= @report.status %>
+              </span>
+            <% elsif @report.status == "en cours" %>
+              <span class="flex justify-end ml-auto rounded-full px-3 py-2 text-sm font-semibold mr-2 cstm-in-progress">
+                <%= @report.status %>
+              </span>
+            <% else %>
+              <span class="flex justify-end ml-auto rounded-full px-3 py-2 text-sm font-semibold mr-2 cstm-resolved">
+                <%= @report.status %>
+              </span>
+            <% end %>
           </p>
-          <h2 class="mb-2 mt-4 leading-tight tracking-tight font-bold text-white text-2xl md:text-3xl"><%= @report.title %></h2>
-          <p class="text-white text-sm mb-2 flex justify-start">
+          <h2 class="mb-2 mt-4 leading-tight tracking-tight font-bold text-white text-2xl md:text-3xl">
+            <%= @report.title %>
+          </h2>
+          <hr>
+          <div class="text-white font-bold text-lg flex flex-start mr-auto mt-2">
+            - <%= @report.address %>
+          </div>
+          <p class="text-white mt-4 pb-4">
+            <%= @report.content %>
+          </p>
+          <hr>
+          <p class="text-white text-sm mb-2 flex justify-start pt-4 pb-4">
             par
             <% if @report.user == nil %>
               utilisateur supprimé          
@@ -46,52 +76,88 @@
             <% end %>
             , le <%= @report.created_at.strftime("%d/%m/%Y") %>
           </p>
-            <hr><hr>
-          <p class="text-white mt-4"><%= @report.content %></p>
-          <div class="flex py-4 space-x-4">
+          <section class="flex justify-between items-center pt-18 text-white">
+            <%= turbo_frame_tag "jaime" do %>
+              <figure class="flex align-baseline items-center">
+                <% if already_exist?(@report) == false %>
+                  <% if current_user %>
+                    <%= @report.report_likes.count %>
+                    <div class="border-2 border-white px-1 ml-1 rounded">
+                      <%= button_to report_report_likes_path(@report.id), data: { turbo_frame: "jaime" }, remote: true, method: :post, class:"flex justify-between items-center" do %>
+                        <i class="fa-solid fa-thumbs-up pr-1"></i>
+                        <p class="pr-1">
+                          J'aime
+                        </p>
+                      <% end %>
+                    </div>
+                  <% else %>
+                    <%= @report.report_likes.count %>
+                    <div class="border-2 border-white px-1 ml-1 rounded">
+                      <%= button_to new_user_session_path, remote: true, method: :get, class:"flex justify-between items-center", data: {turbo:false} do %>
+                        <i class="fa-solid fa-thumbs-up pr-1"></i>
+                        <p class="pr-1">
+                          J'aime
+                        </p>
+                      <% end %>
+                    </div>
+                  <% end %>
+                <% else %>
+                  <%= @report.report_likes.count %>
+                  <div class="border-2 border-white px-1 ml-1 rounded">
+                    <%= button_to report_report_like_path(report_id: @report.id, id: current_user.id), data: { turbo_frame: "jaime" }, method: :delete, class:"flex justify-between items-center" do %>
+                      <i class="fa-solid fa-thumbs-up fa-rotate-180 pl-1"></i>
+                      <p class="pr-1">
+                        Je n'aime plus
+                      </p>
+                    <% end %>
+                  </div>
+                <% end %>
+                <i class="fa-solid fa-comment-dots pl-6 pr-1"></i>
+                <%= @report.comments.count %>
+              </figure>
+            <% end %>
             <%= button_to root_path, class: "relative inline-flex items-center justify-center p-8 px-10 py-4 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-white rounded-full shadow-md group", method: :get do %>
               <span class="absolute inset-0 flex items-center justify-center w-full h-full text-orange-400 duration-300 -translate-x-full bg-white group-hover:translate-x-0 ease">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                 </svg>
               </span>
-              <span class="absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease">Accueil</span>
+              <span class="absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease">
+                Accueil
+              </span>
             <% end %>
-          </div>
+          </section>
+          <div id="map" class="h-52 my-5 w-[100%]" data-latitude="<%= @report.latitude %>" data-longitude="<%= @report.longitude %>" data-address="<%= @report.address %>"></div>       
         </section>
       </div>
-    </article>
-  </div>
-  <article class="flex justify-center mt-16">
+    </div>
+  </article>
+  <article class="md:flex md:justify-center mt-8 md:mx-4 mx-auto">
     <% if current_user && current_user.is_admin && @report.is_validate == nil %>
-      <%= button_to "Valider le signalement", admin_report_path(@report), class:"cstm-bg-valid-dark cstm-light font-bold py-2 px-4 rounded-full", method: :patch, params: { "report" =>  "true" } %>
-      <%= button_to "Refuser le signalement", admin_report_path(@report), class:"cstm-bg-action cstm-light font-bold py-2 px-4 rounded-full ml-10", method: :patch, params: { "report" => "false" } %>
-    <% elsif current_user && current_user.is_admin && @report.status == 1 %>
-      <%= button_to "Travaux programmés", admin_report_path(@report), class:"cstm-bg-valid-dark cstm-light font-bold py-2 px-4 rounded-full", method: :patch, params: { "report" =>  "accepted" } %>
-      <%= button_to "Travaux en cours", admin_report_path(@report), class:"cstm-bg-valid-dark cstm-light font-bold py-2 px-4 rounded-full ml-10", method: :patch, params: { "report" =>  "in progress" } %>
-      <%= button_to "Travaux terminés", admin_report_path(@report), class:"cstm-bg-valid-dark cstm-light font-bold py-2 px-4 rounded-full ml-10", method: :patch, params: { "report" =>  "resolved" } %>
-    <% elsif current_user && current_user.is_admin && @report.status == 2 %>
-      <%= button_to "Travaux en cours", admin_report_path(@report), class:"cstm-bg-valid-dark cstm-light font-bold py-2 px-4 rounded-full", method: :patch, params: { "report" =>  "in progress" } %>
-      <%= button_to "Travaux terminés", admin_report_path(@report), class:"cstm-bg-valid-dark cstm-light font-bold py-2 px-4 rounded-full ml-10", method: :patch, params: { "report" =>  "resolved" } %>
-    <% elsif current_user && current_user.is_admin && @report.status == 3 %>
-      <%= button_to "Etape précédente", admin_report_path(@report), class:"cstm-bg-valid-dark cstm-light font-bold py-2 px-4 rounded-full", method: :patch, params: { "report" =>  "accepted" } %>
-      <%= button_to "Travaux terminés", admin_report_path(@report), class:"cstm-bg-valid-dark cstm-light font-bold py-2 px-4 rounded-full ml-10", method: :patch, params: { "report" =>  "resolved" } %>
-    <% elsif current_user && current_user.is_admin && @report.status == 4 %>
-      <%= button_to "Etape précédente", admin_report_path(@report), class:"cstm-bg-valid-dark cstm-light font-bold py-2 px-4 rounded-full", method: :patch, params: { "report" =>  "in progress" } %>
+      <%= button_to "Valider le signalement", admin_report_path(@report), class:"cstm-bg-valid-dark cstm-light font-bold py-2 px-4 rounded-full mt-4 md:mr-5", method: :patch, params: { "report" =>  "true" } %>
+      <%= button_to "Refuser le signalement", admin_report_path(@report), class:"cstm-bg-action cstm-light font-bold py-2 px-4 rounded-full mt-4 md:mr-5", method: :patch, params: { "report" => "false" } %>
+    <% elsif current_user && current_user.is_admin && @report.status == "validé" %>
+      <%= button_to "Travaux programmés", admin_report_path(@report), class:"cstm-bg-valid-dark cstm-light font-bold py-2 px-4 rounded-full mt-4 md:mr-5", method: :patch, params: { "report" =>  "accepted" } %>
+      <%= button_to "Travaux en cours", admin_report_path(@report), class:"cstm-bg-valid-dark cstm-light font-bold py-2 px-4 rounded-full mt-4 md:mr-5", method: :patch, params: { "report" =>  "in progress" } %>
+      <%= button_to "Travaux terminés", admin_report_path(@report), class:"cstm-bg-valid-dark cstm-light font-bold py-2 px-4 rounded-full mt-4 md:mr-5", method: :patch, params: { "report" =>  "resolved" } %>
+    <% elsif current_user && current_user.is_admin && @report.status == "accepté" %>
+      <%= button_to "Travaux en cours", admin_report_path(@report), class:"cstm-bg-valid-dark cstm-light font-bold py-2 px-4 rounded-full mt-4 md:mr-5", method: :patch, params: { "report" =>  "in progress" } %>
+      <%= button_to "Travaux terminés", admin_report_path(@report), class:"cstm-bg-valid-dark cstm-light font-bold py-2 px-4 rounded-full mt-4 md:mr-5", method: :patch, params: { "report" =>  "resolved" } %>
+    <% elsif current_user && current_user.is_admin && @report.status == "en cours" %>
+      <%= button_to "Etape précédente", admin_report_path(@report), class:"cstm-bg-valid-dark cstm-light font-bold py-2 px-4 rounded-full mt-4 md:mr-5", method: :patch, params: { "report" =>  "accepted" } %>
+      <%= button_to "Travaux terminés", admin_report_path(@report), class:"cstm-bg-valid-dark cstm-light font-bold py-2 px-4 rounded-full mt-4 md:mr-5", method: :patch, params: { "report" =>  "resolved" } %>
+    <% elsif current_user && current_user.is_admin && @report.status == "résolu" %>
+      <%= button_to "Etape précédente", admin_report_path(@report), class:"cstm-bg-valid-dark cstm-light font-bold py-2 px-4 rounded-full mt-4 md:mr-5", method: :patch, params: { "report" =>  "in progress" } %>
     <% end %>
     <% if current_user && current_user.is_admin %>
-      <%= button_to "Supprimer", admin_report_path(@report), class:"cstm-bg-danger cstm-light font-bold py-2 px-4 rounded-full ml-10", method: :delete %>
+      <%= button_to "Supprimer", admin_report_path(@report), class:"cstm-bg-danger cstm-light font-bold py-2 px-4 rounded-full mt-4", method: :delete %>
     <% end %>
   </article>
-<main class="max-w-screen-xl w-full grid grid-cols-1 p-4 mb-4">
-  <!-- Afficher les commentaires -->
-  <div id="comments-section">
-    <%= render partial: 'comments/comments', locals: { report: @report } %>
-  </div>
-
-  <!-- Formulaire de création de commentaires -->
-  <%= render partial: 'comments/form', locals: { report: @report } %>
-</main>
-
-
-</main>
+  <article class="max-w-screen-xl w-full grid grid-cols-1 p-4 mb-4">
+    <div id="comments-section">
+      <%= render partial: 'comments/comments', locals: { report: @report } %>
+    </div>
+    <%= render partial: 'comments/form', locals: { report: @report } %>
+  </article>
+</div>
+<%= javascript_import_module_tag 'map_controller' %>

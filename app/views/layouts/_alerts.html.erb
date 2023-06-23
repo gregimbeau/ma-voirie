@@ -1,4 +1,4 @@
-<section id = "show_notice" data = "<%=notice.present?%>" class = "hidden">
+<section id="show_notice" <%="data=#{notice.present?}" if notice.present?%> class="<%= 'hidden' unless notice.present? %>">
   <div class="justify-center text-center">
     <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-4 pl-7 shadow-md">
       <div class="py-1 flex items-center justify-center">
@@ -7,20 +7,26 @@
         </svg>
       </div>
       <div>
-        <p class="font-bold">Information</p>
-        <p class="text-sm"><%= notice %></p>
+        <p class="font-bold">
+          Information
+        </p>
+        <p class="text-sm">
+          <%= notice %>
+        </p>
       </div>
     </div>
   </div>
 </section>
-<section id = "show_alert" data = "<%=alert.present?%>" class = "hidden">
+<section id="show_alert" <%="data=#{alert.present?}" if alert.present?%> class="<%= 'hidden' unless alert.present? %>">
   <div class="justify-center text-center">
     <div role="alert">
       <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
         Attention
       </div>
       <div class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
-        <p><%= alert %></p>
+        <p>
+          <%= alert %>
+        </p>
       </div>
     </div>
   </div>

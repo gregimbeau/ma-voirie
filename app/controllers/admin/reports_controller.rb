@@ -9,10 +9,6 @@ class Admin::ReportsController < ApplicationController
     @resolved = Report.where(status: 4)
   end
 
-  def edit
-    @report = Report.find(params[:id])
-  end
-
   def show
     @report = Report.find(params[:id])
   end
@@ -44,7 +40,7 @@ class Admin::ReportsController < ApplicationController
 
   def destroy
     @report = Report.find(params['id'])
-    @report.delete
+    @report.destroy
     flash[:notice] = "Le signalement a bien été supprimé !"
     redirect_to admin_reports_path
   end

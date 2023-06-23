@@ -1,8 +1,8 @@
 <footer>
-  <div class="h-1 w-full cstm-bg-yellow"></div>
-  <div class="h-1 w-full cstm-bg-primary"></div>
-  <div class="h-1 w-full cstm-bg-light"></div>
-  <div class="h-1 w-full cstm-bg-dark"></div>
+  <hr class="h-1 w-full cstm-bg-yellow">
+  <hr class="h-1 w-full cstm-bg-primary">
+  <hr class="h-1 w-full cstm-bg-light">
+  <hr class="h-1 w-full cstm-bg-dark">
   <article class="relativ pt-2.5">
     <section class="page-section flex justify-center items-center" id="footer">
       <div class="container text-center">
@@ -16,12 +16,12 @@
         </div>
       </div>
     </section>
-    <section class="flex flex-wrap items-center md:justify-between justify-center">
-      <div class="w-full md:w-4/12 px-4 mx-auto text-center">
+    <section class="md:whitespace-nowrap md:justify-between mx-auto">
+      <div class="w-full px-4 mx-auto text-center">
         <div class="text-md cstm-dark font-semibold py-1">
-          <%= link_to "Ma Voirie |", root_path, class: "cstm-dark hover:text-orange-800 h-[48px] w-[48px]" %>
-          <%= link_to "Conditions d'utilisation |", '/conditions' ,class: "cstm-dark hover:text-orange-800 "%>
-          <%= link_to 'Contact', new_contact_mailer_path, class: 'cstm-dark hover:text-orange-800' %>
+          <%= link_to "Ma Voirie |", root_path, class: "cstm-dark hover:text-orange-800 whitespace-nowrap	" %>
+          <%= link_to "Conditions générales d'utilisation |", '/conditions' ,class: "cstm-dark hover:text-orange-800 whitespace-nowrap	"%>
+          <%= link_to 'Contact', new_contact_mailer_path, data: { turbo: false}, class: 'cstm-dark hover:text-orange-800' %>
         </div>
       </div>  
     </section>

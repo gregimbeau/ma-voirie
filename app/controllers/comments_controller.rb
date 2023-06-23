@@ -5,9 +5,8 @@ class CommentsController < ApplicationController
     @report = Report.find(params[:report_id])
     @comment = @report.comments.new(comment_params)
     @comment.user = current_user
-
     if @comment.save
-      redirect_to @report, notice: 'Commentaire créé'
+      redirect_to @report
     else
       redirect_to @report, alert: 'Erreur lors de la création du commentaire'
     end

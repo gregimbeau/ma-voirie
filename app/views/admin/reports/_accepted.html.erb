@@ -1,5 +1,5 @@
 <h5 class="text-center md:text-3xl py-4 cstm-dark">Signalements acceptés</h5>
-<table class="w-full text-sm text-left cstm-dark mb-28">
+<table class="w-full text-sm text-left cstm-dark mb-28 shadow-xl">
   <thead class="md:text-xs uppercase cstm-bg-dark text-center">
     <tr>
       <th scope="col" class="md:px-6 md:py-3 cstm-yellow hidden md:block">Status</th>
@@ -18,17 +18,15 @@
         <th scope="col" class="md:px-6 md:py-3"><%= report.title %></th>
       <% end %>
       <th scope="col" class="md:px-6 md:py-3 hidden md:block">
-        <% if report.user == nil %>
-          Utilisateur supprimé
-        <% else %>
-         <%= report.user.email %>
-        <% end %>
+        <%= report.user.email %>
       </th>
       <th><%= button_to "Voir le signalement", report, class:"cstm-bg-valid-dark cstm-light font-bold py-2 px-4 rounded", method: :get %></th>
       <th class="items-end">
         <button id="dropdownAccepted<%= report.id %>" data-dropdown-toggle="dropdown3<%= report.id %>" class="cstm-bg-action cstm-light font-bold py-2 px-5 rounded inline-flex" type="button">
-          Actions<svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          Actions
+          <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
         </button>
         <div id="dropdown3<%= report.id %>" class="z-10 hidden bg-white rounded-lg shadow divide-y">
           <ul class="text-sm" aria-labelledby="dropdownAccepted<%= report.id %>">

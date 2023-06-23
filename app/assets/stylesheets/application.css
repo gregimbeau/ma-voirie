@@ -12,21 +12,14 @@
  *
  *= require_tree .
  *= require_self
+ *= require leaflet
  */
 
- body{
+body{
   background-color: #ededed;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-}
-
-.banner{
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-drag: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
 }
 
 .nav-btn{
@@ -161,6 +154,31 @@
   background-color: #ededed;
 }
 
+.cstm-new{
+  background-color: #cf7779;
+  color: #e8e6e1;
+}
+
+.cstm-validated{
+  background-color: #4b85a0;
+  color: #e8e6e1;
+}
+
+.cstm-accepted{
+  background-color: #6f70c0;
+  color: #e8e6e1;
+}
+
+.cstm-in-progress{
+  background-color: #8b3ace;
+  color: #e8e6e1;
+}
+
+.cstm-resolved{
+  background-color: #ca3ec3;
+  color: #e8e6e1;
+}
+
 .admin_drop{
   background-color: white;
 }
@@ -186,4 +204,14 @@ footer {
 
 .bg-color-comments{
   background-color: #fff8cd;
+}
+
+.panel-anchor{
+  background-color: #646464;
+  color: #fff8cd;
+}
+
+.panel-anchor:hover{
+  background-color: #7a7a7a;
+  color: #ff9642;
 }

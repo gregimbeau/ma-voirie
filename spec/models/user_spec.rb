@@ -57,7 +57,7 @@ RSpec.describe User, type: :model do
 
     describe "test user" do
       it "should indicate that the user isn't an admin" do
-        expect(@user.is_admin).to eq(nil)
+        expect(@user.is_admin).to eq(false)
       end
     end
 

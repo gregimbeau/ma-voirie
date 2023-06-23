@@ -4,8 +4,7 @@ RSpec.describe Report, type: :model do
   
   before(:each) do 
     @user = User.create(id: 1, nickname: "John", email:"test@test.com", password:"password", password_confirmation: "password")
-    @status = Status.create(id: 1, title:"status de test")
-    @report = Report.create(title: "Un trou dans la route",content: "Et donc là il y a un trou dans la route à l'impasse Duchedca", address:"13 rue de la Gare", user_id: @user.id, status_id: @status.id)
+    @report = Report.create(title: "Un trou dans la route",content: "Et donc là il y a un trou dans la route à l'impasse Duchedca", address:"13 rue de la Gare", user_id: @user.id)
   end
 
   context "validation" do
@@ -22,12 +21,7 @@ RSpec.describe Report, type: :model do
     end
 
     it "should not be valid without user_id" do
-      bad_report = Report.create(title: "Un trou dans la route",content: "Et donc là il y a un trou dans la route à l'impasse Duchedca", address:"13 rue de la Gare", status_id: @status.id)
-      expect(bad_report).not_to be_valid
-    end
-
-    it "should not be valid without status_id" do
-      bad_report = Report.create(title: "Un trou dans la route",content: "Et donc là il y a un trou dans la route à l'impasse Duchedca", address:"13 rue de la Gare", user_id: @user.id)
+      bad_report = Report.create(title: "Un trou dans la route",content: "Et donc là il y a un trou dans la route à l'impasse Duchedca", address:"13 rue de la Gare")
       expect(bad_report).not_to be_valid
     end
 

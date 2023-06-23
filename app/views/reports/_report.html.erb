@@ -1,14 +1,31 @@
-<main class="w-full lg:w-4/5 lg:ml-[10%] max-h-full lg:flex rounded-t mt-6">
+<div class="w-full lg:w-4/5 lg:ml-[10%] max-h-full lg:flex rounded-t mt-6">
   <% if report.images.any? %>
-    <div class="h-48 lg:h-auto lg:w-96 flex-none bg-cover lg:rounded-l text-center overflow-hidden" style="background-image: url('<%= url_for(report.images.first) %>')" title="Image description">
-    </div>
+    <div class="h-48 lg:h-auto lg:w-96 flex-none bg-cover lg:rounded-l text-center overflow-hidden" style="background-image: url('<%= url_for(report.images.first) %>')" title="Image description"></div>
   <% end %>
-  <section class="shadow-2xl border-r border-b border-l border-orange-400 lg:border-l-0 lg:border-t lg:border-orange-400 cstm-bg-primary rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal flex-grow">
-    <div class="mb-8">
+  <div class="shadow-2xl border-r border-b border-l border-orange-400 lg:border-l-0 lg:border-t lg:border-orange-400 cstm-bg-primary rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal flex-grow">
+    <section class="mb-8">
       <p class="text-sm cstm-dark flex justify-end items-center">
-        <span class="flex justify-end  ml-auto bg-green-200 rounded-full px-3 py-1 text-sm font-semibold cstm-dark mr-2">
-          <%= report.status %>
-        </span>
+        <% if report.status == "en cours de validation" %>
+          <span class="flex justify-end ml-auto rounded-full px-3 py-2 text-sm font-semibold mr-2 cstm-new">
+            <%= report.status %>
+          </span>
+        <% elsif report.status == "validé" %>
+          <span class="flex justify-end ml-auto rounded-full px-3 py-2 text-sm font-semibold mr-2 cstm-validated">
+            <%= report.status %>
+          </span>
+        <% elsif report.status == "accepté" %>
+          <span class="flex justify-end ml-auto rounded-full px-3 py-2 text-sm font-semibold mr-2 cstm-accepted">
+            <%= report.status %>
+          </span>
+        <% elsif report.status == "en cours" %>
+          <span class="flex justify-end ml-auto rounded-full px-3 py-2 text-sm font-semibold mr-2 cstm-in-progress">
+            <%= report.status %>
+          </span>
+        <% else %>
+          <span class="flex justify-end ml-auto rounded-full px-3 py-2 text-sm font-semibold mr-2 cstm-resolved">
+            <%= report.status %>
+          </span>
+        <% end %>
       </p>
       <div class="text-white font-bold text-4xl mb-4 mt-3">
         <%= report.title %>
@@ -17,10 +34,12 @@
       <div class="text-white font-bold text-lg flex flex-start mr-auto mt-2">
         - <%= report.address %>
       </div>
-      <p class="text-white text-base text-left pt-6 mb-4"><%= report.content %></p>
+      <p class="text-white text-base text-left pt-6 mb-4">
+        <%= report.content %>
+      </p>
       <hr>
-    </div>
-    <div class="flex justify-between items-center pb-6">
+    </section>
+    <section class="flex justify-between items-center pb-6">
       <p class="text-white leading-none text-sm">
         par
         <% if report.user == nil %>
@@ -28,18 +47,28 @@
         <% else %>
           <%= report.user.nickname %>
         <% end %>
-        , le <%= report.created_at.strftime("%d %b %Y") %>
+        , le <%= report.created_at.strftime("%d/%m/%Y") %>
       </p>
-    </div>
-    <div class="flex justify-end items-center">
-      <%= button_to report_path(report), class: "relative inline-flex items-center justify-center p-8 px-10 py-4 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-white rounded-full shadow-md group", method: :get do %>
-        <span class="absolute inset-0 flex items-center justify-center w-full h-full text-orange-400 duration-300 -translate-x-full bg-white group-hover:translate-x-0 ease">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-          </svg>
-        </span>
-        <span class="absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease">Détails</span>
-      <% end %>
-    </div>    
-  </section>
-</main>
+    </section>
+    <section class="flex justify-between items-center text-white">
+      <figure>
+        <i class="fa-solid fa-thumbs-up pr-1"></i>
+        <%= report.report_likes.count %>
+        <i class="fa-solid fa-comment-dots pl-4 pr-1"></i>
+        <%= report.comments.count %>
+      </figure> 
+      <div class="flex justify-end items-center">
+        <%= button_to report_path(report), class: "relative inline-flex items-center justify-center p-8 px-10 py-4 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-white rounded-full shadow-md group", method: :get, data: { turbo: "false" } do %>
+          <span class="absolute inset-0 flex items-center justify-center w-full h-full text-orange-400 duration-300 -translate-x-full bg-white group-hover:translate-x-0 ease">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+            </svg>
+          </span>
+          <span class="absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease">
+            Détails
+          </span>
+        <% end %>
+      </div>
+    </section>  
+  </div>
+</div>

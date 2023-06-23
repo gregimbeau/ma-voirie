@@ -1,13 +1,31 @@
 import { Controller } from "@hotwired/stimulus"
 import Dropzone from 'dropzone';
 import { DirectUpload } from "@rails/activestorage";
-import {
-  getMetaValue,
-  findElement,
-  removeElement,
-  insertAfter,
-} from "../helpers/dropzone";
 
+export function getMetaValue(name) {
+  const element = findElement(document.head, `meta[name="${name}"]`)
+  if (element) {
+    return element.getAttribute("content")
+  }
+}
+
+export function findElement(root, selector) {
+  if (typeof root == "string") {
+    selector = root
+    root = document
+  }
+  return root.querySelector(selector)
+}
+
+export function removeElement(el) {
+  if (el && el.parentNode) {
+    el.parentNode.removeChild(el);
+  }
+}
+
+export function insertAfter(el, referenceNode) {
+  return referenceNode.parentNode.insertBefore(el, referenceNode.nextSibling);
+}
 
 // Connects to data-controller="dropzone"
 export default class extends Controller {
@@ -29,19 +47,15 @@ export default class extends Controller {
     this.dropZone.on("addedfile", (file) => {
       setTimeout(() => { file.accepted && createDirectUploadController(this, file).start() }, 500)
     })
-
     this.dropZone.on("removedfile", (file) => {
       file.controller && removeElement(file.controller.hiddenInput)
     })
-
     this.dropZone.on("canceled", (file) => {
       file.controller && file.controller.xhr.abort()
     })
-
     this.dropZone.on("processing", (file) => {
       this.submitButton.disabled = true
     })
-
     this.dropZone.on("queuecomplete", (file) => {
       this.submitButton.disabled = false
     })
@@ -50,39 +64,30 @@ export default class extends Controller {
   get headers() {
     return { "X-CSRF-Token": getMetaValue("csrf-token") } 
   }
-
   get url() {
     return this.inputTarget.getAttribute("data-direct-upload-url")
   }
-
   get maxFiles() {
     return this.data.get("maxFiles") || 1
   }
-
   get maxFileSize() {
     return this.data.get("maxFileSize") || 256
   }
-
   get acceptedFiles() {
     return this.data.get("acceptedFiles")
   }
-
   get addRemoveLinks() {
     return this.data.get("addRemoveLinks") || true
   }
-
   get uploadMultiple() {
     return this.data.get("uploadMultiple") || false
   }
-
   get form() {
     return this.element.closest("form")
   }
-
   get submitButton() {
     return findElement(this.form, "input[type=submit], button[type=submit]")
   }
-
 }
 
 class DirectUploadController {

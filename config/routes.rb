@@ -12,17 +12,16 @@ Rails.application.routes.draw do
 
   get '/conditions' => 'static_pages#conditions'
   get '/home' => 'static_pages#home'
+  get '/map' => 'static_pages#map'
 
-  resources :reports do
+  resources :reports, except: [:edit] do
     resources :comments, only: [:create, :update, :destroy]
-    member do
-      delete :delete_image_attachment
-    end
+    resources :report_likes, only: [:create, :destroy]
   end
 
   resources :replies
 
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:show, :edit, :update, :destroy]
 
   root to: "static_pages#home"
 

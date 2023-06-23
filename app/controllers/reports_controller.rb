@@ -14,11 +14,11 @@ class ReportsController < ApplicationController
     @report = Report.new
   end
 
-  def edit
-  end
-
   def create
     @report = Report.new(report_params)
+    coords = geocode_address(@report.address)
+    @report.latitude = coords[:latitude]
+    @report.longitude = coords[:longitude]
     respond_to do |format|
       if @report.images.attached? && @report.save
         format.html { redirect_to report_url(@report), notice: "Le signalement a correctement été créé." }
@@ -28,17 +28,17 @@ class ReportsController < ApplicationController
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @report.errors, status: :unprocessable_entity }
       else
-        flash[:alert] = @report.errors.full_messages.join(', ')
+        flash[:alert] = "Erreur de saisie."
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @report.errors, status: :unprocessable_entity }
       end
     end
   end
-  
+
   def update
     respond_to do |format|
       if @report.update(report_params)
-        format.html { redirect_to report_url(@report), notice: "Le signalement a correctement été mise à jour" }
+        format.html { redirect_to report_url(@report), notice: "Le signalement a correctement été mise à jour." }
         format.json { render :show, status: :ok, location: @report }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -48,21 +48,32 @@ class ReportsController < ApplicationController
   end
 
   def destroy
+    @report.comments.each(&destroy)
     @report.destroy
     respond_to do |format|
       format.html { redirect_to reports_url, notice: "Le signalement a correctement été supprimé." }
       format.json { head :no_content }
     end
   end
-  
+
   private
+
+  def geocode_address(address)
+    response = HTTParty.get("https://api-adresse.data.gouv.fr/search/?q=#{CGI::escape(address)}&limit=1")
+    if response.code == 200
+      coordinates = response.parsed_response["features"][0]["geometry"]["coordinates"]
+      return { longitude: coordinates[0], latitude: coordinates[1] }
+    else
+      return { longitude: nil, latitude: nil }
+    end
+  end
 
   def set_report
     @report = Report.find(params[:id])
   end
 
   def report_params
-    params.require(:report).permit(:title, :content, :is_validate, :user_id, :status_id, :address, images: [])
+    params.require(:report).permit(:title, :content, :is_validate, :user_id, :status_id, :address, :latitude, :longitude, images: [])
   end
 
   def authenticate_user
@@ -71,5 +82,5 @@ class ReportsController < ApplicationController
       redirect_to new_user_session_path
     end
   end
-  
+
 end
