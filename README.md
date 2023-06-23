@@ -10,9 +10,11 @@
 
 Creation de notre Projet Final en équipe.
 
-Notre github: [TeamKiTu](https://github.com/TeamKiTu)
+Notre github : [TeamKiTu](https://github.com/TeamKiTu)
 
-Lien du site en production: https://ma-voirie.herokuapp.com/
+Lien du site en production : https://ma-voirie.herokuapp.com/
+
+Lien du Trello : https://trello.com/b/skdmSvOz/ma-voiriefr
 
 ------------
 
