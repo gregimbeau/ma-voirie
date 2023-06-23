@@ -23,7 +23,9 @@
     <section class="text-center">
       <fieldset class="pb-1">
         <input id="checkbox-1" required type="checkbox" value="" class="w-4 h-4 cstm-primary bg-white border-orange-400 lack rounded focus:ring-transparent dark:focus:ring-transparent dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-        <label for="checkbox-1" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">J'accepte les <a href="#" class="cstm-primary hover:underline dark:text-orange-500">conditions d'utilisation.</a></label>
+        <label for="checkbox-1" class="ml-2 text-sm font-semibold cstm-dark">
+          J'accepte les <%= link_to "conditions générales d'utilisation", '/conditions', class: "cstm-primary hover:underline dark:text-orange-500"%>
+        </label>
       </fieldset>
       <div class="py-4">
         <%= button_tag(type: 'submit', class: "relative inline-flex items-center justify-center w-2/5 2xl:w-2/6 xl:w-2/6 md:w-1/4 lg:w-1/4 sm:w-2/5 h-8 overflow-hidden font-medium cstm-dark transition duration-300 ease-out border-2 border-gray-700 shadow-md group") do %>
@@ -32,7 +34,9 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
             </svg>
           </span>
-          <span class="absolute flex items-center justify-center w-full h-full cstm-dark transition-all duration-300 transform group-hover:translate-x-full ease">S'enregistrer</span>
+          <span class="absolute flex items-center justify-center w-full h-full cstm-dark transition-all duration-300 transform group-hover:translate-x-full ease">
+            S'enregistrer
+          </span>
         <% end %>
       </div>
       <hr class="mb-6 border-t border-orange-400">
