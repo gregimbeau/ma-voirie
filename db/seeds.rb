@@ -73,4 +73,4 @@ end
   end
 end
 
-admin = User.create(nickname:ENV['ADMIN_NICKNAME'], email:ENV['ADMIN_EMAIL'], password:ENV['ADMIN_PASSWORD'])
+admin = User.create(nickname:ENV['ADMIN_NICKNAME'], email:ENV['ADMIN_EMAIL'], password:ENV['ADMIN_PASSWORD'], is_admin: true)
