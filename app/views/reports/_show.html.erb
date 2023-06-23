@@ -158,6 +158,7 @@
       <div id="comments-section">
         <%= render partial: 'comments/comments', locals: { report: @report } %>
       </div>
+      <% end %>
       <% if current_user %>
         <%= render partial: 'comments/form', locals: { report: @report } %>
       <% else %>
@@ -171,7 +172,6 @@
           <%= link_to "Je m'inscris.", new_user_registration_path, class: "font-medium cstm-primary hover:underline" %>
         </p>
       </div>
-      <% end %>
       <% end %>
     </article>
 </div>
