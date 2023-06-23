@@ -1,10 +1,10 @@
 require 'faker'
 
+ReportLike.delete_all
 Reply.delete_all
 Comment.delete_all
 Report.delete_all
 User.delete_all
-ReportLike.delete_all
 
 photo_files = Dir.glob(Rails.root.join('app', 'assets', 'images', 'seed_report_images', '*.jpg'))
 
