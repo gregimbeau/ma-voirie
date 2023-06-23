@@ -1,5 +1,5 @@
 <h5 class="text-center md:text-3xl py-4 cstm-dark">Signalements validés</h5>
-<table class="w-full text-sm text-left cstm-dark mb-32">
+<table class="w-full text-sm text-left cstm-dark mb-32 shadow-xl">
   <thead class="md:text-xs uppercase cstm-bg-dark text-center">
     <tr>
       <th scope="col" class="md:px-6 md:py-3 cstm-yellow hidden md:block">Status</th>
@@ -31,7 +31,7 @@
         <div id="dropdown2<%= report.id %>" class="z-10 hidden bg-white rounded-lg shadow divide-y">
           <ul class="text-sm" aria-labelledby="dropdownValidated<%= report.id %>">
             <li>
-              <%= button_to "Travaux programmés", admin_report_path(report.id), class:"w-full block px-4 py-2 admin_drop cstm-dark", method: :patch, params: { "report" =>  "accepted" } %>
+              <%= button_to "Signalement accepté", admin_report_path(report.id), class:"w-full block px-4 py-2 admin_drop cstm-dark", method: :patch, params: { "report" =>  "accepted" } %>
             </li>
             <li>
               <%= button_to "Travaux en cours", admin_report_path(report.id), class:"w-full block px-4 py-2 admin_drop cstm-dark", method: :patch, params: { "report" =>  "in progress" } %>
