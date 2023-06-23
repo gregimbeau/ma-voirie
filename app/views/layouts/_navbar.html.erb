@@ -5,8 +5,8 @@
     <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
   </button>
   <article class="hidden md:block md:w-auto flex justify-start" id="navbar-default">
-    <div class="flex ">
-      <ul class="w-full font-medium flex flex-col p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:mt-0 md:border-0">
+    <div class="md:flex">
+      <ul class="w-full font-medium flex flex-col p-4 md:p-0 mt-4  rounded-lg md:flex-row md:mt-0">
         <li class="md:px-1 md:py-2 md:ml-[4%] md:ml-[10%] xl:ml-[13%]">
           <%= link_to "Accueil", root_path, class:"nav-btn text-2xl font-semibold whitespace-nowrap drop-shadow-xl" %>
         </li>
@@ -23,19 +23,19 @@
           </li>
         <% end %>
       </ul>
-      <div class="flex items-center md:ml-auto md:mr-[6%] lg:mr-[15%]" id="to_right">
+      <div class="flex items-center md:ml-auto md:mr-[6%] lg:mr-[15%] ml-4" id="to_right">
         <% if current_user %>
         <div class="nav-btn">
-          <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center text-2xl font-semibold whitespace-nowrap md:mt-0 sm:mt-3">
-            <span class="nav-btn text-2xl font-semibold whitespace-nowrap drop-shadow mr-2">
+          <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center text-2xl font-semibold whitespace-nowrap">
+            <span class="nav-btn text-2xl font-semibold whitespace-nowrap drop-shadow-xl mr-2">
               <%= current_user.nickname %>
             </span>
             <%= image_tag("user.svg", class: "w-10 md:mt-1 drop-shadow", draggable: "false", alt: "Icone utilisateur") %>
           </button>
         </div>
         <% else %>
-          <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center text-2xl font-semibold whitespace-nowrap md:mt-0 sm:mt-3">
-            <span class="nav-btn text-2xl font-semibold whitespace-nowrap drop-shadow mr-2">
+          <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center text-2xl font-semibold whitespace-nowrap">
+            <span class="nav-btn text-2xl font-semibold whitespace-nowrap drop-shadow-xl mr-2">
               Se connecter
             </span>
             <%= image_tag("user.svg", class: "w-10 md:mt-1", draggable: "false", alt: "Icone utilisateur") %>
