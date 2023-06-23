@@ -4,35 +4,41 @@
     <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
     <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
   </button>
-  <div class="hidden w-full md:block md:w-auto flex-grow" id="navbar-default">
-    <ul class="w-full font-medium flex flex-col p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:mt-0 md:border-0">
-      <li class="md:px-1 md:py-2 md:ml-[4%] md:ml-[10%] xl:ml-[13%]">
-        <%= link_to "Accueil", root_path, class:"nav-btn text-2xl font-semibold whitespace-nowrap drop-shadow-xl" %>
-      </li>
-      <li class="md:px-1 md:py-2 md:ml-[1%] lg:ml-[2%]">
-        <%= link_to "Signalements", reports_path, class:"nav-btn text-2xl font-semibold whitespace-nowrap drop-shadow-xl" %>
-      </li>
-      <% if current_user %>
-        <li class="md:px-1 md:py-2 md:ml-[1%] lg:ml-[2%]">
-          <%= link_to "Nouveau signalement", new_report_path, class:"nav-btn text-2xl font-semibold whitespace-nowrap drop-shadow-xl" %>
+  <article class="hidden md:block md:w-auto flex justify-start" id="navbar-default">
+    <div class="md:flex">
+      <ul class="w-full font-medium flex flex-col p-4 md:p-0 mt-4  rounded-lg md:flex-row md:mt-0">
+        <li class="md:px-1 md:py-2 md:ml-[4%] md:ml-[10%] xl:ml-[13%]">
+          <%= link_to "Accueil", root_path, class:"nav-btn text-2xl font-semibold whitespace-nowrap drop-shadow-xl" %>
         </li>
-      <% else %>
         <li class="md:px-1 md:py-2 md:ml-[1%] lg:ml-[2%]">
-          <%= link_to "Nouveau signalement", new_user_session_path, class:"nav-btn text-2xl font-semibold whitespace-nowrap drop-shadow-xl" %>
+          <%= link_to "Signalements", reports_path, class:"nav-btn text-2xl font-semibold whitespace-nowrap drop-shadow-xl" %>
         </li>
-      <% end %>
-      <div class="flex items-center md:ml-auto md:mr-[6%] lg:mr-[15%]" id="to_right">
+        <% if current_user %>
+          <li class="md:px-1 md:py-2 md:ml-[1%] lg:ml-[2%]">
+            <%= link_to "Nouveau signalement", new_report_path, class:"nav-btn text-2xl font-semibold whitespace-nowrap drop-shadow-xl", data:{turbo: false} %>
+          </li>
+        <% else %>
+          <li class="md:px-1 md:py-2 md:ml-[1%] lg:ml-[2%]">
+            <%= link_to "Nouveau signalement", new_user_session_path, class:"nav-btn text-2xl font-semibold whitespace-nowrap drop-shadow-xl" %>
+          </li>
+        <% end %>
+      </ul>
+      <div class="flex items-center md:ml-auto md:mr-[6%] lg:mr-[15%] ml-4" id="to_right">
         <% if current_user %>
         <div class="nav-btn">
-          <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center text-2xl font-semibold whitespace-nowrap md:mt-0 sm:mt-3">
-            <span class="nav-btn text-2xl font-semibold whitespace-nowrap drop-shadow mr-2"><%= current_user.nickname %></span>
-            <%= image_tag("user.svg", class: "w-10 banner md:mt-1 drop-shadow", draggable: "false", unselectable: "on", alt: "Icone utilisateur") %>
+          <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center text-2xl font-semibold whitespace-nowrap">
+            <span class="nav-btn text-2xl font-semibold whitespace-nowrap drop-shadow-xl mr-2">
+              <%= current_user.nickname %>
+            </span>
+            <%= image_tag("user.svg", class: "w-10 md:mt-1 drop-shadow", draggable: "false", alt: "Icone utilisateur") %>
           </button>
         </div>
         <% else %>
-          <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center text-2xl font-semibold whitespace-nowrap md:mt-0 sm:mt-3">
-            <span class="nav-btn text-2xl font-semibold whitespace-nowrap drop-shadow mr-2">Se connecter</span>
-            <%= image_tag("user.svg", class: "w-10 banner md:mt-1", draggable: "false", unselectable: "on", alt: "Icone utilisateur") %>
+          <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center text-2xl font-semibold whitespace-nowrap">
+            <span class="nav-btn text-2xl font-semibold whitespace-nowrap drop-shadow-xl mr-2">
+              Se connecter
+            </span>
+            <%= image_tag("user.svg", class: "w-10 md:mt-1", draggable: "false", alt: "Icone utilisateur") %>
           </button>
         <% end %>
         <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
@@ -52,18 +58,19 @@
             </ul>
           <% else %>
             <div class="py-1">
-              <li>
                 <%= link_to "Connexion", new_user_session_path, class:"w-full text-center block px-4 py-2 hover:bg-gray-100" %>
-              </li>
             </div>
-            <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
+            <ul class="py-2 text-sm cstm-dark">
               <li>
-                <p class="text-center">Vous n'avez pas encore de compte ? <%= link_to "Cliquez ici pour vous enregistrer.", new_user_registration_path, class:"block px-4 py-2 hover:bg-gray-100 cstm-primary" %></p>
+                <p class="text-center">
+                  Vous n'avez pas encore de compte ?
+                  <%= link_to "Cliquez ici pour vous enregistrer.", new_user_registration_path, class:"block px-4 py-2 hover:bg-gray-100 cstm-primary" %>
+                </p>
               </li>
             </ul>
           <% end %>
         </div>
       </div>
-    </ul>
-  </div>
+    </div>
+  </article>
 </nav>
