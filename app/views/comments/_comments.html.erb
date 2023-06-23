@@ -1,35 +1,37 @@
-<% @report.comments.each_with_index do |comment, comment_index| %>
-  <div class="border border-b-gray-400 rounded-3xl <%= comment_index.zero? ? 'pt-4' : '' %> comment <%= comment_index.even? ? 'cstm-bg-sand' : 'cstm-bg-sand-dark' %> p-2 pl-4">
-    <p class="text-sm cstm-dark font-bold">
-      <%= comment.user.nickname %>:
-    </p>
-    <p class="text-gray-800 mb-2">
-      <%= comment.content %>
-    </p>
-    <% if current_user %>
-      <button id = "reply_show" class = "text-white cstm-bg-action cstm-light font-bold py-2 px-4 rounded-xl mr-10">
-        Répondre
-      </button>
-      <div class = "hidden" id = "reply_div">
-        <%= form_with(url:replies_path(comment_id: comment), remote: true, data:{turbo_frame: "comments"}, class: "mt-4") do |form| %>
-          <div class="flex">
-            <%= form.text_area :content, id: "textarea_reply", placeholder: 'Ajouter un commentaire...', class: "w-full px-3 py-2 text-sm leading-tight cstm-dark border-orange-300 rounded shadow appearance-none focus:border-orange-500 focus:ring-0 focus:shadow-outline", rows: 2 %>
-            <%= form.button "Envoyer", id: "btn_send_reply", class: "text-white cstm-bg-action cstm-light font-bold py-2 px-4 rounded-xl ml-10", type: "submit", data:{turbo_frame: "comments"} %>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-  <% if comment.replies.any? %>
-    <% comment.replies.each_with_index do |reply, reply_index| %>
-      <div class="border border-b-gray-400 ml-12 rounded-3xl <%= reply_index.zero? ? 'pt-4' : '' %> comment <%= reply_index.even? ? 'cstm-bg-sand' : 'cstm-bg-sand-dark' %> p-2 pl-4">
-        <p class="text-sm cstm-dark font-bold">
-          <%= reply.user.nickname%>:
-        </p>
-        <p class="text-gray-800 mb-2">
-          <%= reply.content %>
-        </p>
-      </div>
+<%= turbo_frame_tag "comments" do %>
+  <% @report.comments.each_with_index do |comment, comment_index| %>
+    <div class="border border-b-gray-400 rounded-3xl <%= comment_index.zero? ? 'pt-4' : '' %> comment <%= comment_index.even? ? 'cstm-bg-sand' : 'cstm-bg-sand-dark' %> p-2 pl-4">
+      <p class="text-sm cstm-dark font-bold">
+        <%= comment.user.nickname %>:
+      </p>
+      <p class="text-gray-800 mb-2">
+        <%= comment.content %>
+      </p>
+      <% if current_user %>
+        <button id = "reply_show" class = "text-white cstm-bg-action cstm-light font-bold py-2 px-4 rounded-xl mr-10">
+          Répondre
+        </button>
+        <div class = "hidden" id = "reply_div">
+          <%= form_with(url:replies_path(comment_id: comment), remote: true, data:{turbo_frame: "comments"}, class: "mt-4") do |form| %>
+            <div class="flex">
+              <%= form.text_area :content, id: "textarea_reply", placeholder: 'Ajouter un commentaire...', class: "w-full px-3 py-2 text-sm leading-tight cstm-dark border-orange-300 rounded shadow appearance-none focus:border-orange-500 focus:ring-0 focus:shadow-outline", rows: 2 %>
+              <%= form.button "Envoyer", id: "btn_send_reply", class: "text-white cstm-bg-action cstm-light font-bold py-2 px-4 rounded-xl ml-10", type: "submit", data:{turbo_frame: "comments"} %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <% if comment.replies.any? %>
+      <% comment.replies.each_with_index do |reply, reply_index| %>
+        <div class="border border-b-gray-400 ml-12 rounded-3xl <%= reply_index.zero? ? 'pt-4' : '' %> comment <%= reply_index.even? ? 'cstm-bg-sand' : 'cstm-bg-sand-dark' %> p-2 pl-4">
+          <p class="text-sm cstm-dark font-bold">
+            <%= reply.user.nickname%>:
+          </p>
+          <p class="text-gray-800 mb-2">
+            <%= reply.content %>
+          </p>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>
