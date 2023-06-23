@@ -80,15 +80,27 @@
             <%= turbo_frame_tag "jaime" do %>
               <figure class="flex align-baseline items-center">
                 <% if already_exist?(@report) == false %>
-                  <%= @report.report_likes.count %>
-                  <div class="border-2 border-white px-1 ml-1 rounded">
-                    <%= button_to report_report_likes_path(@report.id), data: { turbo_frame: "jaime" }, remote: true, method: :post, class:"flex justify-between items-center" do %>
-                      <i class="fa-solid fa-thumbs-up pr-1"></i>
-                      <p class="pr-1">
-                        J'aime
-                      </p>
-                    <% end %>
-                  </div>
+                  <% if current_user %>
+                    <%= @report.report_likes.count %>
+                    <div class="border-2 border-white px-1 ml-1 rounded">
+                      <%= button_to report_report_likes_path(@report.id), data: { turbo_frame: "jaime" }, remote: true, method: :post, class:"flex justify-between items-center" do %>
+                        <i class="fa-solid fa-thumbs-up pr-1"></i>
+                        <p class="pr-1">
+                          J'aime
+                        </p>
+                      <% end %>
+                    </div>
+                  <% else %>
+                    <%= @report.report_likes.count %>
+                    <div class="border-2 border-white px-1 ml-1 rounded">
+                      <%= button_to new_user_session_path, remote: true, method: :get, class:"flex justify-between items-center", data: {turbo:false} do %>
+                        <i class="fa-solid fa-thumbs-up pr-1"></i>
+                        <p class="pr-1">
+                          J'aime
+                        </p>
+                      <% end %>
+                    </div>
+                  <% end %>
                 <% else %>
                   <%= @report.report_likes.count %>
                   <div class="border-2 border-white px-1 ml-1 rounded">
