@@ -1,4 +1,4 @@
-<article class="w-full lg:w-4/5 lg:ml-[10%] max-h-full lg:flex rounded-t mt-6">
+<div class="w-full lg:w-4/5 lg:ml-[10%] max-h-full lg:flex rounded-t mt-6">
   <% if report.images.any? %>
     <div class="h-48 lg:h-auto lg:w-96 flex-none bg-cover lg:rounded-l text-center overflow-hidden" style="background-image: url('<%= url_for(report.images.first) %>')" title="Image description"></div>
   <% end %>
@@ -64,9 +64,11 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
             </svg>
           </span>
-          <span class="absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease">Détails</span>
+          <span class="absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease">
+            Détails
+          </span>
         <% end %>
       </div>
     </section>  
   </div>
-</article>
+</div>
