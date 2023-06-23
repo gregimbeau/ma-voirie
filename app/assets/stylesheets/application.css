@@ -22,14 +22,6 @@ body{
   flex-direction: column;
 }
 
-.banner{
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-drag: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-}
-
 .nav-btn{
   color: #646464;
   user-select: none;
