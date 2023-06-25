@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :users do
-    resources :reports, only: [:new, :create]
-  end
+  devise_for :users
 
   resources :contact_mailer, only: [:new, :create] do
     collection do
