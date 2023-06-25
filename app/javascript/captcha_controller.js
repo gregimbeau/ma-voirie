@@ -25,7 +25,7 @@ document.addEventListener("turbo:load", function() {
   contactForm.addEventListener('submit', function(event) {
     if (grecaptcha.getResponse() == '') {
       event.preventDefault();
-      alert('Merci de completer le reCAPTCHA');
+      alert('Merci de compléter le reCAPTCHA');
     }
   });
 });
