@@ -10,10 +10,6 @@ class ContactMailerController < ApplicationController
       ContactMailer.contact_message(@contact_message).deliver_now
       redirect_to confirmation_contact_mailer_index_path, notice: 'Message envoyé avec succès.'
     else
-      if !verify_recaptcha(model: @contact_message)
-        @contact_message.errors.add(:captcha, 'Veuillez remplir le captcha')
-        @contact_message.captcha = nil
-      end
       render :new, status: :unprocessable_entity
     end
   end
@@ -24,7 +20,7 @@ class ContactMailerController < ApplicationController
   private
 
   def contact_message_params
-    params.require(:contact_message).permit(:name, :email, :message).merge(captcha: params['g-recaptcha-response'])
+    params.require(:contact_message).permit(:name, :email, :message)
   end
 
 end

@@ -31,7 +31,7 @@ Lien du Trello : https://trello.com/b/skdmSvOz/ma-voiriefr
 
 ------------
 
-## Concrétement et techniquement
+## Concrètement et techniquement
 
 ### La base de données est sous PostgreSQL.
 
