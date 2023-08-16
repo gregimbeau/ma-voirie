@@ -1,9 +1,3 @@
-   [![forthebadge](https://forthebadge.com/images/badges/made-with-ruby.svg)](https://forthebadge.com)
-   [![forthebadge](https://forthebadge.com/images/badges/uses-css.svg)](https://forthebadge.com)
-   [![forthebadge](https://forthebadge.com/images/badges/powered-by-coffee.svg)](https://forthebadge.com)
-   
-
-
    ### THP W11/12 - FINAL PROJECT - MA VOIRIE
 
 ![alt text](https://i.postimg.cc/9m03CFNR/Ma-Voirie-Banner.png)
@@ -12,7 +6,7 @@ Création de notre Projet Final en équipe.
 
 Notre github : [TeamKiTu](https://github.com/TeamKiTu)
 
-Lien du site en production : https://ma-voirie.herokuapp.com/
+Lien du site en production : https://ma-voirie.herokuapp.com/ || https://mavoirie.fly.dev/
 
 Lien du Trello : https://trello.com/b/skdmSvOz/ma-voiriefr
 
